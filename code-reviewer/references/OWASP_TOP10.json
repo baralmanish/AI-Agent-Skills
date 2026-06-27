@@ -1,0 +1,348 @@
+{
+  "version": "OWASP Top 10 2021",
+  "source": "https://owasp.org/Top10/",
+  "purpose": "Reference for code-reviewer skill — maps each vulnerability to detection signals, language-specific patterns, and mitigation strategies",
+  "vulnerabilities": [
+    {
+      "id": "A01",
+      "name": "Broken Access Control",
+      "rank": 1,
+      "description": "Restrictions on what authenticated users can do are not properly enforced. Attackers can access unauthorized functionality or data.",
+      "code_signals": [
+        "User-supplied ID used directly to fetch records without ownership check",
+        "Role/permission check done client-side only",
+        "Missing authorization middleware on routes",
+        "IDOR: object references derived from user input with no validation",
+        "Hardcoded admin role checks that can be bypassed",
+        "Path traversal: ../../../etc/passwd in file access"
+      ],
+      "language_patterns": {
+        "python_django": [
+          "No @login_required or @permission_required decorator",
+          "get_object_or_404 without user ownership filter"
+        ],
+        "python_fastapi": [
+          "Missing Depends(get_current_user) on protected routes",
+          "No role assertion after token decode"
+        ],
+        "javascript_express": [
+          "Missing authMiddleware on router",
+          "req.params.id used directly in DB query without checking req.user.id"
+        ],
+        "java_spring": [
+          "Missing @PreAuthorize or @Secured annotation",
+          "No hasRole() check before sensitive operations"
+        ]
+      },
+      "mitigation": "Deny by default. Enforce access control server-side on every request. Log failures. Use framework-level guards (middleware, decorators, annotations) rather than ad-hoc checks.",
+      "severity_default": "Critical",
+      "cwe": ["CWE-22", "CWE-284", "CWE-285", "CWE-639"]
+    },
+    {
+      "id": "A02",
+      "name": "Cryptographic Failures",
+      "rank": 2,
+      "description": "Sensitive data is transmitted or stored without adequate encryption, or uses weak/deprecated algorithms.",
+      "code_signals": [
+        "Passwords stored as plain text or MD5/SHA1 hash",
+        "HTTP (not HTTPS) URLs hardcoded for API calls",
+        "Secrets or API keys committed directly in source code",
+        "Weak random number generation for security tokens (e.g., random.random() in Python)",
+        "Using ECB mode for block ciphers",
+        "SSL certificate validation disabled (verify=False)"
+      ],
+      "language_patterns": {
+        "python": [
+          "hashlib.md5(password)",
+          "hashlib.sha1(password)",
+          "random.random() for token",
+          "requests.get(url, verify=False)"
+        ],
+        "javascript": [
+          "Math.random() for security token",
+          "crypto.createHash('md5')",
+          "process.env variables printed to logs"
+        ],
+        "java": [
+          "MessageDigest.getInstance(\"MD5\")",
+          "new SecureRandom() seeded with predictable value",
+          "SSLContext.getInstance(\"SSL\")"
+        ]
+      },
+      "mitigation": "Use bcrypt/argon2/scrypt for passwords. Use secrets module or os.urandom() for tokens. Store secrets in environment variables or a secrets manager. Always use TLS. Use AES-GCM for symmetric encryption.",
+      "severity_default": "Critical",
+      "cwe": [
+        "CWE-261",
+        "CWE-296",
+        "CWE-310",
+        "CWE-319",
+        "CWE-321",
+        "CWE-326",
+        "CWE-327"
+      ]
+    },
+    {
+      "id": "A03",
+      "name": "Injection",
+      "rank": 3,
+      "description": "Hostile data is sent to an interpreter (SQL, OS, LDAP, template engines) leading to unintended command execution.",
+      "code_signals": [
+        "SQL query built with string concatenation or f-strings from user input",
+        "Shell command constructed from user-supplied values",
+        "Template rendered with unsanitized user input",
+        "LDAP filter built from user input without escaping",
+        "XML/XPath queries built with user data"
+      ],
+      "language_patterns": {
+        "python": [
+          "f\"SELECT * FROM users WHERE id = {user_input}\"",
+          "\"SELECT * FROM users WHERE id = \" + user_input",
+          "subprocess.run(user_input, shell=True)",
+          "os.system(user_input)",
+          "eval(user_input)",
+          "exec(user_input)"
+        ],
+        "javascript": [
+          "`SELECT * FROM users WHERE id = ${req.body.id}`",
+          "db.query(\"SELECT * FROM users WHERE id = \" + req.params.id)",
+          "eval(userInput)",
+          "new Function(userInput)()",
+          "child_process.exec(userInput)"
+        ],
+        "java": [
+          "Statement.executeQuery(\"SELECT * FROM users WHERE id = \" + id)",
+          "Runtime.getRuntime().exec(userInput)"
+        ],
+        "php": [
+          "mysqli_query($conn, \"SELECT * FROM users WHERE id = \" . $_GET['id'])",
+          "shell_exec($_GET['cmd'])"
+        ]
+      },
+      "safe_alternatives": {
+        "sql": "Use parameterized queries or prepared statements: cursor.execute('SELECT * FROM users WHERE id = %s', (user_id,))",
+        "shell": "Avoid shell=True; pass command as list: subprocess.run(['ls', user_path])",
+        "template": "Use auto-escaping template engines; never pass raw user input to render()"
+      },
+      "severity_default": "Critical",
+      "cwe": ["CWE-77", "CWE-78", "CWE-89", "CWE-90", "CWE-91"]
+    },
+    {
+      "id": "A04",
+      "name": "Insecure Design",
+      "rank": 4,
+      "description": "Missing or ineffective security controls at the architecture or design level — not just implementation bugs.",
+      "code_signals": [
+        "Password reset via security questions instead of secure token",
+        "Rate limiting absent on authentication endpoints",
+        "Sensitive operations (delete, transfer) with no confirmation step",
+        "Business logic that can be abused (negative quantities, price manipulation)",
+        "No separation between admin and user capabilities at the data model level"
+      ],
+      "mitigation": "Threat model early. Use secure design patterns (defense in depth, least privilege, fail-safe defaults). Add rate limiting, CAPTCHA, and confirmation steps for sensitive operations.",
+      "severity_default": "High",
+      "cwe": ["CWE-73", "CWE-183", "CWE-209", "CWE-306", "CWE-656"]
+    },
+    {
+      "id": "A05",
+      "name": "Security Misconfiguration",
+      "rank": 5,
+      "description": "Insecure default configurations, incomplete setups, open cloud storage, verbose error messages, or unnecessary features enabled.",
+      "code_signals": [
+        "DEBUG=True in production settings",
+        "CORS configured with wildcard origin (*) in production",
+        "Stack traces or detailed error messages returned to users",
+        "Default credentials unchanged (admin/admin, root/root)",
+        "Unnecessary HTTP methods enabled (PUT, DELETE on public endpoints)",
+        "Missing security headers (CSP, HSTS, X-Frame-Options, X-Content-Type-Options)"
+      ],
+      "language_patterns": {
+        "python_django": [
+          "DEBUG = True",
+          "ALLOWED_HOSTS = ['*']",
+          "SECRET_KEY hardcoded in settings.py"
+        ],
+        "python_flask": [
+          "app.run(debug=True)",
+          "app.config['SECRET_KEY'] = 'dev'"
+        ],
+        "javascript_express": [
+          "app.use(cors())",
+          "app.use(errorHandler()) without sanitizing stack traces"
+        ],
+        "docker": [
+          "USER root in Dockerfile",
+          "sensitive env vars in Dockerfile (not .env)"
+        ]
+      },
+      "mitigation": "Automate configuration hardening. Use environment-specific config files. Implement security headers. Disable debug mode and stack traces in production. Conduct periodic configuration reviews.",
+      "severity_default": "High",
+      "cwe": ["CWE-2", "CWE-11", "CWE-13", "CWE-15", "CWE-16"]
+    },
+    {
+      "id": "A06",
+      "name": "Vulnerable and Outdated Components",
+      "rank": 6,
+      "description": "Using components (libraries, frameworks, OS) with known vulnerabilities.",
+      "code_signals": [
+        "Dependency versions pinned to old or unpinned (e.g., 'requests' without version)",
+        "No automated dependency scanning in CI/CD",
+        "requirements.txt or package.json with outdated versions",
+        "Using deprecated or known-vulnerable packages (e.g., log4j < 2.15, lodash < 4.17.21)"
+      ],
+      "mitigation": "Use dependency scanning tools (Dependabot, Snyk, pip-audit, npm audit). Pin dependency versions. Subscribe to CVE alerts for critical dependencies. Remove unused dependencies.",
+      "severity_default": "Medium",
+      "cwe": ["CWE-1035", "CWE-937"]
+    },
+    {
+      "id": "A07",
+      "name": "Identification and Authentication Failures",
+      "rank": 7,
+      "description": "Weaknesses in authentication or session management allow attackers to compromise passwords, keys, or session tokens.",
+      "code_signals": [
+        "No rate limiting or lockout on login endpoint",
+        "Weak password policy (no minimum length, no complexity)",
+        "Session tokens with insufficient entropy (too short, predictable)",
+        "Session not invalidated on logout",
+        "JWT with algorithm=none accepted",
+        "Hardcoded credentials in code or config files",
+        "Passwords compared with == instead of constant-time comparison"
+      ],
+      "language_patterns": {
+        "python": [
+          "jwt.decode(token, options={'verify_signature': False})",
+          "if password == stored_password:  # timing attack risk",
+          "session.permanent = False  # without proper expiry"
+        ],
+        "javascript": [
+          "jwt.verify(token, '', ...)  # empty secret",
+          "req.session.userId = req.body.userId  # trusting user input for session"
+        ]
+      },
+      "mitigation": "Implement MFA. Use adaptive rate limiting and account lockout. Validate JWT algorithm explicitly. Invalidate sessions on logout. Use secure, HttpOnly, SameSite cookies. Use constant-time comparison for secrets.",
+      "severity_default": "Critical",
+      "cwe": [
+        "CWE-255",
+        "CWE-259",
+        "CWE-287",
+        "CWE-288",
+        "CWE-290",
+        "CWE-294",
+        "CWE-295",
+        "CWE-297",
+        "CWE-300",
+        "CWE-302",
+        "CWE-303",
+        "CWE-304",
+        "CWE-305",
+        "CWE-306",
+        "CWE-307",
+        "CWE-308",
+        "CWE-309",
+        "CWE-340",
+        "CWE-549",
+        "CWE-592",
+        "CWE-613",
+        "CWE-620",
+        "CWE-640",
+        "CWE-798"
+      ]
+    },
+    {
+      "id": "A08",
+      "name": "Software and Data Integrity Failures",
+      "rank": 8,
+      "description": "Code and infrastructure that does not protect against integrity violations — including insecure deserialization and CI/CD pipeline attacks.",
+      "code_signals": [
+        "pickle.loads() used on untrusted data",
+        "YAML.load() (not safe_load) on user-supplied YAML",
+        "JSON deserialization with auto-instantiation of arbitrary classes",
+        "npm packages installed from unverified sources",
+        "No integrity checks (checksums) on downloaded files or plugins",
+        "CI/CD pipeline with no secret scanning or SAST"
+      ],
+      "language_patterns": {
+        "python": [
+          "pickle.loads(user_data)",
+          "yaml.load(user_data)  # should be yaml.safe_load()",
+          "marshal.loads(user_data)"
+        ],
+        "javascript": [
+          "JSON.parse with reviver that instantiates classes",
+          "require(userProvidedPath)"
+        ],
+        "java": [
+          "ObjectInputStream.readObject() on untrusted stream",
+          "XStream.fromXML(untrustedInput)"
+        ]
+      },
+      "mitigation": "Never deserialize untrusted data with pickle, marshal, or similar. Use yaml.safe_load(). Implement digital signatures for critical updates. Use SRI for CDN assets. Add SAST and secret scanning to CI/CD.",
+      "severity_default": "High",
+      "cwe": [
+        "CWE-345",
+        "CWE-353",
+        "CWE-426",
+        "CWE-494",
+        "CWE-502",
+        "CWE-565",
+        "CWE-784"
+      ]
+    },
+    {
+      "id": "A09",
+      "name": "Security Logging and Monitoring Failures",
+      "rank": 9,
+      "description": "Insufficient logging, monitoring, or alerting prevents timely detection and response to breaches.",
+      "code_signals": [
+        "No logging on authentication events (login success/failure)",
+        "No logging on sensitive operations (data export, privilege escalation, deletion)",
+        "Logs contain sensitive data (passwords, tokens, PII)",
+        "Exception handlers that swallow errors silently (bare except: pass)",
+        "No correlation IDs for request tracing",
+        "Log injection: user input included in log messages without sanitization"
+      ],
+      "language_patterns": {
+        "python": [
+          "except Exception: pass  # silent failure",
+          "logging.info(f'User {password} logged in')  # logging sensitive data",
+          "print(request.body)  # unstructured logging"
+        ],
+        "javascript": [
+          "catch(e) {}  # swallowed error",
+          "console.log(req.body)  # may log passwords",
+          "winston.info(`Login: ${req.body.password}`)  # PII in logs"
+        ]
+      },
+      "mitigation": "Log all auth events, privilege changes, and sensitive operations. Use structured logging (JSON). Never log credentials or PII. Set up alerting on anomalous patterns. Store logs in tamper-evident storage.",
+      "severity_default": "Medium",
+      "cwe": ["CWE-117", "CWE-223", "CWE-532", "CWE-778"]
+    },
+    {
+      "id": "A10",
+      "name": "Server-Side Request Forgery (SSRF)",
+      "rank": 10,
+      "description": "The application fetches a remote resource using a URL supplied or influenced by the user, enabling internal network access.",
+      "code_signals": [
+        "URL passed directly from user input to requests.get(), fetch(), urllib",
+        "Webhook or callback URL not validated against an allowlist",
+        "File path or URL in API request not sanitized",
+        "Redirect URLs not validated (open redirect leading to SSRF)",
+        "Cloud metadata endpoint accessible: http://169.254.169.254/"
+      ],
+      "language_patterns": {
+        "python": [
+          "requests.get(user_supplied_url)",
+          "urllib.request.urlopen(request.args.get('url'))",
+          "httpx.get(url)  # where url is from user input"
+        ],
+        "javascript": [
+          "fetch(req.body.webhookUrl)",
+          "axios.get(req.query.url)",
+          "http.get(userProvidedUrl)"
+        ]
+      },
+      "mitigation": "Validate and sanitize all user-supplied URLs. Use an allowlist of permitted domains. Block requests to private IP ranges (10.x, 172.16.x, 192.168.x, 169.254.x). Disable HTTP redirects or validate each redirect destination.",
+      "severity_default": "High",
+      "cwe": ["CWE-918"]
+    }
+  ]
+}

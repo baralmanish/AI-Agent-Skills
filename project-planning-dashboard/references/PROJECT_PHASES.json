@@ -1,0 +1,262 @@
+{
+  "purpose": "Standard project phase definitions for the project-planning-dashboard skill. Used to structure any project into logical phases with standard tasks and risk patterns.",
+
+  "phase_selection_rules": {
+    "software_product": [
+      "Discovery",
+      "Design",
+      "Development",
+      "QA & Testing",
+      "Launch",
+      "Post-Launch"
+    ],
+    "marketing_campaign": [
+      "Strategy & Briefing",
+      "Creative Development",
+      "Approval & Production",
+      "Launch",
+      "Measurement & Optimization"
+    ],
+    "data_or_analytics": [
+      "Requirements & Scoping",
+      "Data Collection & Preparation",
+      "Analysis",
+      "Insights & Reporting",
+      "Deployment or Handoff"
+    ],
+    "research_or_audit": [
+      "Scoping",
+      "Research & Data Gathering",
+      "Analysis & Synthesis",
+      "Reporting",
+      "Recommendations & Next Steps"
+    ],
+    "operations_or_process": [
+      "Current-State Assessment",
+      "Design & Planning",
+      "Pilot",
+      "Rollout",
+      "Review & Optimization"
+    ],
+    "event_or_conference": [
+      "Planning & Logistics",
+      "Content & Agenda",
+      "Promotions",
+      "Execution",
+      "Post-Event Wrap-Up"
+    ],
+    "organizational_change": [
+      "Assessment & Vision",
+      "Planning",
+      "Communication & Enablement",
+      "Implementation",
+      "Stabilization & Review"
+    ],
+    "generic": ["Initiation", "Planning", "Execution", "Review & Closure"]
+  },
+
+  "standard_phases": {
+    "discovery_or_scoping": {
+      "typical_duration": "1–2 weeks",
+      "standard_tasks": [
+        "Define project goals and success metrics",
+        "Identify key stakeholders and decision-makers",
+        "Document requirements or user needs",
+        "Review existing constraints (budget, timeline, tech stack)",
+        "Assess risks and unknowns",
+        "Define MVP or minimum viable scope"
+      ],
+      "common_risks": [
+        "Scope creep from unclear requirements",
+        "Missing stakeholder not identified",
+        "Competing priority from leadership"
+      ],
+      "deliverables": [
+        "Project brief",
+        "Stakeholder list",
+        "Requirements document or PRD"
+      ]
+    },
+
+    "design_or_planning": {
+      "typical_duration": "1–3 weeks",
+      "standard_tasks": [
+        "Create wireframes or architecture diagrams",
+        "Design system decisions (tech stack, tooling)",
+        "Define task breakdown and dependencies",
+        "Assign owners and estimate effort",
+        "Identify critical path",
+        "Review and sign off with stakeholders"
+      ],
+      "common_risks": [
+        "Design approved but developer capacity not confirmed",
+        "Dependencies on external teams not mapped",
+        "Overly optimistic time estimates"
+      ],
+      "deliverables": [
+        "Design artifacts",
+        "Technical architecture doc",
+        "Project plan with dependencies"
+      ]
+    },
+
+    "development_or_execution": {
+      "typical_duration": "2–8 weeks (varies)",
+      "standard_tasks": [
+        "Set up development / working environment",
+        "Implement core functionality in priority order",
+        "Internal demos or progress reviews",
+        "Integrate with external systems or dependencies",
+        "Handle blockers and scope adjustments",
+        "Document as you build"
+      ],
+      "common_risks": [
+        "Scope expansion during build",
+        "Technical blockers from integration dependencies",
+        "Team member unavailability",
+        "Underestimated complexity"
+      ],
+      "deliverables": [
+        "Working code / deliverable artifact",
+        "Progress updates",
+        "Documentation"
+      ]
+    },
+
+    "qa_and_testing": {
+      "typical_duration": "1–2 weeks",
+      "standard_tasks": [
+        "Define test cases for all key user flows",
+        "Conduct unit and integration testing",
+        "User acceptance testing (UAT) with stakeholders",
+        "Performance and security review",
+        "Bug triage and prioritization",
+        "Regression testing after fixes"
+      ],
+      "common_risks": [
+        "Insufficient testing time",
+        "Critical bug found late in cycle",
+        "Stakeholder unavailable for UAT"
+      ],
+      "deliverables": [
+        "Test results report",
+        "Bug list with severity ratings",
+        "UAT sign-off"
+      ]
+    },
+
+    "launch_or_delivery": {
+      "typical_duration": "3–7 days",
+      "standard_tasks": [
+        "Final stakeholder review and approval",
+        "Prepare launch or deployment plan",
+        "Communicate to affected teams or users",
+        "Execute launch with rollback plan ready",
+        "Monitor for issues in first 24–72 hours",
+        "Confirm success metrics are being tracked"
+      ],
+      "common_risks": [
+        "Launch blocked by missing approval",
+        "Monitoring not in place before launch",
+        "Communication timing miss"
+      ],
+      "deliverables": [
+        "Launch checklist",
+        "Go-live confirmation",
+        "Post-launch monitoring plan"
+      ]
+    },
+
+    "post_launch_or_review": {
+      "typical_duration": "1–2 weeks",
+      "standard_tasks": [
+        "Review success metrics against targets",
+        "Gather user or stakeholder feedback",
+        "Identify bugs or improvements for v2",
+        "Document lessons learned",
+        "Handoff to ongoing owner",
+        "Archive project artifacts"
+      ],
+      "common_risks": [
+        "No one owns post-launch monitoring",
+        "Lessons learned never documented",
+        "Quick wins not captured"
+      ],
+      "deliverables": [
+        "Post-mortem or retrospective",
+        "Updated metrics dashboard",
+        "Backlog for v2"
+      ]
+    }
+  },
+
+  "task_id_convention": {
+    "format": "[PHASE_ABBREVIATION]-[3-DIGIT-NUMBER]",
+    "examples": ["DIS-001", "DEV-001", "QA-001", "LCH-001"],
+    "phase_abbreviations": {
+      "Discovery / Scoping": "DIS",
+      "Design / Planning": "DES",
+      "Development / Execution": "DEV",
+      "QA / Testing": "QA",
+      "Launch / Delivery": "LCH",
+      "Post-Launch / Review": "POST",
+      "Research": "RES",
+      "Analysis": "ANL",
+      "Reporting": "RPT"
+    }
+  },
+
+  "dependency_types": {
+    "finish_to_start": "Task B cannot start until Task A is complete (most common)",
+    "start_to_start": "Task B cannot start until Task A has started (parallel work with coordination point)",
+    "finish_to_finish": "Task B cannot finish until Task A is also finished (reviewing/documenting parallel work)"
+  },
+
+  "effort_estimation_guide": {
+    "xs": {
+      "label": "XS",
+      "hours": "1–4",
+      "description": "Simple lookup, quick decision, brief doc"
+    },
+    "s": {
+      "label": "S",
+      "hours": "4–16",
+      "description": "Half-day to 2-day task, single owner"
+    },
+    "m": {
+      "label": "M",
+      "hours": "16–40",
+      "description": "Multi-day task, likely involves coordination"
+    },
+    "l": {
+      "label": "L",
+      "hours": "40–80",
+      "description": "Full week or 2-week task, may need multiple people"
+    },
+    "xl": {
+      "label": "XL",
+      "hours": "80+",
+      "description": "Multi-week effort, likely should be broken into subtasks"
+    }
+  },
+
+  "risk_rating_scale": {
+    "High": "Could derail timeline or quality if not addressed. Needs owner and mitigation plan now.",
+    "Medium": "Manageable with monitoring. Assign a watch owner.",
+    "Low": "Unlikely to impact project. Log and revisit if it surfaces."
+  },
+
+  "csv_column_definitions": {
+    "task_id": "Unique identifier following phase-abbreviation format",
+    "task_name": "Clear, actionable name (verb + noun): 'Define success metrics', not 'Success metrics'",
+    "phase": "Which phase this task belongs to",
+    "dependency_ids": "Comma-separated list of task_ids this task depends on",
+    "effort": "XS / S / M / L / XL",
+    "estimated_hours": "Numeric estimate",
+    "owner_role": "Role title, not person name (makes plan portable)",
+    "priority": "Critical / High / Medium / Low",
+    "risk_level": "High / Medium / Low",
+    "notes": "Assumptions, context, or flags",
+    "rationale": "Why this task exists and how it connects to project goals"
+  }
+}

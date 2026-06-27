@@ -1,0 +1,129 @@
+{
+  "purpose": "Strategic frameworks and insight models for the strategic-insights skill. Used to surface high-leverage career and professional growth opportunities from conversation patterns.",
+
+  "insight_identification_signals": {
+    "hidden_strength_signals": [
+      "Consistently solves a certain type of problem faster or better than expected",
+      "Is sought out informally for a specific type of advice or decision",
+      "Describes certain tasks as 'easy' or 'obvious' that others find difficult",
+      "Has domain knowledge that is rare in their current context",
+      "Receives repeated positive feedback on a specific behavior but hasn't formalized it",
+      "Makes connections across domains that others miss"
+    ],
+    "underuse_signals": [
+      "A strength only applied in narrow context when it could have broader impact",
+      "Expertise kept mostly internal when it could build external visibility",
+      "A skill used reactively when it could be used proactively as a strategic differentiator",
+      "High capability in an area that is currently misaligned with career goals"
+    ],
+    "blind_spot_signals": [
+      "Repeating the same struggle across different contexts",
+      "Describing luck or chance where strategic positioning likely played a role",
+      "Attributing others' success to traits the user also demonstrates",
+      "Investing effort in areas with low leverage while high-leverage options are visible"
+    ]
+  },
+
+  "strategic_frameworks": {
+    "ikigai": {
+      "description": "Japanese concept: the intersection of what you love, what you're good at, what the world needs, and what you can be paid for",
+      "quadrants": {
+        "love_and_good_at": "Passion — fulfilling but may lack market value",
+        "good_at_and_paid": "Profession — sustainable but may lack meaning",
+        "paid_and_needed": "Vocation — impactful but may not energize you",
+        "needed_and_love": "Mission — meaningful but may not pay yet"
+      },
+      "insight_prompt": "Where is the user strongest? What quadrant are they in now? What shift would move them toward the center?",
+      "use_when": "User is navigating a career transition or feels misaligned"
+    },
+    "strength_zone": {
+      "description": "Adapted from Gay Hendricks' 'The Big Leap' — four zones of work",
+      "zones": {
+        "zone_of_incompetence": "Work you do poorly — delegate or eliminate",
+        "zone_of_competence": "Work you do fine but others can do equally well — minimize",
+        "zone_of_excellence": "Work you do very well and are rewarded for — the trap that prevents growth",
+        "zone_of_genius": "Work that uses unique gifts, feels effortless, creates disproportionate value — maximize"
+      },
+      "insight_prompt": "What zone is the user spending most time in? What's one move toward Zone of Genius this week?",
+      "use_when": "User is high-performer looking for the next level of leverage"
+    },
+    "career_capital": {
+      "description": "From Cal Newport's 'So Good They Can't Ignore You' — build rare and valuable skills before seeking autonomy and meaning",
+      "types": {
+        "skills": "Deep technical, analytical, or domain expertise",
+        "relationships": "Network of people who can create opportunities",
+        "reputation": "Track record and credibility in a specific domain",
+        "credentials": "Formal qualifications that signal competence"
+      },
+      "insight_prompt": "What type of career capital is the user building? What type is underinvested? What's the highest-ROI investment this week?",
+      "use_when": "User is early-to-mid career or seeking to change roles"
+    },
+    "visibility_vs_impact": {
+      "description": "Many professionals have high impact but low visibility — or invest in visibility without impact. The goal is both.",
+      "quadrants": {
+        "high_impact_low_visibility": "Doing great work no one knows about — strategic communication needed",
+        "high_visibility_low_impact": "Getting attention without results — focus needed",
+        "low_impact_low_visibility": "Misaligned effort — strategy pivot needed",
+        "high_impact_high_visibility": "Optimal — sustain and expand"
+      },
+      "insight_prompt": "Where does the user sit in this matrix? What one action shifts them toward high-impact high-visibility?",
+      "use_when": "User mentions not being recognized, being overlooked, or struggling to influence"
+    },
+    "contribution_ladder": {
+      "description": "Five levels of professional contribution — most people plateau at their current level and don't see the next rung",
+      "levels": {
+        "1": "Do assigned work well",
+        "2": "Anticipate what's needed without being asked",
+        "3": "Identify and solve problems before they escalate",
+        "4": "Create systems that multiply others' work",
+        "5": "Shape strategy and build organizational capability"
+      },
+      "insight_prompt": "What level is the user operating at most of the time? What would level-up look like? What's one concrete behavior that demonstrates the next level?",
+      "use_when": "User wants to get promoted or increase their scope of influence"
+    }
+  },
+
+  "weekly_experiment_design": {
+    "principles": [
+      "One behavior only — not a new mindset, a new habit, or a new goal",
+      "7 days exactly — short enough to commit, long enough to generate signal",
+      "Measurable — must be binary (did/did not) or a simple count",
+      "Low friction — under 15 minutes per day",
+      "Linked to the identified insight — the experiment tests the insight directly"
+    ],
+    "experiment_categories": {
+      "communication": [
+        "Send a 3-bullet weekly summary to manager every Friday",
+        "Speak first in the next 3 team meetings",
+        "Ask one clarifying question before taking on any new task"
+      ],
+      "visibility": [
+        "Share one insight or result per week in team channel",
+        "Write a 2-sentence summary of completed work at end of each day",
+        "Request to present one topic at next team sync"
+      ],
+      "focus": [
+        "Identify 3 priorities each morning before opening email",
+        "Block 60-minute deep work window at fixed time each day",
+        "Use a daily NOT-to-do list for reactive low-value tasks"
+      ],
+      "relationships": [
+        "One outreach per day to someone you've lost touch with (3 sentences max)",
+        "Ask one question in every meeting that shows you've read the pre-read",
+        "Send a specific thank-you or recognition to a peer once per day"
+      ],
+      "decision_quality": [
+        "Write the decision and one-sentence rationale before acting",
+        "Set a 24-hour pause on any reversible decision you feel pressure to make instantly",
+        "Track every decision made today — review at end of week for patterns"
+      ]
+    }
+  },
+
+  "output_quality_rules": {
+    "specificity": "Insight must reference specific observed behavior, not generic personality description. Bad: 'You are strategic.' Good: 'You consistently frame problems at a higher level than the question asked — that's a rare thinking pattern.'",
+    "brevity": "Insight: max 3 sentences. Weekly change: one sentence. Tracking: 2 lines.",
+    "actionability": "Experiment must be something the user can start tomorrow with no preparation.",
+    "non_judgmental_tone": "Describe patterns without judgment. 'You tend to...' not 'You fail to...' or 'You are bad at...'"
+  }
+}

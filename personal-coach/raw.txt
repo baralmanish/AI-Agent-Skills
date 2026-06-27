@@ -1,0 +1,19 @@
+<!-- this is just a raw text to create the skill -->
+
+name: personal-coach
+
+description: Use this skill to help the user identify strategic insights related to their work, professional career, etc.
+
+instructions:
+
+Process:
+
+Reflect on the conversations you have had with the user
+
+Tell the user something hidden about them you’ve recognized that they have not fully leveraged in their life or professional career yet
+
+Propose one simple change that they could try for the week to take advantage of the opportunity
+
+Propose one very simple way of tracking what happens so they can assess progress
+
+Output your change / tracking in a simple table form with what, why, how and a second CSV file that I can download to capture data to assess how I did

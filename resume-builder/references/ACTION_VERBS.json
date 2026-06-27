@@ -1,0 +1,237 @@
+{
+  "purpose": "Strong action verbs for resume bullet points, grouped by function. Use these to lead every bullet point. Rotate verbs — never repeat the same verb more than twice on a resume.",
+  "usage": "Pick the verb that most accurately describes the action. Avoid overused verbs: managed, led, worked on, helped, responsible for.",
+  "categories": {
+    "leadership_and_management": {
+      "description": "Used for people management, team direction, organizational influence",
+      "verbs": [
+        "Led",
+        "Directed",
+        "Managed",
+        "Oversaw",
+        "Mentored",
+        "Coached",
+        "Championed",
+        "Cultivated",
+        "Empowered",
+        "Fostered",
+        "Guided",
+        "Headed",
+        "Inspired",
+        "Mobilized",
+        "Orchestrated",
+        "Spearheaded",
+        "Steered",
+        "United",
+        "Supervised"
+      ]
+    },
+    "building_and_creating": {
+      "description": "Used for creating products, features, systems, or content from scratch",
+      "verbs": [
+        "Built",
+        "Architected",
+        "Developed",
+        "Engineered",
+        "Designed",
+        "Constructed",
+        "Created",
+        "Crafted",
+        "Established",
+        "Founded",
+        "Generated",
+        "Implemented",
+        "Launched",
+        "Produced",
+        "Prototyped",
+        "Shipped",
+        "Stood up",
+        "Wrote"
+      ]
+    },
+    "improving_and_optimizing": {
+      "description": "Used for making existing systems, processes, or outcomes better",
+      "verbs": [
+        "Improved",
+        "Optimized",
+        "Accelerated",
+        "Automated",
+        "Boosted",
+        "Cut",
+        "Decreased",
+        "Eliminated",
+        "Enhanced",
+        "Expedited",
+        "Increased",
+        "Maximized",
+        "Minimized",
+        "Modernized",
+        "Overhauled",
+        "Reduced",
+        "Refined",
+        "Restructured",
+        "Revamped",
+        "Simplified",
+        "Streamlined",
+        "Strengthened",
+        "Transformed",
+        "Upgraded"
+      ]
+    },
+    "analyzing_and_researching": {
+      "description": "Used for data analysis, research, investigation, and insights work",
+      "verbs": [
+        "Analyzed",
+        "Assessed",
+        "Audited",
+        "Benchmarked",
+        "Evaluated",
+        "Examined",
+        "Forecasted",
+        "Identified",
+        "Investigated",
+        "Mapped",
+        "Measured",
+        "Modeled",
+        "Monitored",
+        "Profiled",
+        "Quantified",
+        "Researched",
+        "Reviewed",
+        "Synthesized",
+        "Tested",
+        "Tracked",
+        "Validated"
+      ]
+    },
+    "communicating_and_influencing": {
+      "description": "Used for presentations, stakeholder management, writing, and cross-functional alignment",
+      "verbs": [
+        "Advised",
+        "Advocated",
+        "Aligned",
+        "Authored",
+        "Briefed",
+        "Collaborated",
+        "Communicated",
+        "Consulted",
+        "Coordinated",
+        "Documented",
+        "Educated",
+        "Facilitated",
+        "Influenced",
+        "Liaised",
+        "Negotiated",
+        "Partnered",
+        "Pitched",
+        "Presented",
+        "Promoted",
+        "Proposed",
+        "Reported",
+        "Translated"
+      ]
+    },
+    "growing_and_scaling": {
+      "description": "Used for revenue growth, user growth, market expansion, and scaling operations",
+      "verbs": [
+        "Acquired",
+        "Closed",
+        "Converted",
+        "Drove",
+        "Expanded",
+        "Grew",
+        "Increased",
+        "Scaled",
+        "Secured",
+        "Upsold",
+        "Broadened",
+        "Captured",
+        "Doubled",
+        "Exceeded",
+        "Extended",
+        "Gained",
+        "Multiplied",
+        "Opened",
+        "Penetrated",
+        "Tripled"
+      ]
+    },
+    "delivering_and_executing": {
+      "description": "Used for project delivery, execution, operations, and shipping on time",
+      "verbs": [
+        "Completed",
+        "Delivered",
+        "Deployed",
+        "Executed",
+        "Finalized",
+        "Fulfilled",
+        "Hit",
+        "Maintained",
+        "Met",
+        "Operated",
+        "Processed",
+        "Ran",
+        "Released",
+        "Resolved",
+        "Supported",
+        "Sustained"
+      ]
+    },
+    "problem_solving": {
+      "description": "Used for diagnosing issues, debugging, troubleshooting, and finding solutions",
+      "verbs": [
+        "Debugged",
+        "Diagnosed",
+        "Fixed",
+        "Identified",
+        "Investigated",
+        "Mitigated",
+        "Prevented",
+        "Prioritized",
+        "Resolved",
+        "Solved",
+        "Stabilized",
+        "Troubleshot",
+        "Uncovered"
+      ]
+    },
+    "training_and_enabling": {
+      "description": "Used for teaching, onboarding, knowledge transfer, and documentation",
+      "verbs": [
+        "Coached",
+        "Educated",
+        "Enabled",
+        "Instructed",
+        "Mentored",
+        "Onboarded",
+        "Standardized",
+        "Taught",
+        "Trained",
+        "Upskilled"
+      ]
+    }
+  },
+  "verbs_to_avoid": {
+    "reason": "These verbs are weak, passive, or overused — they describe duties rather than achievements.",
+    "list": [
+      "Responsible for",
+      "Helped with",
+      "Worked on",
+      "Assisted in",
+      "Participated in",
+      "Involved in",
+      "Tasked with",
+      "Contributed to (without specifics)",
+      "Handled",
+      "Did"
+    ]
+  },
+  "bullet_point_rules": {
+    "framework": "CAR (Challenge → Action → Result) or XYZ (Accomplished X as measured by Y by doing Z)",
+    "must_include": "At least one metric per bullet (%, $, time, headcount, scale)",
+    "verb_placement": "Action verb is always the FIRST word of the bullet",
+    "tense": "Past tense for all previous roles; present tense for current role only",
+    "length": "Maximum 2 lines per bullet — if longer, split into two bullets",
+    "specificity": "Name the tool, technology, team size, or business unit — never stay generic"
+  }
+}

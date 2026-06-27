@@ -1,0 +1,346 @@
+# QBR Intelligence Engine - Email Templates
+
+## Template 1: Board Agenda Announcement
+
+**To:** Board Members
+**Subject:** Q[X] 2026 Board Meeting Agenda - [Date]
+
+---
+
+Dear Board Members,
+
+We're excited to share our Q[X] 2026 Quarterly Business Review (QBR). This quarter reflects [key headline - e.g., "strong growth with improved unit economics" or "growth acceleration following new product launch"].
+
+**Meeting Details:**
+- **Date & Time:** [DATE] at [TIME] ET
+- **Format:** In-person / Virtual [LINK]
+- **Duration:** 60 minutes
+
+**Agenda:**
+1. **Welcome & Q Review Overview** (5 min)
+2. **Financial Performance** - Revenue, customers, margins, cash position (10 min)
+3. **Unit Economics & Growth Efficiency** - CAC, LTV, Magic Number (5 min)
+4. **Customer Health & Retention** - NRR, churn, customer acquisition (5 min)
+5. **Risk Assessment & Mitigation** - Top 5 risks, mitigation strategies (10 min)
+6. **Strategic Recommendations** - 3-5 initiatives for next quarter (10 min)
+7. **Q&A** (10 min)
+8. **Looking Ahead** - 12-month forecast and capital planning (5 min)
+
+**Key Headlines:**
+- ✅ [Positive metric/win]
+- ⚠️ [Challenge to address]
+- 🎯 [Strategic priority for next quarter]
+
+**Pre-Read Materials:**
+- Full Board Presentation (attached)
+- Financial Forecast Dashboard (link to interactive HTML)
+- Risk Register & Mitigation Plans (attached)
+- 90-Day Action Plan (attached)
+
+We look forward to robust discussion and board guidance on our strategic priorities.
+
+Best regards,
+[CEO/CFO Name]
+
+---
+
+## Template 2: Executive Team Debrief
+
+**To:** Executive Team
+**Subject:** Q[X] QBR Results & Action Items - Strategic Review
+
+---
+
+Team,
+
+Below is a summary of our Q[X] 2026 Quarterly Business Review and the strategic actions we're taking forward.
+
+**Quarter Snapshot:**
+
+| Metric | This Q | Last Q | Target | Status |
+|--------|--------|--------|--------|--------|
+| Revenue (ARR) | $[X] | $[X] | $[X] | [🟢/🟡/🔴] |
+| Customers | [X] | [X] | [X] | [🟢/🟡/🔴] |
+| NRR | [X]% | [X]% | [X]% | [🟢/🟡/🔴] |
+| Churn | [X]% | [X]% | [X]% | [🟢/🟡/🔴] |
+| Gross Margin | [X]% | [X]% | [X]% | [🟢/🟡/🔴] |
+| Runway | [X] months | [X] months | [X]+ months | [🟢/🟡/🔴] |
+
+**Key Wins This Quarter:**
+- [Win 1] - Impact: [Result]
+- [Win 2] - Impact: [Result]
+- [Win 3] - Impact: [Result]
+
+**Challenges We're Addressing:**
+- [Challenge 1] - Owner: [Name] - Timeline: [Weeks]
+- [Challenge 2] - Owner: [Name] - Timeline: [Weeks]
+
+**Strategic Imperatives for Q[X+1]:**
+
+**Priority 1: [Initiative Name]** ⭐ P1
+- Owner: [Name]
+- Success Metric: [KPI]
+- Timeline: 12 weeks
+- Resources: [Team + Budget]
+
+**Priority 2: [Initiative Name]** ⭐ P1
+- Owner: [Name]
+- Success Metric: [KPI]
+- Timeline: 12 weeks
+- Resources: [Team + Budget]
+
+**Priority 3: [Initiative Name]** ⭐ P2
+- Owner: [Name]
+- Success Metric: [KPI]
+- Timeline: 8 weeks
+- Resources: [Team + Budget]
+
+**Risk Register Update:**
+
+| Risk | Score | Trend | Mitigation Owner | Status |
+|------|-------|-------|------------------|--------|
+| [Risk 1] | [X]/10 | ↑ | [Name] | On track |
+| [Risk 2] | [X]/10 | → | [Name] | Monitoring |
+| [Risk 3] | [X]/10 | ↓ | [Name] | Improving |
+
+**Dashboard & Data:**
+- Interactive Dashboard: [Link]
+- Full Metrics Export: [Link]
+- Meeting Recording: [Link]
+
+Please review the attached documents and come prepared with questions and input on the proposed strategic priorities.
+
+Exec sync follow-up: [Date/Time]
+
+Best regards,
+[CEO/CFO Name]
+
+---
+
+## Template 3: Investor Update - Post-QBR
+
+**To:** Investors, Board Observers
+**Subject:** Q[X] 2026 Update - Strong Progress on Growth & Efficiency
+
+---
+
+Dear Investors,
+
+I'm pleased to share our Q[X] 2026 business review. This quarter demonstrates our ability to scale while maintaining unit economics discipline.
+
+**Financial Performance:**
+
+We grew revenue [X]% QoQ to $[X]M ARR, bringing us to [X]M customers. More importantly, our Net Revenue Retention (NRR) of [X]% reflects strong product-market fit and customer satisfaction.
+
+**Key Metrics:**
+- **Revenue:** $[X]M ARR ([X]% QoQ growth)
+- **Customers:** [X]K total ([X]% net new)
+- **NRR:** [X]% (excellent benchmark: >110%)
+- **Gross Margin:** [X]% (improving, target: [X]%)
+- **Magic Number:** [X] (excellent benchmark: >0.5)
+- **CAC Payback:** [X] months (target: 12-18 months)
+- **Runway:** [X] months ([Conservative estimate]
+- **Burn Rate:** $[X]K/month (trend: stable/improving/note changes)
+
+**Unit Economics:**
+Our LTV:CAC ratio of [X]:1 (excellent at >3:1) shows strong unit economics. This reflects [explanation - better sales efficiency / higher customer quality / etc].
+
+**Customer Health:**
+[X]% of cohorts show strong retention. Our largest 5 customers represent [X]% of revenue, with strong expansion within each account.
+
+**Strategic Progress:**
+- ✅ Launched [feature/product] → [Result]
+- ✅ Expanded into [market/segment] → [Result]
+- ✅ Completed [initiative] → [Result]
+
+**Forward Outlook:**
+We project [X]% revenue growth in Q[X+1], driven by [key lever 1], [key lever 2], and [key lever 3]. With current burn rate, we have [X] months of runway and are on track to [profitability/next funding milestone].
+
+**Key Risks Being Managed:**
+- Customer Concentration: [Mitigation strategy]
+- [Risk Name]: [Mitigation strategy]
+- [Risk Name]: [Mitigation strategy]
+
+We're executing well and look forward to updating you on our progress next quarter.
+
+Best regards,
+[CEO/CFO Name]
+
+---
+
+## Template 4: All-Hands Company Announcement
+
+**To:** All Hands
+**Subject:** 🎉 Q[X] Results - Celebrating Our Progress
+
+---
+
+Team,
+
+Today we shared our Q[X] 2026 Quarterly Business Review with our board and investors. I wanted to highlight what makes this quarter special and where we're heading.
+
+**Where We Stand:**
+
+Q[X] was exceptional. Here's what we accomplished:
+
+✅ **Growth:** We hit $[X]M ARR, [X]% growth from last quarter
+✅ **Customers:** [X]K customers trusted us this quarter
+✅ **Product:** We shipped [major feature/release] that customers love
+✅ **Team:** We welcomed [X] new team members and are in high-growth hiring mode
+✅ **Efficiency:** Our unit economics improved - we're growing smarter, not just bigger
+
+**The Numbers:**
+
+| What | Result | Why It Matters |
+|------|--------|----------------|
+| Revenue Growth | [X]% QoQ | We're accelerating |
+| Customer Retention | [X]% | People love what we built |
+| Product Margin | [X]% | We can invest in our people |
+| Team Size | [X] people | Growing but still nimble |
+
+**What's Next:**
+
+We just committed to three bold initiatives for Q[X+1]:
+
+1. 🎯 **[Initiative 1]** - Led by [Name]
+2. 🎯 **[Initiative 2]** - Led by [Name]
+3. 🎯 **[Initiative 3]** - Led by [Name]
+
+Each of these will unlock new opportunities and set us up for the next phase of growth.
+
+**How You Can Help:**
+
+- If you're in Sales/Marketing: Focus on [metric/customer segment]
+- If you're in Product: Prioritize [feature/problem]
+- If you're in Operations: Scale [process/system]
+- If you're everywhere else: Stay curious, ask questions, keep shipping
+
+**The Real Story:**
+
+Behind every metric is YOUR work. This quarter's success is because we have an incredible team that ships, learns, and improves every day. Thank you.
+
+We're just getting started. 🚀
+
+Best regards,
+[CEO Name]
+
+P.S. The full board deck is in the company wiki if you want to see the details.
+
+---
+
+## Template 5: Customer Advisory Board (CAB) Meeting Invite
+
+**To:** Top 15 Customers
+**Subject:** You're Invited to Our Q[X] Customer Advisory Board Meeting
+
+---
+
+Dear [Customer Name/Partners],
+
+Thank you for being such an important part of our success. We'd love to get your input on our product roadmap and vision for the next quarter.
+
+We're hosting a **Customer Advisory Board (CAB) meeting** where we'll:
+1. Share our Q[X] business update and strategic direction
+2. Discuss the top 3 challenges you're facing (and how we can help)
+3. Preview upcoming features and get your feedback
+4. Facilitate connections between you and other customers
+
+**Event Details:**
+- **Date & Time:** [DATE] at [TIME]
+- **Format:** Virtual (Zoom link attached)
+- **Duration:** 60 minutes
+- **Light refreshments:** We'll send a gift card for coffee/lunch 🎁
+
+**Agenda:**
+- Welcome & Q[X] Update (10 min)
+- Your Feedback & Input Session (20 min)
+- Product Roadmap Preview (15 min)
+- Q&A (10 min)
+- Breakout Networking (5 min)
+
+This is your chance to directly influence our product and company direction. We really value your perspective.
+
+[RSVP Link]
+
+Looking forward to seeing you there!
+
+Best regards,
+[Customer Success Lead Name]
+
+---
+
+## Template 6: Debt/Lender Update (If Applicable)
+
+**To:** Credit Facility Lender / Debt Provider
+**Subject:** Q[X] 2026 Financial Update - Quarterly Covenant Compliance
+
+---
+
+Dear [Lender Name],
+
+Attached is our Q[X] 2026 financial update showing continued compliance with our credit facility covenants.
+
+**Covenant Status:** ✅ All covenants satisfied
+
+| Covenant | Requirement | Actual | Headroom |
+|----------|------------|--------|----------|
+| Revenue Target | $[X]M | $[X]M | +[X]% |
+| EBITDA | $[X]M | $[X]M | +[X]% |
+| Debt Service Coverage | [X]x | [X]x | [X]x |
+| Debt/Revenue | <[X]x | [X]x | Comfortable |
+
+**Financial Summary:**
+- Revenue: $[X]M (+[X]% QoQ)
+- EBITDA: $[X]M (Margin: [X]%)
+- Cash Position: $[X]M (Runway: [X] months)
+- Debt Outstanding: $[X]M
+- Debt Service: $[X]K/month
+
+**Key Risks:** [If any - describe and mitigation]
+
+We continue to execute well on our business plan and remain confident in our ability to meet all debt obligations.
+
+Please let me know if you have questions.
+
+Best regards,
+[CFO Name]
+
+---
+
+## Template 7: Employee Bonus/Equity Adjustment Notification
+
+**To:** [Bonus Eligible Employees]
+**Subject:** Q[X] Bonus Results & Company Performance
+
+---
+
+Dear Team,
+
+Based on our Q[X] 2026 performance, bonuses have been calculated and will be paid on [DATE].
+
+**Company Performance Summary:**
+
+We set the following company-level goals:
+- Revenue Target: $[X]M → **Achieved: $[X]M (Payout: [X]% of bonus pool)**
+- Customer Retention: [X]% → **Achieved: [X]% (Payout: [X]% of bonus pool)**
+- Unit Economics: [X] → **Achieved: [X] (Payout: [X]% of bonus pool)**
+
+**Overall Company Payout:** [X]% of bonus pool
+
+Your individual bonus payout reflects both company performance ([X]%) and your individual performance ([X]%).
+
+**What This Means:**
+- You directly contributed to our Q[X] success
+- [X]% increase from last quarter shows our momentum
+- Each employee bonus pool represents our commitment to sharing wins with the team
+
+Detailed breakdown of your personal bonus can be viewed in your [HR Portal Link].
+
+Thank you for your contribution to Q[X]'s success!
+
+Best regards,
+[CEO/People Ops Lead]
+
+---
+
+These templates can be customized with actual data from the QBR Intelligence Engine to communicate results to different stakeholder groups.

@@ -1,0 +1,176 @@
+{
+  "purpose": "Naming convention patterns and folder taxonomy rules for the organize-files skill. The AI uses these to design a consistent naming scheme before renaming any files.",
+
+  "naming_principles": {
+    "scannable": "A person should understand the file's content from its name alone, without opening it.",
+    "sortable": "Names should sort predictably — put the most important dimension first (date, project, or topic).",
+    "consistent": "Every file in a collection must follow the same pattern. Mixed conventions are worse than a poor consistent one.",
+    "no_spaces": "Use hyphens (-) or underscores (_) instead of spaces. Spaces break command-line tools and URLs.",
+    "lowercase_preferred": "Lowercase is safer across operating systems and avoids case-sensitivity bugs.",
+    "no_special_chars": "Avoid: / \\ : * ? \" < > | ( ) & @ ! # $ % ^ ~ ` — use only letters, numbers, hyphens, underscores, and dots.",
+    "no_trailing_versions": "Avoid: report_final_FINAL_v3_USE_THIS.pdf — use semantic versions or dates instead."
+  },
+
+  "date_format": {
+    "standard": "YYYY-MM-DD (ISO 8601)",
+    "examples": ["2025-06-15", "2025-06"],
+    "placement": "Date goes first when files need chronological sort (logs, reports, snapshots). Date goes last when project/topic sort is more important.",
+    "never_use": ["June 15 2025", "6-15-25", "15June", "Jun_2025"]
+  },
+
+  "patterns_by_file_type": {
+    "reports_and_documents": {
+      "pattern": "[project-or-topic]_[YYYY-MM-DD]_[descriptor].[ext]",
+      "examples": [
+        "q2-sales_2025-06-30_final-report.pdf",
+        "brand-audit_2025-03_v2.docx",
+        "budget-review_2025-07_draft.xlsx"
+      ],
+      "notes": "Use 'draft', 'v2', 'final', 'approved' at end only when version state matters."
+    },
+    "meeting_notes": {
+      "pattern": "[YYYY-MM-DD]_[meeting-type]_[topic-or-attendees].[ext]",
+      "examples": [
+        "2025-06-10_standup_backend-team.md",
+        "2025-06-15_client-call_acme-onboarding.txt",
+        "2025-07-01_planning_q3-roadmap.docx"
+      ]
+    },
+    "design_and_creative": {
+      "pattern": "[project]_[component]_[variant-or-version].[ext]",
+      "examples": [
+        "homepage_hero_v3.fig",
+        "brand-guide_colors_final.pdf",
+        "app-icon_dark-mode_1024px.png"
+      ],
+      "notes": "For multiple sizes, include resolution at end: icon_512px, icon_1024px."
+    },
+    "images_and_photos": {
+      "pattern": "[YYYY-MM-DD]_[subject-or-event]_[sequence-if-needed].[ext]",
+      "examples": [
+        "2025-06-20_team-offsite_001.jpg",
+        "2025-07-04_product-launch-banner.png",
+        "headshot_jane-smith_2025.jpg"
+      ]
+    },
+    "code_and_scripts": {
+      "pattern": "[function-or-purpose].[ext]",
+      "examples": [
+        "parse_transactions.py",
+        "deploy_staging.sh",
+        "seed_database.sql"
+      ],
+      "notes": "Code files follow language conventions (snake_case for Python, kebab-case for JS/web, PascalCase for classes). Do not add dates to code files — use git for versioning."
+    },
+    "data_and_exports": {
+      "pattern": "[source-or-project]_[dataset-descriptor]_[YYYY-MM-DD].[ext]",
+      "examples": [
+        "salesforce_leads-export_2025-06-30.csv",
+        "analytics_monthly-active-users_2025-06.xlsx",
+        "transactions_june-2025.csv"
+      ]
+    },
+    "presentations": {
+      "pattern": "[topic]_[audience-or-event]_[YYYY-MM-DD].[ext]",
+      "examples": [
+        "q2-results_board-deck_2025-07-15.pptx",
+        "product-vision_all-hands_2025-06-01.key",
+        "sales-pitch_acme-corp_2025-06-25.pdf"
+      ]
+    },
+    "invoices_and_receipts": {
+      "pattern": "[YYYY-MM-DD]_[vendor]_[amount-or-reference].[ext]",
+      "examples": [
+        "2025-06-15_aws_invoice-INV-12345.pdf",
+        "2025-05-30_adobe_receipt-$54.99.pdf",
+        "2025-07-01_contractor-jane-smith_2500.pdf"
+      ]
+    },
+    "versions_and_drafts": {
+      "scheme": "Use explicit version labels, not 'final_final' or numbered copies",
+      "versions": {
+        "draft": "First working version, not for distribution",
+        "v2": "Significant revision with substantive changes",
+        "review": "Sent for review/feedback",
+        "approved": "Formally approved version",
+        "final": "The last version intended for use (use sparingly)"
+      },
+      "never": ["_FINAL_FINAL", "_USE_THIS", "_new_copy", "(1)", "(2)"]
+    }
+  },
+
+  "folder_hierarchy_patterns": {
+    "by_project": {
+      "use_when": "Files belong to distinct, named projects or clients",
+      "structure": [
+        "project-name/",
+        "  01-brief-and-scope/",
+        "  02-research/",
+        "  03-design/",
+        "  04-deliverables/",
+        "  05-client-communications/"
+      ]
+    },
+    "by_date": {
+      "use_when": "Files are time-series or archival in nature (logs, reports, invoices)",
+      "structure": [
+        "2025/",
+        "  01-january/",
+        "  06-june/",
+        "    reports/",
+        "    invoices/"
+      ]
+    },
+    "by_type": {
+      "use_when": "Mixed file types from many contexts, user needs fast lookup by type",
+      "structure": [
+        "documents/",
+        "  reports/",
+        "  contracts/",
+        "spreadsheets/",
+        "images/",
+        "  screenshots/",
+        "  photos/",
+        "data/",
+        "presentations/"
+      ]
+    },
+    "by_topic": {
+      "use_when": "Research, learning, notes — retrieval by subject matters most",
+      "structure": [
+        "ai-and-ml/",
+        "finance-and-investing/",
+        "product-strategy/",
+        "  books/",
+        "  articles/",
+        "  notes/"
+      ]
+    },
+    "hybrid": {
+      "use_when": "Large collection with both type and project dimensions",
+      "structure": [
+        "active-projects/",
+        "  [project-name]/",
+        "archive/",
+        "  [YYYY]/",
+        "reference/",
+        "templates/"
+      ]
+    }
+  },
+
+  "depth_rules": {
+    "shallow": "Use 1–2 levels for collections of <50 files",
+    "medium": "Use 2–3 levels for 50–500 files",
+    "deep": "Use 3–4 levels for >500 files or complex multi-project archives",
+    "max_depth": 4,
+    "catchall_warning": "A folder called 'misc', 'other', or 'stuff' is a sign the taxonomy needs more specificity."
+  },
+
+  "zip_output_rules": {
+    "archive_name": "[project-or-topic]_organized_[YYYY-MM-DD].zip",
+    "include": "All renamed files in the new folder structure",
+    "exclude": [".DS_Store", "Thumbs.db", "desktop.ini", "__pycache__", ".git"],
+    "top_level": "The zip root should contain the top-level folder, not scatter files at root level"
+  }
+}

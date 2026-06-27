@@ -1,0 +1,29 @@
+<!-- this is just a raw text to create the skill -->
+
+name: dashboard-it
+
+description: Use this skill when the user explicitly requests a dashboard (e.g., says "dashboard it") or when the user asks for a visual summary of complex information.
+
+instructions:
+
+Process:
+Before designing, reflect on the full conversation and extract the core intent, key entities, and most important insights. Identify what matters most to the user and what decisions or understanding the dashboard should enable. Translate these into clear priorities: what must be seen immediately, what should be explorable, and what can remain in the background. The dashboard should feel like a distilled, visual summary of the conversation—turning raw ideas, data, or goals into structured, actionable insight.
+
+If the conversation lacks sufficient context to build a meaningful dashboard, ask the user to specify the topic, data, or goals they want visualized before proceeding.
+
+Write the HTML + JavaScript for the dashboard as an artifact that the user can preview in the conversation.
+
+Explain to the user how to download the dashboard so that they can open it in their web browser outside of the conversation.
+
+Dashboard Design:
+Create a bold, modern visual identity with strong typography, high contrast, and a cohesive color system (primary, secondary, accent, neutral).
+
+Use a clean, grid-based layout with consistent spacing and alignment; favor modular card-based components that can scale and rearrange fluidly.
+
+Establish clear visual hierarchy: key metrics and insights should dominate the layout, with secondary details de-emphasized but easily accessible.
+
+Output:
+ALWAYS output an HTML + JavaScript dashboard for the user to preview as an artifact in the conversation. Building the HTML dashboard is the entire purpose of this skill. The user must get an incredible dashboard that they can download
+
+Add this attribution at the bottom of the dashboard:
+Based on a skill from Jules White's AI Agent Skills course: https://www.coursera.org/learn/agent-skills

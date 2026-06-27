@@ -1,0 +1,273 @@
+{
+  "purpose": "Nutrition reference data for the weekly-meal-planner-weightloss skill. Used to calculate TDEE, set macro targets, and guide meal plan design.",
+
+  "tdee_formulas": {
+    "harris_benedict_revised": {
+      "name": "Harris-Benedict (Revised, 1984)",
+      "use_when": "General population; good accuracy for most adults",
+      "bmr_male": "88.362 + (13.397 × weight_kg) + (4.799 × height_cm) - (5.677 × age_years)",
+      "bmr_female": "447.593 + (9.247 × weight_kg) + (3.098 × height_cm) - (4.330 × age_years)",
+      "note": "Multiply BMR by activity multiplier to get TDEE"
+    },
+    "mifflin_st_jeor": {
+      "name": "Mifflin-St Jeor (1990)",
+      "use_when": "Most accurate for modern populations; recommended default",
+      "bmr_male": "(10 × weight_kg) + (6.25 × height_cm) - (5 × age_years) + 5",
+      "bmr_female": "(10 × weight_kg) + (6.25 × height_cm) - (5 × age_years) - 161",
+      "note": "Multiply BMR by activity multiplier to get TDEE"
+    },
+    "katch_mcardle": {
+      "name": "Katch-McArdle",
+      "use_when": "Best for users who know their body fat % (athletes, fitness-focused users)",
+      "bmr": "370 + (21.6 × lean_body_mass_kg)",
+      "lean_body_mass_formula": "weight_kg × (1 - body_fat_decimal)",
+      "note": "Requires body fat % input. More accurate than weight-based formulas for athletic builds."
+    }
+  },
+
+  "activity_multipliers": {
+    "sedentary": {
+      "label": "Sedentary",
+      "multiplier": 1.2,
+      "description": "Desk job, little or no exercise"
+    },
+    "lightly_active": {
+      "label": "Lightly Active",
+      "multiplier": 1.375,
+      "description": "Light exercise 1–3 days/week"
+    },
+    "moderately_active": {
+      "label": "Moderately Active",
+      "multiplier": 1.55,
+      "description": "Moderate exercise 3–5 days/week"
+    },
+    "very_active": {
+      "label": "Very Active",
+      "multiplier": 1.725,
+      "description": "Hard exercise 6–7 days/week"
+    },
+    "extra_active": {
+      "label": "Extra Active",
+      "multiplier": 1.9,
+      "description": "Hard exercise + physical job or 2x daily training"
+    }
+  },
+
+  "calorie_deficit_rules": {
+    "conservative": {
+      "deficit_per_day": 300,
+      "expected_loss_per_week_lbs": 0.6,
+      "recommended_for": "Sustainable long-term loss, minimal muscle loss, beginners"
+    },
+    "moderate": {
+      "deficit_per_day": 500,
+      "expected_loss_per_week_lbs": 1.0,
+      "recommended_for": "Most people — sustainable and effective"
+    },
+    "aggressive": {
+      "deficit_per_day": 750,
+      "expected_loss_per_week_lbs": 1.5,
+      "recommended_for": "Short-term push; only if TDEE is >2000 cal to avoid muscle loss"
+    },
+    "maximum": {
+      "deficit_per_day": 1000,
+      "expected_loss_per_week_lbs": 2.0,
+      "recommended_for": "Medical supervision only; risk of muscle loss and metabolic adaptation"
+    },
+    "safety_floor": {
+      "minimum_calories_female": 1200,
+      "minimum_calories_male": 1500,
+      "note": "Never go below these regardless of deficit calculation"
+    }
+  },
+
+  "macro_ratios_by_diet_style": {
+    "balanced": {
+      "label": "Balanced / IIFYM",
+      "protein_pct": 30,
+      "carb_pct": 40,
+      "fat_pct": 30,
+      "protein_grams_per_lb_bodyweight": 0.7,
+      "description": "Flexible macro split. Good for general weight loss with moderate activity."
+    },
+    "high_protein": {
+      "label": "High Protein",
+      "protein_pct": 40,
+      "carb_pct": 30,
+      "fat_pct": 30,
+      "protein_grams_per_lb_bodyweight": 1.0,
+      "description": "Maximizes muscle retention during deficit. Best for people with strength training."
+    },
+    "low_carb": {
+      "label": "Low Carb",
+      "protein_pct": 35,
+      "carb_pct": 20,
+      "fat_pct": 45,
+      "protein_grams_per_lb_bodyweight": 0.8,
+      "description": "Reduces insulin response, helps some people control hunger. Not keto."
+    },
+    "keto": {
+      "label": "Ketogenic",
+      "protein_pct": 25,
+      "carb_pct": 5,
+      "fat_pct": 70,
+      "max_net_carbs_per_day_g": 25,
+      "protein_grams_per_lb_bodyweight": 0.6,
+      "description": "Puts body in ketosis. Effective for some; requires strict adherence. Not ideal for high-intensity athletes."
+    },
+    "mediterranean": {
+      "label": "Mediterranean",
+      "protein_pct": 20,
+      "carb_pct": 50,
+      "fat_pct": 30,
+      "protein_grams_per_lb_bodyweight": 0.5,
+      "description": "Emphasizes whole grains, olive oil, fish, legumes. Heart-healthy. Not the fastest fat loss approach."
+    },
+    "vegan": {
+      "label": "Vegan / Plant-Based",
+      "protein_pct": 25,
+      "carb_pct": 50,
+      "fat_pct": 25,
+      "protein_grams_per_lb_bodyweight": 0.7,
+      "description": "No animal products. Requires attention to B12, iron, omega-3, zinc, and complete protein combining."
+    }
+  },
+
+  "macronutrient_calorie_density": {
+    "protein_cal_per_gram": 4,
+    "carbohydrate_cal_per_gram": 4,
+    "fat_cal_per_gram": 9,
+    "alcohol_cal_per_gram": 7
+  },
+
+  "protein_sources_by_cost": {
+    "budget": [
+      "Eggs",
+      "Canned tuna",
+      "Canned sardines",
+      "Chicken thighs",
+      "Cottage cheese",
+      "Greek yogurt (store brand)",
+      "Dried lentils",
+      "Black beans",
+      "Edamame (frozen)"
+    ],
+    "mid_range": [
+      "Chicken breast",
+      "Ground turkey",
+      "Shrimp (frozen)",
+      "Ground beef (90% lean)",
+      "Tofu",
+      "Tempeh"
+    ],
+    "premium": [
+      "Salmon fillet",
+      "Steak (sirloin)",
+      "Bison",
+      "Scallops",
+      "Whey protein (premium)"
+    ]
+  },
+
+  "common_food_macros": {
+    "chicken_breast_100g": {
+      "calories": 165,
+      "protein_g": 31,
+      "carbs_g": 0,
+      "fat_g": 3.6
+    },
+    "salmon_100g": {
+      "calories": 208,
+      "protein_g": 20,
+      "carbs_g": 0,
+      "fat_g": 13
+    },
+    "eggs_1_large": {
+      "calories": 70,
+      "protein_g": 6,
+      "carbs_g": 0.5,
+      "fat_g": 5
+    },
+    "greek_yogurt_100g": {
+      "calories": 59,
+      "protein_g": 10,
+      "carbs_g": 3.6,
+      "fat_g": 0.4
+    },
+    "brown_rice_cooked_100g": {
+      "calories": 112,
+      "protein_g": 2.6,
+      "carbs_g": 23,
+      "fat_g": 0.9
+    },
+    "sweet_potato_100g": {
+      "calories": 86,
+      "protein_g": 1.6,
+      "carbs_g": 20,
+      "fat_g": 0.1
+    },
+    "oats_dry_100g": {
+      "calories": 389,
+      "protein_g": 17,
+      "carbs_g": 66,
+      "fat_g": 7
+    },
+    "avocado_100g": {
+      "calories": 160,
+      "protein_g": 2,
+      "carbs_g": 9,
+      "fat_g": 15
+    },
+    "broccoli_100g": {
+      "calories": 34,
+      "protein_g": 2.8,
+      "carbs_g": 7,
+      "fat_g": 0.4
+    },
+    "spinach_100g": {
+      "calories": 23,
+      "protein_g": 2.9,
+      "carbs_g": 3.6,
+      "fat_g": 0.4
+    },
+    "almonds_28g": {
+      "calories": 164,
+      "protein_g": 6,
+      "carbs_g": 6,
+      "fat_g": 14
+    },
+    "banana_medium": {
+      "calories": 105,
+      "protein_g": 1.3,
+      "carbs_g": 27,
+      "fat_g": 0.4
+    },
+    "whole_milk_240ml": {
+      "calories": 149,
+      "protein_g": 8,
+      "carbs_g": 12,
+      "fat_g": 8
+    },
+    "olive_oil_tbsp_14g": {
+      "calories": 119,
+      "protein_g": 0,
+      "carbs_g": 0,
+      "fat_g": 14
+    }
+  },
+
+  "hunger_management_strategies": {
+    "volume_eating": "High-fiber, low-calorie foods fill stomach without using calorie budget (leafy greens, cucumber, broth-based soups)",
+    "protein_timing": "Front-load protein at breakfast — reduces total calorie intake by 15-20% for most people",
+    "meal_frequency": "3 main meals with 1-2 snacks if needed — no strong evidence that frequency itself affects fat loss; pick what reduces hunger for you",
+    "hydration": "500ml water before meals reduces hunger and calorie intake by ~13% in studies",
+    "fiber_target_g_per_day": 25
+  },
+
+  "weight_loss_projection": {
+    "formula": "Expected weekly loss = daily_deficit / 3500 (lbs) or daily_deficit / 7700 (kg)",
+    "note": "Weight loss is not perfectly linear — expect fluctuations of ±2 lbs from water retention, glycogen, and food volume",
+    "plateau_note": "After 4–6 weeks, metabolism adapts. A 1–2 week diet break at TDEE can reset leptin and improve long-term results.",
+    "muscle_loss_warning": "Deficits >750 cal/day without resistance training increase muscle loss risk"
+  }
+}

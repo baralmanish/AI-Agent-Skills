@@ -1,0 +1,123 @@
+{
+  "purpose": "Severity scoring criteria for the code-reviewer skill. Use these definitions to rate every finding consistently.",
+  "severity_levels": {
+    "critical": {
+      "badge": "🔴",
+      "label": "Critical",
+      "definition": "A security vulnerability or data-loss risk that can be exploited in production or that causes irreversible harm.",
+      "merge_policy": "Block merge. Must be fixed before code ships to any environment.",
+      "response_time": "Fix immediately",
+      "criteria": [
+        "Remote code execution (RCE) possible",
+        "SQL injection or command injection",
+        "Authentication bypass",
+        "Sensitive data (passwords, PII, secrets) exposed",
+        "Privilege escalation",
+        "Arbitrary file read/write",
+        "Insecure deserialization of untrusted data"
+      ],
+      "examples": [
+        "User input passed to eval()",
+        "SQL query built with string concatenation",
+        "Passwords stored as plain text",
+        "Hardcoded API key or database credential",
+        "pickle.loads() on user-supplied data"
+      ]
+    },
+    "high": {
+      "badge": "🟠",
+      "label": "High",
+      "definition": "A likely bug that causes incorrect behavior in normal use, or a security weakness that requires specific conditions to exploit but still poses real risk.",
+      "merge_policy": "Block merge. Fix before shipping to production.",
+      "response_time": "Fix in current sprint",
+      "criteria": [
+        "Logic error that produces incorrect results under normal usage",
+        "Null/nil dereference that will crash in known scenarios",
+        "Race condition with real concurrency risk",
+        "Security weakness that requires unusual but plausible user behavior",
+        "Missing error handling on operations that will fail in production",
+        "N+1 query on an endpoint called frequently"
+      ],
+      "examples": [
+        "Off-by-one error in pagination logic",
+        "Missing null check on value from external API",
+        "MD5 used for password hashing",
+        "Missing rate limiting on authentication endpoint",
+        "Goroutine leak in request handler"
+      ]
+    },
+    "medium": {
+      "badge": "🟡",
+      "label": "Medium",
+      "definition": "A code quality or maintainability issue that increases the risk of future bugs, makes the code harder to understand, or violates established conventions.",
+      "merge_policy": "Prefer to fix before merge. Acceptable to merge with a tracked follow-up ticket.",
+      "response_time": "Fix within next 2 sprints",
+      "criteria": [
+        "Function or method is too long (>40 lines) and has multiple responsibilities",
+        "Cyclomatic complexity > 10 (deeply nested conditionals)",
+        "Magic numbers or hardcoded strings that should be named constants",
+        "Duplicated logic that should be extracted",
+        "Silent error handling that hides real failures",
+        "Missing validation on inputs at a system boundary"
+      ],
+      "examples": [
+        "200-line function handling parsing, validation, DB write, and email send",
+        "Nested if/else 6 levels deep",
+        "if status == 3: (no named constant explaining what status 3 means)",
+        "Same 15-line data transformation duplicated in 3 files"
+      ]
+    },
+    "low": {
+      "badge": "🟢",
+      "label": "Low",
+      "definition": "A minor style, naming, or convention issue. No functional impact but reduces readability or deviates from team/language standards.",
+      "merge_policy": "Merge is fine. Address when convenient or batch with related changes.",
+      "response_time": "Fix when touching the code again",
+      "criteria": [
+        "Variable or function name is not descriptive",
+        "Inconsistent code style (spacing, casing, quote style)",
+        "Dead code or unused imports",
+        "Commented-out code left in production",
+        "Missing docstring or comment on non-obvious logic",
+        "Slight deviation from idiomatic language style"
+      ],
+      "examples": [
+        "Variable named 'data' or 'temp' with no context",
+        "Mix of single and double quotes in Python file",
+        "import os at top of file but os is never used",
+        "# old implementation\\n# result = get_old_data() left in file"
+      ]
+    },
+    "suggestion": {
+      "badge": "💡",
+      "label": "Suggestion",
+      "definition": "A non-blocking improvement, alternative approach, or future consideration. Not a problem — just a potentially better way.",
+      "merge_policy": "Always fine to merge. Apply at author's discretion.",
+      "response_time": "Whenever appropriate",
+      "criteria": [
+        "A more idiomatic or concise way to express the same logic",
+        "A library or built-in that would replace custom implementation",
+        "An opportunity to improve testability",
+        "A performance optimization that may not yet be needed",
+        "A pattern that scales better for anticipated growth"
+      ],
+      "examples": [
+        "list comprehension instead of for loop + .append()",
+        "dataclasses or Pydantic model instead of dict for structured data",
+        "Context manager (with statement) for resource cleanup",
+        "Consider adding an index if this query runs frequently"
+      ]
+    }
+  },
+  "scoring_rules": {
+    "cap_findings": 15,
+    "priority_order": ["critical", "high", "medium", "low", "suggestion"],
+    "group_similar": "If 3+ findings share the same root cause (e.g., 4 instances of the same SQL injection pattern), group them into one finding with all locations listed.",
+    "no_invented_findings": "If a category has no issues, explicitly state 'No issues found in this category' rather than omitting it.",
+    "context_sensitivity": {
+      "internal_script": "Lower severity for issues unlikely to receive external input (e.g., a one-time data migration script).",
+      "public_api": "Raise severity for any issue where user-controlled data reaches sensitive operations.",
+      "authentication_code": "Any security finding in authentication/authorization code defaults to Critical."
+    }
+  }
+}

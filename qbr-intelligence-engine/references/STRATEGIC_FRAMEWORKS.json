@@ -1,0 +1,197 @@
+{
+  "strategic_planning_frameworks": {
+    "2x2_matrix": {
+      "description": "Prioritize initiatives using Impact × Effort matrix",
+      "quadrants": {
+        "quick_wins": {
+          "position": "High Impact, Low Effort",
+          "action": "Do immediately",
+          "examples": [
+            "Fix top customer complaint",
+            "Launch feature customers requested"
+          ]
+        },
+        "strategic_bets": {
+          "position": "High Impact, High Effort",
+          "action": "Plan carefully, execute with full resources",
+          "examples": ["New market expansion", "Platform architecture redesign"]
+        },
+        "nice_to_haves": {
+          "position": "Low Impact, Low Effort",
+          "action": "Do if time permits",
+          "examples": ["UI polish", "Internal tooling improvements"]
+        },
+        "time_sinks": {
+          "position": "Low Impact, High Effort",
+          "action": "Avoid or postpone",
+          "examples": ["Over-engineered solutions", "Nice-to-have features"]
+        }
+      }
+    },
+    "okr_framework": {
+      "description": "Objective & Key Result setting for focus",
+      "structure": {
+        "objectives": {
+          "description": "Qualitative, ambitious, inspirational goals",
+          "count_per_quarter": "3-5 maximum"
+        },
+        "key_results": {
+          "description": "Measurable outcomes; 3-4 per objective",
+          "grading": "0.7 = success; 1.0 = excellence; <0.7 = needs improvement"
+        }
+      },
+      "anti_patterns": [
+        "Too many OKRs (>5 per organization)",
+        "Key Results that are just tasks, not outcomes",
+        "OKRs disconnected from business strategy",
+        "No visible progress tracking"
+      ]
+    },
+    "okr_vs_kpi": {
+      "description": "OKRs are aspirational goals; KPIs are continuous metrics",
+      "okr": "Achieve 40% growth in enterprise customer segment",
+      "kpi": "Track enterprise customer growth weekly (target: 8% QoQ)"
+    },
+    "value_creation_funnel": {
+      "description": "Where is the company creating value?",
+      "layers": [
+        {
+          "name": "Top of Funnel",
+          "definition": "Customer awareness and demand generation",
+          "metrics": ["impressions", "trial_signups", "demo_requests"]
+        },
+        {
+          "name": "Middle of Funnel",
+          "definition": "Sales process and deal progression",
+          "metrics": ["pipeline_value", "sales_cycle_length", "win_rate"]
+        },
+        {
+          "name": "Bottom of Funnel",
+          "definition": "Customer onboarding and expansion",
+          "metrics": ["nrr", "churn", "feature_adoption"]
+        }
+      ]
+    },
+    "three_horizon_strategy": {
+      "description": "Balance today's business with future opportunities",
+      "horizon_1": {
+        "name": "Core Business (Now)",
+        "time_horizon": "0-1 year",
+        "focus": "Optimize, improve efficiency, deepen customer relationships",
+        "resource_allocation": "60-70%"
+      },
+      "horizon_2": {
+        "name": "Adjacent Opportunities (1-3 years)",
+        "time_horizon": "1-3 years",
+        "focus": "Expand to new segments, channels, or geographies",
+        "resource_allocation": "20-30%"
+      },
+      "horizon_3": {
+        "name": "Future Bets (3+ years)",
+        "time_horizon": "3+ years",
+        "focus": "Transform the business, explore new markets",
+        "resource_allocation": "5-10%"
+      }
+    },
+    "porter_five_forces": {
+      "description": "Analyze competitive intensity in your market",
+      "forces": [
+        {
+          "name": "Threat of New Entrants",
+          "analysis_questions": [
+            "How high are barriers to entry?",
+            "Is capital required?",
+            "Do we have distribution advantage?"
+          ]
+        },
+        {
+          "name": "Bargaining Power of Suppliers",
+          "analysis_questions": [
+            "How many suppliers of key resources?",
+            "Can we diversify suppliers?",
+            "Are suppliers commoditized?"
+          ]
+        },
+        {
+          "name": "Bargaining Power of Customers",
+          "analysis_questions": [
+            "How concentrated are customers?",
+            "Can they switch easily?",
+            "Are there substitute solutions?"
+          ]
+        },
+        {
+          "name": "Threat of Substitutes",
+          "analysis_questions": [
+            "What alternative solutions exist?",
+            "How do we compare on value?",
+            "Is our moat defensible?"
+          ]
+        },
+        {
+          "name": "Competitive Rivalry",
+          "analysis_questions": [
+            "How many competitors?",
+            "Market consolidation trend?",
+            "Do we differentiate or compete on price?"
+          ]
+        }
+      ]
+    },
+    "ansoff_matrix": {
+      "description": "Growth strategy: which combination of products × markets?",
+      "strategies": [
+        {
+          "name": "Market Penetration",
+          "definition": "Sell more of current product to current market",
+          "risk": "Low",
+          "reward": "Incremental"
+        },
+        {
+          "name": "Product Development",
+          "definition": "Create new products for current market",
+          "risk": "Medium",
+          "reward": "Moderate"
+        },
+        {
+          "name": "Market Development",
+          "definition": "Sell current product to new markets/geographies",
+          "risk": "Medium",
+          "reward": "Moderate"
+        },
+        {
+          "name": "Diversification",
+          "definition": "New products for new markets",
+          "risk": "High",
+          "reward": "High"
+        }
+      ]
+    },
+    "decision_making_frameworks": {
+      "pros_cons_list": {
+        "when": "Quick decisions, relatively low impact",
+        "time": "< 15 minutes"
+      },
+      "decision_matrix": {
+        "when": "Multiple options, multiple criteria",
+        "time": "30 minutes - 1 hour",
+        "steps": [
+          "List decision criteria",
+          "Weight each criterion by importance",
+          "Score each option on each criterion",
+          "Calculate weighted scores"
+        ]
+      },
+      "premortem": {
+        "when": "Before executing major initiative",
+        "time": "1 hour",
+        "steps": [
+          "Imagine it's 3 months from now and the initiative failed",
+          "Brainstorm: why did it fail?",
+          "Group themes",
+          "Prioritize mitigation"
+        ]
+      }
+    }
+  }
+}

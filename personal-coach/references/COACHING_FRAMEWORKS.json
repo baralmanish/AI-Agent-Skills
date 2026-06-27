@@ -1,0 +1,179 @@
+{
+  "purpose": "Behavior change frameworks and coaching models for the personal-coach skill. Used to design evidence-based weekly experiments and tracking plans.",
+
+  "behavior_change_models": {
+    "tiny_habits": {
+      "author": "BJ Fogg, Stanford Behavior Design Lab",
+      "core_principle": "Make the behavior tiny enough that motivation is irrelevant. Anchor it to an existing habit. Celebrate immediately after.",
+      "formula": "After I [ANCHOR HABIT], I will [TINY BEHAVIOR].",
+      "examples": [
+        "After I pour my morning coffee, I will write one sentence about my top priority.",
+        "After I sit down at my desk, I will review my three most important tasks."
+      ],
+      "use_when": "User has tried and failed to build a habit — reduce friction first"
+    },
+    "implementation_intentions": {
+      "author": "Peter Gollwitzer, NYU",
+      "core_principle": "Specifying when, where, and how to act dramatically increases follow-through (2–3x). The brain pre-programs the response.",
+      "formula": "When [SITUATION/TIME], I will [BEHAVIOR] in [LOCATION].",
+      "examples": [
+        "When it is 9:00 AM on weekdays, I will spend 15 minutes on my most important task before checking email.",
+        "When I finish a meeting, I will spend 2 minutes writing the key decision in my notes."
+      ],
+      "use_when": "User has a clear intention but fails to act consistently — add specificity"
+    },
+    "identity_based_habits": {
+      "author": "James Clear, Atomic Habits",
+      "core_principle": "Behavior change is identity change. Vote for the identity you want with small consistent actions. 'I am a person who...'",
+      "formula": "Every time I [BEHAVIOR], I cast a vote for being a person who [IDENTITY].",
+      "examples": [
+        "Every time I prepare before a meeting, I cast a vote for being a person who leads with clarity.",
+        "Every time I give direct feedback, I cast a vote for being a trustworthy manager."
+      ],
+      "use_when": "User is trying to shift their professional identity (e.g., individual contributor → leader)"
+    },
+    "if_then_planning": {
+      "core_principle": "Pre-decide responses to obstacles. Reduces decision fatigue and prevents good intentions from collapsing under pressure.",
+      "formula": "If [OBSTACLE], then I will [RESPONSE].",
+      "examples": [
+        "If I feel like skipping my planning session, then I will do a 5-minute version instead.",
+        "If a meeting goes long and I miss my writing window, then I will take 10 minutes before lunch."
+      ],
+      "use_when": "User has a specific known obstacle (busy schedule, energy dips, interruptions)"
+    }
+  },
+
+  "insight_identification_frameworks": {
+    "strengths_finder": {
+      "signals": [
+        "Activities the user describes with energy or enthusiasm",
+        "Tasks they complete faster than peers seem to",
+        "Areas where they are sought out for advice",
+        "Work they find easy that others find difficult",
+        "Moments they describe feeling 'in flow'"
+      ],
+      "blind_spot_signals": [
+        "Strengths used too intensely become liabilities (e.g., analytical rigor → analysis paralysis)",
+        "Skills the user undervalues because they feel easy"
+      ]
+    },
+    "leverage_point_analysis": {
+      "description": "Identify the one behavior or habit that, if changed, would improve multiple other outcomes",
+      "high_leverage_signals": [
+        "A pattern that appears in multiple different problem descriptions",
+        "A constraint that blocks multiple goals simultaneously",
+        "A habit that, if changed, would build momentum across areas"
+      ]
+    },
+    "bottleneck_thinking": {
+      "description": "Adapted from Goldratt's Theory of Constraints for personal productivity",
+      "question": "What is the one constraint that, if removed, would make everything else easier or faster?",
+      "use_when": "User describes being overwhelmed or stuck across multiple areas"
+    }
+  },
+
+  "tracking_templates": {
+    "daily_binary": {
+      "description": "Simplest tracker — did you do it or not?",
+      "metrics": ["date", "behavior_completed_0_1", "notes"],
+      "review_frequency": "Weekly",
+      "success_threshold": "5 out of 7 days = strong adherence"
+    },
+    "daily_scaled": {
+      "description": "Rate quality or effort, not just completion",
+      "metrics": [
+        "date",
+        "behavior_completed_0_1",
+        "quality_1_to_5",
+        "energy_level_1_to_5",
+        "notes"
+      ],
+      "review_frequency": "Weekly",
+      "use_when": "User wants to understand patterns (energy, context) not just compliance"
+    },
+    "outcome_tracking": {
+      "description": "Track the leading indicator AND a lagging outcome",
+      "metrics": [
+        "date",
+        "leading_indicator",
+        "weekly_outcome_signal",
+        "notes"
+      ],
+      "example": {
+        "leading_indicator": "Completed 15-min focused planning session (0/1)",
+        "weekly_outcome_signal": "Number of projects moved forward meaningfully this week"
+      }
+    }
+  },
+
+  "coaching_principles": {
+    "one_change_rule": "Always propose exactly one behavior change. Multiple changes dilute focus and reduce adherence.",
+    "low_friction_rule": "The change should take <15 minutes per day. Ambitious changes fail. Small consistent ones compound.",
+    "testable_rule": "The change must be testable — observable, countable, or binary (did/did not). Vague intentions are not changes.",
+    "strengths_first": "Lead with what the user does well. Identify the opportunity hidden in the strength before addressing the gap.",
+    "non_judgmental": "Describe patterns, not character. 'You tend to delay difficult decisions' not 'You are avoidant.'"
+  },
+
+  "common_coaching_themes": {
+    "communication_and_influence": {
+      "signals": [
+        "Mentions difficulty being heard",
+        "Ideas not getting traction",
+        "Stakeholders not aligned"
+      ],
+      "typical_experiments": [
+        "Prepare 1 crisp point before each meeting",
+        "Send a one-line follow-up after key conversations",
+        "Lead with the ask before the context in emails"
+      ]
+    },
+    "prioritization_and_focus": {
+      "signals": [
+        "Everything feels urgent",
+        "Calendar full but progress slow",
+        "Reactive mode"
+      ],
+      "typical_experiments": [
+        "Identify top 3 priorities each morning before opening email",
+        "Block 1 hour of uninterrupted work daily",
+        "Use a NOT-to-do list for low-value recurring tasks"
+      ]
+    },
+    "visibility_and_recognition": {
+      "signals": [
+        "Hard work not being noticed",
+        "Others promoted ahead",
+        "Contributions overlooked"
+      ],
+      "typical_experiments": [
+        "Send a weekly progress note to manager on Fridays",
+        "Speak first in the next 3 team meetings",
+        "Present one insight or result at each team sync"
+      ]
+    },
+    "decision_quality": {
+      "signals": [
+        "Frequently second-guessing decisions",
+        "Long deliberation before small choices",
+        "Consistent regret about timing"
+      ],
+      "typical_experiments": [
+        "Set a 24-hour decision timer for non-reversible choices",
+        "Use a 2-question filter: reversible? high stakes?",
+        "Write the decision and rationale in one sentence before acting"
+      ]
+    },
+    "delegation_and_leverage": {
+      "signals": [
+        "Doing work that could be delegated",
+        "Team underutilized",
+        "Bottlenecked on self"
+      ],
+      "typical_experiments": [
+        "Identify one recurring task to delegate this week",
+        "Coach instead of correct on the next team error",
+        "Define a clear outcome and hand off the 'how'"
+      ]
+    }
+  }
+}

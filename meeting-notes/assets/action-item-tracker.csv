@@ -1,0 +1,5 @@
+date,meeting_type,attendees,action_item,owner,due_date,priority,status,notes
+YYYY-MM-DD,standup,,,,EOW,Medium,Open,
+YYYY-MM-DD,planning,,,,YYYY-MM-DD,High,Open,
+YYYY-MM-DD,retrospective,,,,Next Sprint,Medium,Open,
+YYYY-MM-DD,client_call,,,,YYYY-MM-DD,High,Open,

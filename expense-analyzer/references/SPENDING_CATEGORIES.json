@@ -1,0 +1,438 @@
+{
+  "purpose": "Spending category taxonomy for the expense-analyzer skill. Used for categorizing transactions, benchmarking against typical budgets, and generating actionable insights.",
+
+  "categorization_rules": {
+    "priority": "Match by merchant name first, then by transaction description keyword, then by amount pattern (recurring = subscription candidate)",
+    "unknown": "Place uncategorized transactions in 'Other' but flag them for user review",
+    "recurring_signals": "Same merchant + similar amount within 25–35 days = likely subscription",
+    "splitting": "If a transaction clearly spans two categories (e.g. Amazon = shopping OR groceries OR electronics), use largest-probability category and note it"
+  },
+
+  "categories": {
+    "housing": {
+      "label": "Housing",
+      "icon": "🏠",
+      "typical_budget_pct": { "50_30_20_rule": "needs", "guideline_pct": 30 },
+      "subcategories": [
+        "Rent / Mortgage",
+        "Property Tax",
+        "HOA Fees",
+        "Home Insurance",
+        "Utilities",
+        "Internet / Cable",
+        "Home Maintenance",
+        "Cleaning Services",
+        "Furnishings"
+      ],
+      "merchant_signals": [
+        "rent",
+        "mortgage",
+        "hoa",
+        "landlord",
+        "electric",
+        "gas utility",
+        "water bill",
+        "comcast",
+        "xfinity",
+        "spectrum",
+        "verizon fios",
+        "at&t internet"
+      ],
+      "benchmark_insight": "Housing should ideally be ≤30% of gross income. Above 40% indicates housing cost burden."
+    },
+    "food_and_dining": {
+      "label": "Food & Dining",
+      "icon": "🍽️",
+      "typical_budget_pct": { "50_30_20_rule": "needs", "guideline_pct": 12 },
+      "subcategories": [
+        "Groceries",
+        "Restaurants",
+        "Fast Food",
+        "Coffee Shops",
+        "Food Delivery",
+        "Bars & Alcohol",
+        "Meal Kits"
+      ],
+      "merchant_signals": [
+        "whole foods",
+        "trader joe's",
+        "kroger",
+        "safeway",
+        "costco food",
+        "walmart grocery",
+        "instacart",
+        "doordash",
+        "uber eats",
+        "grubhub",
+        "starbucks",
+        "chipotle",
+        "mcdonald's",
+        "chick-fil-a",
+        "hello fresh",
+        "factor meals"
+      ],
+      "benchmark_insight": "Average US household spends ~10-15% of income on food. Dining out vs. groceries ratio reveals adherence opportunity.",
+      "savings_signal": "If food delivery > 25% of total food spend, that's typically a high-savings opportunity."
+    },
+    "transportation": {
+      "label": "Transportation",
+      "icon": "🚗",
+      "typical_budget_pct": { "50_30_20_rule": "needs", "guideline_pct": 15 },
+      "subcategories": [
+        "Car Payment",
+        "Gas",
+        "Car Insurance",
+        "Parking",
+        "Tolls",
+        "Rideshare",
+        "Public Transit",
+        "Car Maintenance",
+        "Bike / Scooter"
+      ],
+      "merchant_signals": [
+        "shell",
+        "chevron",
+        "exxon",
+        "bp",
+        "uber",
+        "lyft",
+        "metro",
+        "mta",
+        "parking",
+        "e-zpass",
+        "toll",
+        "autozone",
+        "jiffy lube",
+        "enterprise rent",
+        "hertz"
+      ],
+      "benchmark_insight": "Transportation above 20% of income is a red flag. Rideshare spend >$200/month often has substitution options."
+    },
+    "health_and_medical": {
+      "label": "Health & Medical",
+      "icon": "🏥",
+      "typical_budget_pct": { "50_30_20_rule": "needs", "guideline_pct": 5 },
+      "subcategories": [
+        "Health Insurance Premium",
+        "Doctor / Specialist",
+        "Dentist",
+        "Vision",
+        "Prescriptions",
+        "Mental Health",
+        "Gym / Fitness",
+        "Supplements"
+      ],
+      "merchant_signals": [
+        "cvs",
+        "walgreens",
+        "rite aid",
+        "kaiser",
+        "blue cross",
+        "anthem",
+        "aetna",
+        "cigna",
+        "planet fitness",
+        "equinox",
+        "peloton",
+        "therapy",
+        "lab corp",
+        "quest diagnostics"
+      ],
+      "benchmark_insight": "Out-of-pocket health costs vary widely. Gym membership unused for 2+ months is a common cancellation candidate."
+    },
+    "shopping": {
+      "label": "Shopping",
+      "icon": "🛍️",
+      "typical_budget_pct": { "50_30_20_rule": "wants", "guideline_pct": 10 },
+      "subcategories": [
+        "Clothing",
+        "Electronics",
+        "Home Goods",
+        "Online Shopping",
+        "Department Stores",
+        "Luxury",
+        "Gifts"
+      ],
+      "merchant_signals": [
+        "amazon",
+        "target",
+        "walmart",
+        "best buy",
+        "apple store",
+        "nike",
+        "h&m",
+        "zara",
+        "nordstrom",
+        "macy's",
+        "etsy",
+        "ebay",
+        "wayfair",
+        "ikea"
+      ],
+      "benchmark_insight": "Shopping spikes often correlate with emotional spending events. Compare month-over-month to identify patterns."
+    },
+    "entertainment": {
+      "label": "Entertainment",
+      "icon": "🎬",
+      "typical_budget_pct": { "50_30_20_rule": "wants", "guideline_pct": 5 },
+      "subcategories": [
+        "Streaming Services",
+        "Gaming",
+        "Movies / Events",
+        "Sports",
+        "Books",
+        "Hobbies",
+        "Travel Entertainment"
+      ],
+      "merchant_signals": [
+        "netflix",
+        "hulu",
+        "disney+",
+        "spotify",
+        "apple music",
+        "youtube premium",
+        "xbox",
+        "playstation",
+        "steam",
+        "ticketmaster",
+        "amc theaters",
+        "fandango"
+      ],
+      "benchmark_insight": "Subscription stacking is common — list all active streaming/software subscriptions and review for overlap."
+    },
+    "travel": {
+      "label": "Travel",
+      "icon": "✈️",
+      "typical_budget_pct": { "50_30_20_rule": "wants", "guideline_pct": 5 },
+      "subcategories": [
+        "Flights",
+        "Hotels",
+        "Vacation Rentals",
+        "Car Rental",
+        "Travel Insurance",
+        "Cruises",
+        "Tours & Activities"
+      ],
+      "merchant_signals": [
+        "delta",
+        "united",
+        "american airlines",
+        "southwest",
+        "airbnb",
+        "marriott",
+        "hilton",
+        "booking.com",
+        "expedia",
+        "kayak",
+        "hertz rental"
+      ],
+      "benchmark_insight": "Travel is often lumpy (rare but large). Annualize by dividing 12-month total by 12 for true monthly budget picture."
+    },
+    "education": {
+      "label": "Education",
+      "icon": "📚",
+      "typical_budget_pct": {
+        "50_30_20_rule": "needs_or_wants",
+        "guideline_pct": 3
+      },
+      "subcategories": [
+        "Tuition",
+        "Student Loan Payment",
+        "Online Courses",
+        "Books & Materials",
+        "Tutoring",
+        "Professional Certifications"
+      ],
+      "merchant_signals": [
+        "coursera",
+        "udemy",
+        "skillshare",
+        "linkedin learning",
+        "sallie mae",
+        "great lakes",
+        "navient",
+        "student loan"
+      ],
+      "benchmark_insight": "Student loan payments above 10% of take-home income signal potential refinancing opportunity."
+    },
+    "personal_care": {
+      "label": "Personal Care",
+      "icon": "💅",
+      "typical_budget_pct": { "50_30_20_rule": "wants", "guideline_pct": 2 },
+      "subcategories": [
+        "Hair & Beauty",
+        "Spa & Massage",
+        "Skincare",
+        "Barber",
+        "Nails"
+      ],
+      "merchant_signals": [
+        "supercuts",
+        "great clips",
+        "ulta",
+        "sephora",
+        "nail salon",
+        "massage envy",
+        "sport clips"
+      ]
+    },
+    "financial": {
+      "label": "Financial",
+      "icon": "💳",
+      "typical_budget_pct": { "50_30_20_rule": "needs", "guideline_pct": 10 },
+      "subcategories": [
+        "Savings Transfer",
+        "Investment Contribution",
+        "Credit Card Payment",
+        "Loan Payment",
+        "Insurance Premiums",
+        "Bank Fees"
+      ],
+      "merchant_signals": [
+        "vanguard",
+        "fidelity",
+        "schwab",
+        "robinhood",
+        "acorns",
+        "betterment",
+        "chase savings",
+        "interest charge",
+        "annual fee",
+        "late fee"
+      ],
+      "benchmark_insight": "Financial category isolates true discretionary spend from savings/debt service. Target 20% gross income to savings."
+    },
+    "subscriptions": {
+      "label": "Subscriptions",
+      "icon": "🔄",
+      "typical_budget_pct": { "50_30_20_rule": "wants", "guideline_pct": 3 },
+      "subcategories": [
+        "Software / SaaS",
+        "Streaming",
+        "Membership",
+        "News / Media",
+        "Cloud Storage",
+        "Productivity Tools"
+      ],
+      "merchant_signals": [
+        "notion",
+        "dropbox",
+        "icloud",
+        "google one",
+        "adobe",
+        "microsoft 365",
+        "slack",
+        "zoom",
+        "1password",
+        "vpn",
+        "medium",
+        "nyt"
+      ],
+      "benchmark_insight": "List every subscription with last-used date. Unused or low-value subscriptions are the fastest savings win.",
+      "audit_prompt": "Flag any subscription charged 3+ times with no obvious usage pattern — likely forgotten."
+    },
+    "children_and_family": {
+      "label": "Children & Family",
+      "icon": "👨‍👩‍👧",
+      "typical_budget_pct": { "50_30_20_rule": "needs", "guideline_pct": 8 },
+      "subcategories": [
+        "Childcare / Daycare",
+        "School Fees",
+        "Kids Activities",
+        "Baby Supplies",
+        "School Supplies",
+        "Family Entertainment"
+      ],
+      "merchant_signals": [
+        "daycare",
+        "preschool",
+        "huggies",
+        "pampers",
+        "baby",
+        "kids",
+        "lego",
+        "learning tree"
+      ]
+    },
+    "giving": {
+      "label": "Giving & Donations",
+      "icon": "💝",
+      "typical_budget_pct": { "50_30_20_rule": "wants", "guideline_pct": 2 },
+      "subcategories": [
+        "Charitable Donations",
+        "Religious Giving",
+        "Gifts to Family/Friends",
+        "Crowdfunding"
+      ],
+      "merchant_signals": [
+        "paypal.me",
+        "venmo",
+        "givingway",
+        "gofundme",
+        "church",
+        "nonprofit",
+        "charity"
+      ]
+    },
+    "business": {
+      "label": "Business Expenses",
+      "icon": "💼",
+      "typical_budget_pct": { "50_30_20_rule": "separate", "guideline_pct": 0 },
+      "subcategories": [
+        "Office Supplies",
+        "Professional Services",
+        "Business Software",
+        "Client Entertainment",
+        "Marketing"
+      ],
+      "merchant_signals": [
+        "staples",
+        "office depot",
+        "fedex office",
+        "legal",
+        "accounting",
+        "ads",
+        "facebook ads",
+        "google ads"
+      ],
+      "benchmark_insight": "Flag potential tax-deductible business expenses for the user to verify with their accountant."
+    },
+    "other": {
+      "label": "Other / Uncategorized",
+      "icon": "❓",
+      "subcategories": [
+        "Unidentified Merchants",
+        "Transfers",
+        "Cash Withdrawals",
+        "Miscellaneous"
+      ],
+      "benchmark_insight": "A large 'Other' bucket means merchant matching needs improvement or user review is needed."
+    }
+  },
+
+  "budget_frameworks": {
+    "50_30_20": {
+      "name": "50/30/20 Rule",
+      "needs": 50,
+      "wants": 30,
+      "savings_debt": 20,
+      "description": "50% of take-home pay to needs (housing, food, transport, health), 30% to wants (dining out, entertainment, shopping), 20% to savings and debt payoff"
+    },
+    "zero_based": {
+      "name": "Zero-Based Budget",
+      "description": "Every dollar assigned a job. Income - all expenses + savings = $0. Best for aggressive debt payoff or savings goals."
+    },
+    "pay_yourself_first": {
+      "name": "Pay Yourself First",
+      "description": "Automatically save/invest before anything else. Spend the remainder however needed. Best for high earners with variable spending."
+    }
+  },
+
+  "savings_projection_rates": {
+    "6_months": 6,
+    "1_year": 12,
+    "5_years": 60,
+    "compound_monthly_rate": 0.005,
+    "description": "Use these multipliers to show how monthly savings changes compound. Assume 6% annual return (0.5%/month) for investment projections."
+  }
+}

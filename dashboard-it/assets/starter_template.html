@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — [Title]</title>
+    <style>
+      /* ── CSS Variables (swap palette by changing these) ── */
+      :root {
+        --bg: #0f172a;
+        --surface: #1e293b;
+        --raised: #334155;
+        --border: #475569;
+        --text: #f1f5f9;
+        --muted: #94a3b8;
+        --accent: #6366f1;
+        --accent2: #22d3ee;
+        --positive: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+        --radius: 8px;
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.4);
+        --font:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      /* ── Reset & Base ── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--text);
+        font-size: 14px;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      /* ── Layout ── */
+      .dashboard {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      /* ── Header ── */
+      .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .dashboard-title {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+      .dashboard-subtitle {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 0.25rem;
+      }
+      .header-badge {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background: var(--accent);
+        color: #fff;
+      }
+
+      /* ── Filter Bar ── */
+      .filter-bar {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+      }
+      .filter-bar input,
+      .filter-bar select {
+        background: var(--raised);
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 0.4rem 0.75rem;
+        border-radius: calc(var(--radius) - 2px);
+        font-size: 0.85rem;
+        outline: none;
+        transition: border-color 150ms;
+      }
+      .filter-bar input:focus,
+      .filter-bar select:focus {
+        border-color: var(--accent);
+      }
+      .filter-bar label {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+      .btn-reset {
+        margin-left: auto;
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        padding: 0.4rem 0.9rem;
+        border-radius: calc(var(--radius) - 2px);
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 150ms;
+      }
+      .btn-reset:hover {
+        border-color: var(--accent);
+        color: var(--text);
+      }
+
+      /* ── KPI Grid ── */
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+      .kpi-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--accent);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+        box-shadow: var(--shadow);
+        transition:
+          transform 200ms,
+          box-shadow 200ms;
+        cursor: default;
+      }
+      .kpi-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+      .kpi-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+      }
+      .kpi-value {
+        font-size: 2rem;
+        font-weight: 800;
+        margin-top: 0.25rem;
+        line-height: 1;
+      }
+      .kpi-trend {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.15rem 0.5rem;
+        border-radius: 9999px;
+      }
+      .trend-up {
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--positive);
+      }
+      .trend-down {
+        background: rgba(239, 68, 68, 0.15);
+        color: var(--danger);
+      }
+      .trend-flat {
+        background: rgba(148, 163, 184, 0.15);
+        color: var(--muted);
+      }
+
+      /* ── Section Grid (2-up, 3-up) ── */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 1rem;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+      }
+      @media (max-width: 900px) {
+        .grid-2,
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ── Card ── */
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+        box-shadow: var(--shadow);
+      }
+      .card-title {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .card-title .icon {
+        font-size: 1rem;
+      }
+
+      /* ── Table ── */
+      .table-wrap {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+      }
+      thead th {
+        text-align: left;
+        padding: 0.6rem 0.75rem;
+        background: var(--raised);
+        color: var(--muted);
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 1px solid var(--border);
+      }
+      tbody tr {
+        border-bottom: 1px solid var(--border);
+        transition: background 150ms;
+      }
+      tbody tr:hover {
+        background: var(--raised);
+      }
+      tbody td {
+        padding: 0.65rem 0.75rem;
+        color: var(--text);
+      }
+      tbody tr:last-child {
+        border-bottom: none;
+      }
+
+      /* ── Badge ── */
+      .badge {
+        display: inline-block;
+        padding: 0.15rem 0.55rem;
+        border-radius: 9999px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .badge-success {
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--positive);
+      }
+      .badge-warning {
+        background: rgba(245, 158, 11, 0.15);
+        color: var(--warning);
+      }
+      .badge-danger {
+        background: rgba(239, 68, 68, 0.15);
+        color: var(--danger);
+      }
+      .badge-info {
+        background: rgba(34, 211, 238, 0.15);
+        color: var(--accent2);
+      }
+      .badge-neutral {
+        background: rgba(148, 163, 184, 0.15);
+        color: var(--muted);
+      }
+
+      /* ── Progress Bar ── */
+      .progress-row {
+        margin-bottom: 0.75rem;
+      }
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        margin-bottom: 0.25rem;
+      }
+      .progress-bar {
+        height: 8px;
+        background: var(--raised);
+        border-radius: 9999px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        border-radius: 9999px;
+        background: var(--accent);
+        transition: width 600ms ease;
+      }
+
+      /* ── Chart Placeholder ── */
+      .chart-area {
+        height: 200px;
+        background: var(--raised);
+        border-radius: calc(var(--radius) - 2px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-size: 0.8rem;
+        border: 1px dashed var(--border);
+      }
+
+      /* ── Footer ── */
+      .dashboard-footer {
+        text-align: center;
+        padding: 1.5rem 0 0.5rem;
+        font-size: 0.75rem;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+      .dashboard-footer a {
+        color: var(--accent2);
+      }
+
+      /* ── Animations ── */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .card,
+      .kpi-card {
+        animation: fadeInUp 300ms ease both;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard">
+      <!-- Header -->
+      <div class="dashboard-header">
+        <div>
+          <div class="dashboard-title">[Dashboard Title]</div>
+          <div class="dashboard-subtitle">[Subtitle or date range]</div>
+        </div>
+        <span class="header-badge">[Status or version]</span>
+      </div>
+
+      <!-- Filter Bar (remove if not needed) -->
+      <div class="filter-bar">
+        <label>Search</label>
+        <input type="text" id="search" placeholder="Search..." />
+        <label>Filter</label>
+        <select id="filter-select">
+          <option value="">All</option>
+          <option value="a">Option A</option>
+          <option value="b">Option B</option>
+        </select>
+        <button class="btn-reset" onclick="resetFilters()">Reset</button>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Metric One</div>
+          <div class="kpi-value" id="kpi-1">—</div>
+          <span class="kpi-trend trend-up">↑ 12%</span>
+        </div>
+        <div class="kpi-card" style="border-left-color: var(--accent2)">
+          <div class="kpi-label">Metric Two</div>
+          <div class="kpi-value" id="kpi-2">—</div>
+          <span class="kpi-trend trend-down">↓ 4%</span>
+        </div>
+        <div class="kpi-card" style="border-left-color: var(--positive)">
+          <div class="kpi-label">Metric Three</div>
+          <div class="kpi-value" id="kpi-3">—</div>
+          <span class="kpi-trend trend-flat">→ Stable</span>
+        </div>
+        <div class="kpi-card" style="border-left-color: var(--warning)">
+          <div class="kpi-label">Metric Four</div>
+          <div class="kpi-value" id="kpi-4">—</div>
+          <span class="kpi-trend trend-up">↑ 8%</span>
+        </div>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div class="grid-2">
+        <!-- Chart Card -->
+        <div class="card">
+          <div class="card-title">
+            <span class="icon">📈</span> [Chart Title]
+          </div>
+          <div class="chart-area" id="chart-main">
+            [Chart renders here — replace with canvas/SVG/table]
+          </div>
+        </div>
+
+        <!-- Summary Card -->
+        <div class="card">
+          <div class="card-title">
+            <span class="icon">📊</span> [Category Breakdown]
+          </div>
+          <div id="breakdown-list">
+            <div class="progress-row">
+              <div class="progress-label">
+                <span>Category A</span><span>65%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 65%"></div>
+              </div>
+            </div>
+            <div class="progress-row">
+              <div class="progress-label">
+                <span>Category B</span><span>42%</span>
+              </div>
+              <div class="progress-bar">
+                <div
+                  class="progress-fill"
+                  style="width: 42%; background: var(--accent2)"
+                ></div>
+              </div>
+            </div>
+            <div class="progress-row">
+              <div class="progress-label">
+                <span>Category C</span><span>28%</span>
+              </div>
+              <div class="progress-bar">
+                <div
+                  class="progress-fill"
+                  style="width: 28%; background: var(--warning)"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table Card -->
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">📋</span> [Detail Table]
+        </div>
+        <div class="table-wrap">
+          <table id="main-table">
+            <thead>
+              <tr>
+                <th>Column A</th>
+                <th>Column B</th>
+                <th>Column C</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Item 1</td>
+                <td>Value</td>
+                <td>Details</td>
+                <td><span class="badge badge-success">Active</span></td>
+              </tr>
+              <tr>
+                <td>Item 2</td>
+                <td>Value</td>
+                <td>Details</td>
+                <td><span class="badge badge-warning">Pending</span></td>
+              </tr>
+              <tr>
+                <td>Item 3</td>
+                <td>Value</td>
+                <td>Details</td>
+                <td><span class="badge badge-danger">Blocked</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="dashboard-footer">
+        Based on a skill from Jules White's AI Agent Skills course &mdash;
+        <a href="https://www.coursera.org/learn/agent-skills" target="_blank">
+          coursera.org/learn/agent-skills
+        </a>
+      </div>
+    </div>
+    <script>
+      // ── Count-Up Animation for KPI values ──
+      function countUp(el, target, duration = 800, prefix = "", suffix = "") {
+        const start = performance.now();
+        const isFloat = String(target).includes(".");
+        const decimals = isFloat ? String(target).split(".")[1].length : 0;
+        const animate = (now) => {
+          const elapsed = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - elapsed, 3);
+          const val = target * eased;
+          el.textContent = prefix + val.toFixed(decimals) + suffix;
+          if (elapsed < 1) requestAnimationFrame(animate);
+        };
+        requestAnimationFrame(animate);
+      }
+
+      // Populate KPIs — replace with real data
+      window.addEventListener("DOMContentLoaded", () => {
+        countUp(document.getElementById("kpi-1"), 1284, 800, "", "");
+        countUp(document.getElementById("kpi-2"), 94.2, 800, "", "%");
+        countUp(document.getElementById("kpi-3"), 38, 800, "$", "k");
+        countUp(document.getElementById("kpi-4"), 7, 800, "", "");
+      });
+
+      // ── Filter logic ──
+      function applyFilters() {
+        const query = document.getElementById("search").value.toLowerCase();
+        const selected = document.getElementById("filter-select").value;
+        document.querySelectorAll("#main-table tbody tr").forEach((row) => {
+          const text = row.textContent.toLowerCase();
+          const matchSearch = !query || text.includes(query);
+          const matchFilter = !selected || text.includes(selected);
+          row.style.display = matchSearch && matchFilter ? "" : "none";
+        });
+      }
+      document.getElementById("search").addEventListener("input", applyFilters);
+      document
+        .getElementById("filter-select")
+        .addEventListener("change", applyFilters);
+      function resetFilters() {
+        document.getElementById("search").value = "";
+        document.getElementById("filter-select").value = "";
+        applyFilters();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,462 @@
+# Email Writing Skill - Template Examples
+
+## Leadership/Executive Update Examples
+
+### Template 1: Project Status Update
+
+```
+Subject: Q2 Project Status: On Track | Key Milestone Hit
+
+Hi [Name],
+
+We hit our key milestone this week and remain on track for our May 31 launch.
+
+Status Summary:
+• Engineering: 94% complete (on target for 95% by week's end)
+• Design: 100% complete
+• QA: In final testing (3 medium bugs found, 2 already resolved)
+• One blocker: API performance under load. [Team] is engaged, resolution expected Wednesday.
+
+Next Steps:
+Full launch readiness review Thursday. Go-live Tuesday if QA clears.
+
+I'll have a postmortem ready for you after launch.
+
+Let me know if you'd like to dig into anything.
+
+Best,
+[Your name]
+```
+
+### Template 2: Problem + Solution Update
+
+```
+Subject: Issue Found + Action Plan | [Project Name]
+
+Hi [Name],
+
+We discovered an issue with [specific thing] this week. Here's what we're doing.
+
+What happened:
+[Specific description without excuses]
+
+Impact:
+[Honest assessment of impact to business/timeline/customer]
+
+Our action plan:
+1. [Immediate mitigation] — [owner], done by [date]
+2. [Root cause fix] — [owner], done by [date]
+3. [Prevention] — [owner], done by [date]
+
+This will delay [outcome] by [X] days. We're accelerating [other initiative] to offset.
+
+This is on us to fix. I'll update you daily until resolved.
+
+Best,
+[Your name]
+```
+
+---
+
+## Course/Announcement Examples
+
+### Template: Course Launch Announcement
+
+```
+Subject: New Course Launch: AI Agent Skills for Leaders! 🚀
+
+Hi everyone,
+
+We just launched something we're really excited about: AI Agent Skills for Leaders—a 
+practical course designed to help you master AI agents in your organization.
+
+What you'll learn:
+• How to evaluate AI agents for your team (not hype-driven buying)
+• How to prompt and customize agents effectively
+• How to integrate agents into existing workflows
+• Real examples of agents that are 10x-ing productivity
+
+Perfect for:
+Leaders who want to understand AI agents deeply (without being technical).
+Sales leaders, product leaders, operations leaders—anyone managing teams that could 
+benefit from AI automation.
+
+First 100 signups get 30% off. Course starts [date].
+
+[Sign up here]
+
+Looking forward to seeing you in there!
+
+[Your name]
+```
+
+---
+
+## Bio/Abstract Response Examples
+
+### Template: Speaking Bio
+
+```
+Subject: Re: Speaker Bio for [Conference]
+
+Hi [Name],
+
+Here's my bio for [Conference]. Let me know if you need any edits!
+
+---
+
+Sarah Chen is the VP of Product at [Company], where she leads product strategy 
+for [specific product/service] used by [X companies/Y customers]. She has 10+ years 
+of experience in [domain], previously leading product at [company] through [specific achievement].
+
+Sarah's work focuses on [area of expertise], and she's spoken at [conferences] on 
+[topics]. She's passionate about [specific belief/mission].
+
+Learn more at [website/linkedin].
+
+---
+
+Looking forward to it!
+
+Best,
+Sarah
+```
+
+### Template: Talk Abstract
+
+```
+Subject: Re: Talk Abstract for [Conference]
+
+Hi [Name],
+
+Here's the abstract for my talk: "AI Agents as Your Team's New Hire."
+
+---
+
+Your team just got 20% smarter—without hiring. AI agents are no longer science fiction. 
+They're practical tools that can handle routine work, freeing your team for what matters.
+
+In this talk, we'll explore:
+• What AI agents can (and can't) do for your business
+• How to evaluate tools that are actually production-ready
+• Real examples of 10x productivity gains (and common mistakes to avoid)
+• How to integrate agents into your workflow without disruption
+
+Perfect for leaders in tech, operations, finance, and sales—anyone managing teams that 
+could benefit from smarter automation.
+
+---
+
+Excited to share this with your audience!
+
+Best,
+[Your name]
+```
+
+---
+
+## Networking/Outreach Examples
+
+### Template: Cold Reach Out to Person You Admire
+
+```
+Subject: Your talk on AI agents really resonated with me
+
+Hi [Name],
+
+I listened to your keynote at [conference] on [topic] and one thing you said stuck 
+with me: "[specific quote or idea]".
+
+I'm building [your company/project] right now and we're tackling [related problem]. 
+Your insight on [specific point] changed how I'm thinking about our approach.
+
+I'd love 20 minutes of your perspective—especially on [specific question]. I suspect 
+you've solved this before, and I'd learn a lot from your thinking.
+
+Would you have time for a quick coffee chat in the next two weeks? I'm happy to work 
+around your schedule.
+
+Thanks for considering,
+[Your name]
+```
+
+### Template: Reconnect with Old Contact
+
+```
+Subject: Long overdue catch-up ☕
+
+Hey [Name],
+
+It's been way too long since we talked! I've been following your work at [company] 
+and I'm really impressed by [specific thing they did].
+
+I've been at [your company] for [time] working on [what you do]. It's been a wild 
+ride and I think you'd find what we're building interesting.
+
+Would love to grab coffee or a Zoom call soon? Would be great to catch up and hear 
+what you're working on.
+
+How's your calendar looking in the next couple weeks?
+
+[Your name]
+```
+
+---
+
+## Customer Support Examples
+
+### Template: Problem + Solution
+
+```
+Subject: Re: Issue with [feature] — Here's what we're doing
+
+Hi [Customer name],
+
+Thanks for reporting that. I understand how frustrating [specific issue] must be, 
+especially since [impact to their work].
+
+Here's what happened and what we're doing about it:
+
+What we found:
+[Specific, honest explanation of the issue]
+
+How we're fixing it:
+1. Immediate workaround: [Clear workaround they can use today]
+2. Permanent fix: Rolling out in our release on [date]
+3. To make sure this doesn't happen again: [What we're implementing]
+
+In the meantime, you can [specific workaround steps]. I'll check in with you Friday 
+to make sure that's working.
+
+I apologize for the trouble. Let me know if you have any other questions.
+
+Best,
+[Your name]
+[Title]
+[Contact info]
+```
+
+---
+
+## Internal Team Update Examples
+
+### Template: Project Status to Team
+
+```
+Subject: Q2 Project Update — Great Progress
+
+Team,
+
+Quick update on [Project] for those not in our daily standups:
+
+What we shipped:
+✅ [Feature 1] — users can now [benefit]
+✅ [Feature 2] — this was [Person]'s baby, great work
+✅ [Process improvement] — saving us [X hours/week]
+
+What's coming next:
+🔄 [Feature 3] — targeting [date], [Person] leading
+🔄 [Customer request] — requested by [customer name], will help them with [need]
+
+Where we need help:
+🤔 [Challenge] — [Team], can we sync this week about [specific thing]?
+🤔 [Blocker] — [Name], we need [specific resource/decision] by [date]
+
+Team kudos:
+[Shout-out to specific people/contributions]
+
+Questions? Let me know!
+
+[Your name]
+```
+
+---
+
+## Apology Examples
+
+### Template: Apology for Missing Deadline
+
+```
+Subject: Apology — Missing [deadline]
+
+Hi [Name],
+
+I owe you an apology. I missed [deadline] and I didn't communicate with you about it 
+until it was too late. That's on me.
+
+Here's what happened:
+[Honest explanation — no excuses, just facts]
+
+Why that matters to you:
+[Acknowledge the impact and inconvenience]
+
+What I'm doing:
+1. [Immediate mitigation] — done by [date]
+2. [Process change to prevent this] — being implemented [when]
+3. [How I'm going to keep you in the loop] — [specific frequency/method]
+
+I understand the frustration. I'm committed to doing better.
+
+Thanks for your patience.
+
+[Your name]
+```
+
+---
+
+## Sales/Partnership Examples
+
+### Template: Partnership Proposal
+
+```
+Subject: Idea for collaboration — mutual benefit
+
+Hi [Name],
+
+I've been thinking about your challenge with [specific problem they face] and I think 
+we might be able to help each other.
+
+Here's the situation as I see it:
+[Specific knowledge of their challenge]
+
+And here's what we're seeing:
+[Trend/pattern in market related to solving that problem]
+
+The idea:
+[Specific collaboration proposal] would let us:
+[Your benefit] and you'd get [Their benefit]
+
+Why I think this works:
+✓ [Proof point 1 — specific customer win]
+✓ [Proof point 2 — relevant experience]
+✓ [Proof point 3 — credibility]
+
+Low risk way to test this:
+[Specific pilot or limited engagement]
+
+I'd love to explore this with you. Would you be open to a 30-minute call next week 
+to discuss further?
+
+Best,
+[Your name]
+```
+
+---
+
+## Decline/No Examples
+
+### Template: Kind Decline to Help
+
+```
+Subject: Re: Project opportunity
+
+Hi [Name],
+
+I appreciate you thinking of me for this. It's exactly the kind of work I'd normally 
+jump on, and I genuinely wish I had the capacity.
+
+Here's my honest situation:
+I'm at maximum load on [Current project] through [date]. Taking anything else on would 
+mean doing both poorly, which isn't fair to you or me.
+
+What I can do:
+Option 1: I can introduce you to [Person] who would be perfect for this.
+Option 2: I can pair with you for [specific limited help, X hours].
+Option 3: I can prioritize this for [future date] when I have capacity.
+
+Which would be most useful?
+
+Thanks for understanding.
+
+[Your name]
+```
+
+---
+
+## Thank You Examples
+
+### Template: Recognition Email
+
+```
+Subject: Thank you for [specific thing]
+
+Hi [Name],
+
+I wanted to thank you for [specific action/contribution]. 
+
+What made it meaningful:
+[Specific impact of what they did]
+
+How it helped:
+[Concrete result/outcome]
+
+This is the kind of thing that makes our team (and projects) great.
+
+Really appreciate you.
+
+[Your name]
+```
+
+---
+
+## Meeting Request Examples
+
+### Template: Specific, Easy to Say Yes
+
+```
+Subject: 30-min call on [topic]? 
+
+Hi [Name],
+
+I'd like to catch up on [specific topic] that affects both of us. I think your 
+perspective on [specific aspect] would be really valuable.
+
+Here's what I want to explore:
+[1-2 specific questions/topics]
+
+I'm thinking 30 minutes would be plenty. Here are some times that work for me:
+
+📅 Tuesday 2-4pm ET
+📅 Wednesday 10am-12pm ET
+📅 Thursday 3-5pm ET
+
+What works best for you?
+
+[Your name]
+```
+
+---
+
+## Pro Tips for Each Context
+
+### For Leadership Emails
+✓ Lead with headline  
+✓ Metrics before narrative  
+✓ Be honest about problems + solutions  
+✓ Respect their time (brief)
+
+### For Outreach
+✓ Personalize specifically  
+✓ Lead with value to THEM  
+✓ Make specific ask  
+✓ Easy to say yes
+
+### For Support
+✓ Empathize first  
+✓ Solution-focused  
+✓ Clear next steps  
+✓ Offer follow-up
+
+### For Apologies
+✓ Acknowledge upfront  
+✓ Take responsibility  
+✓ Show understanding of impact  
+✓ Offer concrete fix
+
+### For Sales
+✓ Lead with their problem  
+✓ Show you understand their context  
+✓ Include proof points  
+✓ Low-risk way to test
+
+All templates are starting points—adapt tone and details to match your voice and their context!

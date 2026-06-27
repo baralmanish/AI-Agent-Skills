@@ -1,0 +1,134 @@
+Cover Letter Framework — Resume Builder Skill
+==============================================
+Use this template as the structural foundation. Every bracketed placeholder
+must be replaced with specific, concrete details. Never use generic filler.
+==============================================
+
+
+SUBJECT LINE (for email applications):
+Application for [Exact Job Title] — [Your Full Name]
+
+
+---
+
+
+[Your Name]
+[City, State] | [Email] | [Phone] | [LinkedIn URL]
+
+[Date]
+
+[Hiring Manager Name or "Hiring Team"]
+[Company Name]
+[Company City, State] (optional)
+
+
+---
+
+
+OPENING PARAGRAPH — "Why this company and this role"
+------------------------------------------------------
+Rules:
+- Reference something specific about the company (a product, a recent launch, a public
+  mission statement, a market position) — show you did research
+- State the role title exactly as written in the job posting
+- Lead with your strongest relevant credential in one clause
+- Length: 3–4 sentences
+
+Template:
+[Specific observation about the company that genuinely excites you] — this is why I'm
+applying for the [Exact Job Title] role. With [X years] of experience [most relevant
+credential], I've [one-sentence framing of your fit for this specific challenge].
+
+Example:
+"After watching [Company]'s shift from a product-led to an enterprise motion over the
+past two years, I know exactly how hard that transition is — and I know I can accelerate
+it. I'm applying for the Senior Product Manager, Enterprise role. After leading [Company]'s
+SMB-to-mid-market transition that grew ARR from $4M to $12M in 18 months, I've built
+the playbook this role requires."
+
+
+---
+
+
+BODY PARAGRAPH 1 — Most Relevant Achievement
+---------------------------------------------
+Rules:
+- Pick your single most relevant accomplishment for THIS role
+- Use the CAR framework: Challenge → Action → Result
+- Include at least one hard metric
+- Connect the achievement to a specific requirement from the job description
+- Length: 3–5 sentences
+
+Template:
+At [Previous Company], I [describe the challenge or context]. I [specific action you
+took — the approach, decision, or method]. As a result, [quantified outcome]. This
+directly maps to [specific requirement or goal from the job description].
+
+Example:
+"At [Company], our checkout conversion was 12% below industry benchmarks, and the
+engineering team had no visibility into which friction points mattered most. I ran
+27 A/B tests over two quarters using a prioritization framework I built around impact
+× confidence × effort. Checkout conversion increased by 34%, adding $8.2M in annual
+revenue. I expect to bring this same structured experimentation approach to [Company]'s
+growth challenges."
+
+
+---
+
+
+BODY PARAGRAPH 2 — Second Relevant Achievement or Complementary Strength
+-------------------------------------------------------------------------
+Rules:
+- Address a second key requirement from the job description
+- Or demonstrate a skill that paragraph 1 didn't cover
+- Keep metrics if available; use scope/scale if no hard number
+- Length: 3–4 sentences
+
+Template:
+[Brief context framing]. I [action or approach]. [Outcome or impact]. [One sentence
+connecting it to the company's situation or this role's requirements.]
+
+
+---
+
+
+CLOSING PARAGRAPH — Call to Action
+-----------------------------------
+Rules:
+- Express genuine enthusiasm — not "I would be a great fit" (everyone says this)
+- State what you bring to this specific team or problem
+- Clear, direct ask: an interview or a conversation
+- Include your availability or response preference
+- Length: 2–3 sentences maximum
+
+Template:
+[Company]'s focus on [specific challenge or opportunity] is exactly where I want to
+be spending the next chapter of my career. I'd welcome the chance to walk you through
+[specific aspect of your experience most relevant to their challenge] and discuss how
+I can contribute. I'm available for a conversation at your convenience — [email] or
+[phone].
+
+
+---
+
+
+SIGN-OFF:
+[Sincerely / Best regards / Thank you],
+
+[Your Full Name]
+
+
+==============================================
+CHECKLIST BEFORE SENDING
+==============================================
+[ ] Company name is spelled correctly everywhere
+[ ] Job title matches the posting exactly
+[ ] At least one specific company detail (not "I admire your innovative culture")
+[ ] At least one hard metric in body paragraph 1
+[ ] No phrase: "I am a results-driven professional"
+[ ] No phrase: "I am passionate about..."
+[ ] No phrase: "I believe I would be a great fit"
+[ ] Total length: fits comfortably on one page (3–4 short paragraphs)
+[ ] Greeting uses hiring manager's name if available
+[ ] Subject line includes exact job title
+==============================================

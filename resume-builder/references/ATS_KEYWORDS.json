@@ -1,0 +1,456 @@
+{
+  "purpose": "ATS (Applicant Tracking System) keyword reference by role family and industry. Use to audit resumes against job descriptions and surface missing keywords.",
+  "ats_rules": {
+    "why_keywords_matter": "70-80% of resumes are screened by ATS before a human sees them. Missing role-critical keywords = automatic rejection, regardless of qualifications.",
+    "keyword_types": {
+      "hard_skills": "Specific technologies, tools, certifications, methodologies — highest ATS weight",
+      "soft_skills": "Leadership, communication, collaboration — lower ATS weight but important for human review",
+      "job_title_variations": "Include common variations of your target title — ATS matches exact strings",
+      "industry_terms": "Domain-specific jargon that signals familiarity with the field"
+    },
+    "placement_priority": [
+      "Professional Summary (read by both ATS and humans)",
+      "Skills section (ATS scans this section heavily)",
+      "Job title and first bullet of each role",
+      "Throughout experience bullets (natural integration, not keyword stuffing)"
+    ],
+    "keyword_density_warning": "Never force keywords unnaturally. ATS detects keyword stuffing and human reviewers reject it. Integrate keywords into real achievement statements."
+  },
+  "role_families": {
+    "software_engineering": {
+      "universal": [
+        "Software Engineer",
+        "Full Stack",
+        "Backend",
+        "Frontend",
+        "API",
+        "REST",
+        "CI/CD",
+        "Git",
+        "Agile",
+        "Scrum",
+        "Code Review",
+        "Unit Testing",
+        "System Design"
+      ],
+      "backend": [
+        "Python",
+        "Java",
+        "Go",
+        "Node.js",
+        "Django",
+        "FastAPI",
+        "Spring Boot",
+        "Microservices",
+        "PostgreSQL",
+        "Redis",
+        "Kafka",
+        "Docker",
+        "Kubernetes"
+      ],
+      "frontend": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Next.js",
+        "Vue.js",
+        "Webpack",
+        "Performance Optimization",
+        "Accessibility (WCAG)",
+        "Responsive Design"
+      ],
+      "devops_sre": [
+        "Kubernetes",
+        "Terraform",
+        "AWS",
+        "GCP",
+        "Azure",
+        "CI/CD",
+        "Jenkins",
+        "GitHub Actions",
+        "Observability",
+        "Prometheus",
+        "Grafana",
+        "Infrastructure as Code",
+        "SLO",
+        "SLA",
+        "Incident Response"
+      ],
+      "mobile": [
+        "iOS",
+        "Android",
+        "Swift",
+        "Kotlin",
+        "React Native",
+        "Flutter",
+        "App Store",
+        "Play Store",
+        "Mobile Performance",
+        "Push Notifications"
+      ]
+    },
+    "data_and_analytics": {
+      "universal": [
+        "Data Analysis",
+        "SQL",
+        "Python",
+        "Data Visualization",
+        "Stakeholder Communication",
+        "Dashboard",
+        "KPI",
+        "Business Intelligence"
+      ],
+      "data_engineering": [
+        "ETL",
+        "Data Pipeline",
+        "Spark",
+        "Airflow",
+        "dbt",
+        "Snowflake",
+        "BigQuery",
+        "Redshift",
+        "Data Warehouse",
+        "Data Lake",
+        "Streaming",
+        "Kafka"
+      ],
+      "data_science": [
+        "Machine Learning",
+        "Statistical Analysis",
+        "scikit-learn",
+        "TensorFlow",
+        "PyTorch",
+        "A/B Testing",
+        "Feature Engineering",
+        "Model Deployment",
+        "NLP",
+        "Computer Vision"
+      ],
+      "business_analytics": [
+        "Tableau",
+        "Power BI",
+        "Looker",
+        "Excel",
+        "SQL",
+        "A/B Testing",
+        "Forecasting",
+        "Cohort Analysis",
+        "Funnel Analysis",
+        "Revenue Attribution"
+      ]
+    },
+    "product_management": {
+      "universal": [
+        "Product Roadmap",
+        "Cross-functional",
+        "Stakeholder Management",
+        "User Research",
+        "Go-to-Market",
+        "OKR",
+        "KPI",
+        "Prioritization",
+        "Product Strategy"
+      ],
+      "core": [
+        "Product Requirements (PRD)",
+        "User Stories",
+        "Agile",
+        "Scrum",
+        "Sprint Planning",
+        "A/B Testing",
+        "Customer Discovery",
+        "Market Analysis",
+        "Competitive Analysis"
+      ],
+      "growth": [
+        "Conversion Rate Optimization",
+        "Funnel Optimization",
+        "Retention",
+        "Activation",
+        "North Star Metric",
+        "Experimentation",
+        "Growth Loops"
+      ],
+      "enterprise": [
+        "Enterprise SaaS",
+        "B2B",
+        "Sales Enablement",
+        "Customer Success",
+        "Implementation",
+        "SOC 2",
+        "Security Review"
+      ]
+    },
+    "marketing": {
+      "universal": [
+        "Digital Marketing",
+        "Campaign Management",
+        "Analytics",
+        "KPI",
+        "ROI",
+        "Brand Strategy",
+        "Content Strategy",
+        "Stakeholder Communication"
+      ],
+      "growth_marketing": [
+        "SEO",
+        "SEM",
+        "Paid Media",
+        "Google Ads",
+        "Facebook Ads",
+        "CAC",
+        "LTV",
+        "Conversion Rate",
+        "Landing Page Optimization",
+        "Email Marketing",
+        "Marketing Automation"
+      ],
+      "content": [
+        "Content Marketing",
+        "Copywriting",
+        "SEO",
+        "Editorial Calendar",
+        "Blog",
+        "Social Media",
+        "HubSpot",
+        "WordPress",
+        "Brand Voice"
+      ],
+      "product_marketing": [
+        "Positioning",
+        "Messaging",
+        "Competitive Intelligence",
+        "Launch Strategy",
+        "Sales Enablement",
+        "Analyst Relations",
+        "Market Research",
+        "ICP"
+      ]
+    },
+    "sales": {
+      "universal": [
+        "Quota Attainment",
+        "Pipeline Management",
+        "CRM",
+        "Salesforce",
+        "Forecasting",
+        "Account Management",
+        "Negotiation",
+        "Prospecting"
+      ],
+      "enterprise_sales": [
+        "Enterprise",
+        "B2B",
+        "SaaS",
+        "ARR",
+        "Deal Cycles",
+        "Multi-stakeholder",
+        "Executive Relationships",
+        "Contract Negotiation",
+        "Renewal Rate"
+      ],
+      "smb_sales": [
+        "SMB",
+        "High Velocity",
+        "Inbound",
+        "Outbound",
+        "SDR",
+        "AE",
+        "Demos",
+        "Trial Conversion",
+        "Churn Reduction"
+      ],
+      "sales_leadership": [
+        "Team Building",
+        "Quota Setting",
+        "Ramp Plans",
+        "Sales Playbook",
+        "Revenue Operations",
+        "CRO",
+        "Win Rate",
+        "Rep Coaching"
+      ]
+    },
+    "finance_and_accounting": {
+      "universal": [
+        "Financial Analysis",
+        "Forecasting",
+        "Budgeting",
+        "P&L",
+        "Variance Analysis",
+        "Excel",
+        "Financial Modeling"
+      ],
+      "fp_a": [
+        "FP&A",
+        "Three-Statement Model",
+        "Headcount Planning",
+        "Board Reporting",
+        "Revenue Recognition",
+        "EBITDA",
+        "Unit Economics"
+      ],
+      "accounting": [
+        "GAAP",
+        "IFRS",
+        "Month-end Close",
+        "Reconciliation",
+        "Audit",
+        "AP/AR",
+        "General Ledger",
+        "NetSuite",
+        "QuickBooks"
+      ],
+      "investment": [
+        "Valuation",
+        "DCF",
+        "Comparable Company Analysis",
+        "Due Diligence",
+        "M&A",
+        "LBO",
+        "Portfolio Management",
+        "Bloomberg",
+        "Capital Markets"
+      ]
+    },
+    "design": {
+      "universal": [
+        "UI/UX",
+        "User Research",
+        "Figma",
+        "Prototyping",
+        "Design Systems",
+        "Cross-functional Collaboration",
+        "Accessibility"
+      ],
+      "product_design": [
+        "User Flows",
+        "Wireframing",
+        "Usability Testing",
+        "Information Architecture",
+        "Interaction Design",
+        "Mobile Design",
+        "Design Thinking"
+      ],
+      "brand_design": [
+        "Brand Identity",
+        "Visual Design",
+        "Typography",
+        "Color Systems",
+        "Adobe Creative Suite",
+        "Illustration",
+        "Marketing Collateral"
+      ]
+    },
+    "operations": {
+      "universal": [
+        "Process Improvement",
+        "Cross-functional",
+        "Project Management",
+        "Stakeholder Management",
+        "Data-driven",
+        "KPI"
+      ],
+      "business_ops": [
+        "Operations Strategy",
+        "Vendor Management",
+        "SLA",
+        "Workflow Automation",
+        "Jira",
+        "Asana",
+        "OKR",
+        "Headcount Planning"
+      ],
+      "supply_chain": [
+        "Supply Chain",
+        "Inventory Management",
+        "Demand Planning",
+        "ERP",
+        "Procurement",
+        "SAP",
+        "Logistics",
+        "Cost Reduction"
+      ],
+      "customer_success": [
+        "Customer Success",
+        "Onboarding",
+        "Churn Reduction",
+        "NPS",
+        "CSAT",
+        "QBR",
+        "Renewal Rate",
+        "Expansion Revenue",
+        "Customer Health Score"
+      ]
+    },
+    "people_and_hr": {
+      "universal": [
+        "Talent Acquisition",
+        "Employee Relations",
+        "HRIS",
+        "Organizational Development",
+        "Compliance",
+        "Employment Law"
+      ],
+      "recruiting": [
+        "Full-Cycle Recruiting",
+        "Sourcing",
+        "Employer Brand",
+        "ATS",
+        "Diversity Hiring",
+        "Offer Negotiation",
+        "Hiring Manager Partnership",
+        "LinkedIn Recruiter"
+      ],
+      "hr_business_partner": [
+        "HRBP",
+        "Performance Management",
+        "Succession Planning",
+        "Change Management",
+        "Compensation",
+        "Benefits",
+        "Culture Building",
+        "L&D"
+      ]
+    }
+  },
+  "certification_keywords": {
+    "cloud": [
+      "AWS Certified",
+      "Google Cloud Professional",
+      "Azure Administrator",
+      "Certified Kubernetes Administrator (CKA)",
+      "AWS Solutions Architect"
+    ],
+    "security": ["CISSP", "CISM", "CompTIA Security+", "CEH", "SOC 2 Auditor"],
+    "project_management": [
+      "PMP",
+      "Agile Certified",
+      "Scrum Master (CSM)",
+      "PRINCE2",
+      "Six Sigma"
+    ],
+    "finance": ["CPA", "CFA", "CIMA", "ACCA", "Series 7"],
+    "data": [
+      "AWS Certified Data Analytics",
+      "Google Data Engineer",
+      "Tableau Desktop Specialist",
+      "Microsoft Power BI"
+    ]
+  },
+  "formatting_keywords": {
+    "note": "These phrases signal strong ATS parsing and human appeal when used in context — not to be stuffed",
+    "impact_phrases": [
+      "reduced by X%",
+      "increased by X%",
+      "saved $X",
+      "generated $X in revenue",
+      "improved X by Y%",
+      "delivered X ahead of schedule",
+      "scaled from X to Y users",
+      "led a team of X engineers"
+    ]
+  }
+}

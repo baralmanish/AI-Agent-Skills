@@ -1,0 +1,182 @@
+{
+  "SaaS_Growth_Stage": {
+    "description": "Early-stage SaaS companies with strong growth trajectory",
+    "metrics": {
+      "magic_number": {
+        "excellent": 0.75,
+        "good": 0.5,
+        "acceptable": 0.3,
+        "formula": "(New ARR / Previous Quarter Marketing & Sales Spend) / 4"
+      },
+      "net_revenue_retention": {
+        "excellent": 125,
+        "good": 110,
+        "acceptable": 100,
+        "unit": "percent"
+      },
+      "cac_payback_months": {
+        "excellent": 12,
+        "good": 18,
+        "acceptable": 24,
+        "unit": "months"
+      },
+      "rule_of_40": {
+        "excellent": 40,
+        "good": 30,
+        "acceptable": 20,
+        "formula": "Growth% + Operating Margin%"
+      },
+      "quick_ratio": {
+        "excellent": 1.3,
+        "good": 1.0,
+        "acceptable": 0.7,
+        "formula": "(Cash + Revenue) / Burn"
+      },
+      "revenue_retention": {
+        "excellent": 95,
+        "good": 90,
+        "acceptable": 85,
+        "unit": "percent"
+      }
+    }
+  },
+  "SaaS_Mature_Stage": {
+    "description": "Established SaaS companies with slower growth, focus on profitability",
+    "metrics": {
+      "magic_number": {
+        "excellent": 0.4,
+        "good": 0.25,
+        "acceptable": 0.15,
+        "formula": "(New ARR / Previous Quarter Marketing & Sales Spend) / 4"
+      },
+      "net_revenue_retention": {
+        "excellent": 115,
+        "good": 105,
+        "acceptable": 100,
+        "unit": "percent"
+      },
+      "cac_payback_months": {
+        "excellent": 18,
+        "good": 24,
+        "acceptable": 36,
+        "unit": "months"
+      },
+      "rule_of_40": {
+        "excellent": 35,
+        "good": 25,
+        "acceptable": 15,
+        "formula": "Growth% + Operating Margin%"
+      },
+      "operating_margin": {
+        "excellent": 25,
+        "good": 15,
+        "acceptable": 5,
+        "unit": "percent"
+      }
+    }
+  },
+  "Marketplace": {
+    "description": "Marketplace or platform businesses",
+    "metrics": {
+      "take_rate": {
+        "excellent": 0.3,
+        "good": 0.2,
+        "acceptable": 0.1,
+        "unit": "percent of GMV"
+      },
+      "gmv_to_take_rate_ratio": {
+        "excellent": 3.0,
+        "good": 2.0,
+        "acceptable": 1.0,
+        "formula": "GMV / Marketing Spend"
+      },
+      "buyer_retention": {
+        "excellent": 90,
+        "good": 80,
+        "acceptable": 70,
+        "unit": "percent"
+      },
+      "supplier_retention": {
+        "excellent": 85,
+        "good": 75,
+        "acceptable": 60,
+        "unit": "percent"
+      }
+    }
+  },
+  "DTC": {
+    "description": "Direct-to-Consumer e-commerce businesses",
+    "metrics": {
+      "cac": {
+        "excellent": "Low",
+        "unit": "dollars to customer acquisition"
+      },
+      "ltv_to_cac": {
+        "excellent": 5.0,
+        "good": 3.0,
+        "acceptable": 1.5,
+        "formula": "Customer Lifetime Value / Customer Acquisition Cost"
+      },
+      "repeat_purchase_rate": {
+        "excellent": 50,
+        "good": 30,
+        "acceptable": 20,
+        "unit": "percent"
+      },
+      "gross_margin": {
+        "excellent": 60,
+        "good": 50,
+        "acceptable": 40,
+        "unit": "percent"
+      }
+    }
+  },
+  "Enterprise_SaaS": {
+    "description": "Enterprise-focused B2B SaaS",
+    "metrics": {
+      "net_revenue_retention": {
+        "excellent": 130,
+        "good": 115,
+        "acceptable": 105,
+        "unit": "percent",
+        "importance": "Very High - indicates expansion revenue"
+      },
+      "gross_margin": {
+        "excellent": 75,
+        "good": 70,
+        "acceptable": 65,
+        "unit": "percent"
+      },
+      "sales_cycle_length": {
+        "excellent": 3,
+        "good": 6,
+        "acceptable": 12,
+        "unit": "months"
+      },
+      "annual_contract_value_growth": {
+        "excellent": 30,
+        "good": 20,
+        "acceptable": 10,
+        "unit": "percent YoY"
+      },
+      "logo_retention": {
+        "excellent": 95,
+        "good": 90,
+        "acceptable": 85,
+        "unit": "percent"
+      }
+    }
+  },
+  "general": {
+    "runway": {
+      "safe": 24,
+      "caution": 12,
+      "critical": 6,
+      "unit": "months"
+    },
+    "burn_rate": {
+      "description": "Monthly cash burn (pre-profitability)",
+      "watch_for": "Acceleration in burn rate is concerning even if runway is healthy"
+    }
+  }
+}

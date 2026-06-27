@@ -1,0 +1,241 @@
+{
+  "purpose": "Comprehensive ban list for the humanizer skill. Every item in this file must be eliminated from AI-generated text during the humanization process.",
+  "usage": "In the Audit step, scan the rewritten draft against every entry in this file. In the Final Pass, replace or remove each match before delivering output.",
+
+  "banned_words": {
+    "description": "Single words that signal AI authorship. Replace with concrete, specific alternatives.",
+    "words": [
+      "delve",
+      "tapestry",
+      "vibrant",
+      "pivotal",
+      "testament",
+      "underscore",
+      "intricate",
+      "multifaceted",
+      "enhance",
+      "foster",
+      "alignment",
+      "nuanced",
+      "holistic",
+      "robust",
+      "seamless",
+      "leverage",
+      "synergy",
+      "paradigm",
+      "transformative",
+      "groundbreaking",
+      "innovative",
+      "cutting-edge",
+      "utilize",
+      "utilization",
+      "facilitate",
+      "operationalize",
+      "incentivize",
+      "ideate",
+      "iterate",
+      "scalable",
+      "actionable",
+      "impactful",
+      "game-changer",
+      "ecosystem",
+      "stakeholder",
+      "bandwidth",
+      "circle back",
+      "touch base",
+      "low-hanging fruit",
+      "move the needle",
+      "boilerplate",
+      "streamline",
+      "elevate",
+      "empower",
+      "unlock",
+      "harness",
+      "reimagine",
+      "rethink",
+      "comprehensive",
+      "myriad",
+      "plethora",
+      "dynamic",
+      "proactive",
+      "forward-thinking",
+      "thought leadership",
+      "best-in-class",
+      "world-class",
+      "state-of-the-art",
+      "value-added",
+      "mission-critical",
+      "end-to-end",
+      "deep dive",
+      "unpack",
+      "explore",
+      "journey",
+      "landscape",
+      "navigate"
+    ],
+    "common_replacements": {
+      "utilize": "use",
+      "leverage": "use / apply / build on",
+      "facilitate": "help / enable / support",
+      "enhance": "improve / strengthen / sharpen",
+      "foster": "build / encourage / develop",
+      "delve": "look at / examine / explore",
+      "intricate": "complex / detailed / involved",
+      "robust": "strong / solid / thorough",
+      "seamless": "smooth / straightforward",
+      "innovative": "new / novel / different approach",
+      "scalable": "able to grow / built for scale",
+      "actionable": "concrete / specific / practical"
+    }
+  },
+
+  "banned_phrases": {
+    "description": "Multi-word phrases that signal template-heavy AI writing. Remove or rewrite entirely.",
+    "phrases": [
+      "In today's fast-paced world",
+      "In today's rapidly evolving landscape",
+      "In this day and age",
+      "It's important to note that",
+      "It is worth noting that",
+      "It goes without saying",
+      "Needless to say",
+      "At the end of the day",
+      "When all is said and done",
+      "Last but not least",
+      "In conclusion",
+      "To summarize",
+      "In summary",
+      "To wrap up",
+      "As we have seen",
+      "As mentioned earlier",
+      "As previously discussed",
+      "First and foremost",
+      "Without further ado",
+      "I hope this finds you well",
+      "I hope this email finds you well",
+      "Feel free to reach out",
+      "Please don't hesitate to contact me",
+      "Looking forward to hearing from you",
+      "Thank you for your consideration",
+      "I would like to take this opportunity",
+      "In order to",
+      "Due to the fact that",
+      "For the purpose of",
+      "In light of the fact that",
+      "With that being said",
+      "That being said",
+      "Having said that",
+      "It should be noted that",
+      "On the other hand",
+      "From all walks of life",
+      "A wide range of",
+      "A wide variety of",
+      "A number of different",
+      "Play a crucial role",
+      "Play a vital role",
+      "Play a key role",
+      "Pave the way",
+      "Push the envelope",
+      "Think outside the box",
+      "Take it to the next level",
+      "Level up",
+      "Bring to the table",
+      "Get the ball rolling",
+      "On the same page",
+      "Raise awareness",
+      "At this juncture",
+      "In this regard"
+    ]
+  },
+
+  "grammatical_tells": {
+    "description": "Structural and grammatical patterns that reveal AI authorship. Rewrite the sentence rather than doing a find-replace.",
+    "patterns": [
+      {
+        "pattern": "Em-dash used as a stylistic separator — like this",
+        "fix": "Use a period, comma, or rewrite the sentence structure. One em-dash is acceptable; two in a paragraph is a tell."
+      },
+      {
+        "pattern": "Rule of Three: 'X, Y, and Z' groupings in every paragraph",
+        "fix": "Vary list lengths. Use 2-item lists, 4-item lists, or prose instead of constant triads."
+      },
+      {
+        "pattern": "not only... but also",
+        "fix": "Rewrite as two separate sentences or choose the stronger point."
+      },
+      {
+        "pattern": "serves as / stands as / acts as",
+        "fix": "State what it IS, not what it 'serves as'. Replace: 'it serves as a reminder' → 'it reminds us'"
+      },
+      {
+        "pattern": "This is a [adjective] example of...",
+        "fix": "Just state the example and let it speak for itself."
+      },
+      {
+        "pattern": "Perfectly parallel bullet points of identical length",
+        "fix": "Break the symmetry. Real humans write bullets of different lengths."
+      },
+      {
+        "pattern": "Starting consecutive sentences with 'This'",
+        "fix": "Name the subject specifically. 'This approach...' → 'The caching layer...' or 'It...'"
+      },
+      {
+        "pattern": "Ending paragraphs with a forward-looking summary sentence",
+        "fix": "End on a fact, observation, or implication — not a vague 'This will help achieve better outcomes.'"
+      },
+      {
+        "pattern": "Overly hedged claims: 'It could be argued that', 'One might say'",
+        "fix": "State the claim directly and own it. If uncertain, say so specifically: 'I'm not sure whether...'"
+      },
+      {
+        "pattern": "Excessive passive voice: 'It was determined that', 'Steps were taken'",
+        "fix": "Name who did what. 'The team decided' or 'We took three steps'"
+      }
+    ]
+  },
+
+  "formatting_tells": {
+    "description": "Formatting choices that make text look AI-generated at a glance. Remove all of these.",
+    "items": [
+      "Emojis in professional or analytical writing (🚀, ✅, 💡 used decoratively)",
+      "Title Case section subheadings inside prose (e.g. 'The Importance Of Clear Communication')",
+      "Bold headers inside bullet lists when bullets already have labels",
+      "Curly / smart quotes used inconsistently mixed with straight quotes",
+      "Every paragraph ending in '.' followed by a blank line with a transition sentence",
+      "Numbered lists for items that have no natural sequence",
+      "Excessive white space from double-blank-lines between every paragraph",
+      "Repeated use of 'Key takeaways:', 'In summary:', 'Important note:' callout boxes",
+      "Horizontal rules (---) between every paragraph",
+      "Section labels like 'Introduction', 'Body', 'Conclusion' that don't add value"
+    ]
+  },
+
+  "structural_boilerplate": {
+    "description": "Generic sections and frameworks that AI over-uses. Replace with content-specific structure.",
+    "sections_to_avoid": [
+      "Challenges and Future Prospects",
+      "Key Takeaways",
+      "Opportunities and Challenges",
+      "The Road Ahead",
+      "Looking Forward",
+      "Implications for the Future",
+      "What This Means for You",
+      "Final Thoughts",
+      "In Summary / Summary"
+    ],
+    "opener_patterns_to_avoid": [
+      "In the ever-evolving world of [topic]...",
+      "With the rise of [topic]...",
+      "As [topic] continues to evolve...",
+      "In recent years, [topic] has become increasingly important...",
+      "[Topic] is more important than ever before..."
+    ]
+  },
+
+  "quality_checks": {
+    "rhythmic_variety": "No more than 2 sentences of similar length in a row. Mix short punchy sentences (5–10 words) with longer ones (20–30 words).",
+    "decisive_voice": "No passive-voice hedging on the writer's own views. If the text expresses a view, own it.",
+    "grounded_clarity": "Every abstract claim must be followed by a concrete example, number, or specific detail.",
+    "data_integrity": "All statistics, dates, and facts must match the source material exactly. Never round aggressively or invent supporting data."
+  }
+}

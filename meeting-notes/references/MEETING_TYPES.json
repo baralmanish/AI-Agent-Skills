@@ -1,0 +1,156 @@
+{
+  "meeting_types": {
+    "standup": {
+      "description": "Short daily sync (5–15 min). Focus: blockers and coordination, not status reporting.",
+      "typical_duration_minutes": 15,
+      "output_format": "compressed",
+      "required_sections": ["yesterday", "today", "blockers"],
+      "skip_sections": ["decisions_log", "discussion_summary"],
+      "per_person_template": {
+        "yesterday": "What did you complete?",
+        "today": "What are you working on today?",
+        "blockers": "What is blocking you? (write 'None' if nothing)"
+      },
+      "action_item_owner_rule": "Assign blocker resolution to the person best positioned to unblock, not the blocked person.",
+      "follow_up_email": "only_if_blockers_exist"
+    },
+    "planning": {
+      "description": "Sprint, quarterly, or project planning session. Focus: scope, priorities, dependencies.",
+      "typical_duration_minutes": 60,
+      "output_format": "full",
+      "required_sections": [
+        "decisions_log",
+        "action_items",
+        "discussion_summary",
+        "open_questions"
+      ],
+      "action_item_owner_rule": "Assign to the person who accepted the task during the meeting. Mark 'TBD' if ownership was not confirmed.",
+      "deadline_default": "End of sprint or planning period",
+      "key_extractions": [
+        "scope decisions",
+        "priority stack rank",
+        "dependency mapping",
+        "resource constraints"
+      ],
+      "follow_up_email": "always"
+    },
+    "retrospective": {
+      "description": "Team reflection on what worked and what to improve. Focus: learning and process improvement.",
+      "typical_duration_minutes": 60,
+      "output_format": "full",
+      "required_sections": [
+        "what_went_well",
+        "what_to_improve",
+        "action_items",
+        "decisions_log"
+      ],
+      "retro_sections": {
+        "what_went_well": "Positive outcomes, behaviors, and practices to continue",
+        "what_to_improve": "Issues, friction, and areas needing change",
+        "experiments_to_try": "Specific, time-boxed process changes to test next sprint"
+      },
+      "action_item_owner_rule": "Each improvement item must have exactly one owner. If none is identified, flag as 'Needs owner' and escalate.",
+      "tone_guidance": "Non-judgmental, forward-looking. Avoid naming individuals negatively in summaries.",
+      "follow_up_email": "always"
+    },
+    "client_call": {
+      "description": "External call with customer, prospect, or partner. Focus: relationship, commitments, and follow-through.",
+      "typical_duration_minutes": 45,
+      "output_format": "full",
+      "required_sections": [
+        "decisions_log",
+        "action_items",
+        "discussion_summary",
+        "commitments_made"
+      ],
+      "special_sections": {
+        "commitments_made": "Any promise made to the client — product deliverables, timelines, follow-ups, pricing",
+        "next_steps_external": "What the client agreed to do (send documents, make introductions, etc.)"
+      },
+      "sensitivity_note": "Do not include internal pricing strategy, internal escalations, or competitive commentary in external follow-up emails.",
+      "action_item_owner_rule": "Split action items into 'Our team' and 'Client' tables.",
+      "follow_up_email": "always — send within 24 hours of call"
+    },
+    "executive_sync": {
+      "description": "Leadership alignment meeting. Focus: decisions, escalations, and strategic direction.",
+      "typical_duration_minutes": 30,
+      "output_format": "executive_brief",
+      "required_sections": ["decisions_log", "action_items", "open_questions"],
+      "brevity_rule": "Executive sync summaries should be scannable in under 2 minutes. Use headlines, not paragraphs.",
+      "decision_log_priority": "Critical — every decision must be captured with the decision-maker's name.",
+      "action_item_owner_rule": "All action items must have a named owner and a hard deadline.",
+      "follow_up_email": "only_if_action_items_exist"
+    },
+    "all_hands": {
+      "description": "Company-wide or team-wide meeting. Focus: announcements, alignment, Q&A.",
+      "typical_duration_minutes": 60,
+      "output_format": "full",
+      "required_sections": [
+        "announcements",
+        "decisions_log",
+        "qa_highlights",
+        "action_items"
+      ],
+      "special_sections": {
+        "announcements": "Key company news, org changes, product launches, policy updates",
+        "qa_highlights": "Significant questions raised and answers given (anonymize if appropriate)"
+      },
+      "action_item_owner_rule": "All-hands action items are typically owned by leadership; document with name and ETA.",
+      "follow_up_email": "always — share recording link if available"
+    },
+    "one_on_one": {
+      "description": "Manager-direct or peer sync. Focus: development, feedback, blockers, and alignment.",
+      "typical_duration_minutes": 30,
+      "output_format": "private_summary",
+      "required_sections": [
+        "discussion_topics",
+        "action_items",
+        "open_questions"
+      ],
+      "privacy_note": "1:1 summaries are private — do not generate follow-up emails for distribution.",
+      "key_extractions": [
+        "career development topics",
+        "feedback given/received",
+        "blockers raised",
+        "goals progress"
+      ],
+      "action_item_owner_rule": "Split into 'manager actions' and 'direct report actions'.",
+      "follow_up_email": "never_for_distribution — personal notes only"
+    }
+  },
+  "priority_rules": {
+    "High": "Blocks another person or team from proceeding; must be resolved before next work session",
+    "Medium": "Important for on-time delivery but does not block others today",
+    "Low": "Nice to have or background task; no immediate downstream impact"
+  },
+  "deadline_inference_rules": {
+    "no_deadline_stated": "Default to 'End of this week (EOW)'",
+    "asap_or_urgent": "Default to 'Tomorrow EOD'",
+    "next_sprint": "Label as 'Next Sprint Start'",
+    "before_next_meeting": "Label with the next known meeting date if determinable"
+  },
+  "owner_inference_rules": [
+    "Use the last person who spoke about or agreed to the task in the notes",
+    "If multiple people are mentioned, assign to the most senior or domain-responsible person",
+    "If the task was volunteered by someone, assign it to them",
+    "If ownership is completely ambiguous, mark as 'TBD' and flag explicitly"
+  ],
+  "follow_up_email_rules": {
+    "always_include": [
+      "TL;DR paragraph",
+      "Decisions made",
+      "Action items table",
+      "Next meeting date if known"
+    ],
+    "subject_format": "[Meeting Type] — [Date] Summary & Action Items",
+    "send_within": "24 hours of meeting end",
+    "tone_by_type": {
+      "standup": "brief and factual",
+      "planning": "collaborative and forward-looking",
+      "retrospective": "reflective and constructive",
+      "client_call": "professional and prompt — include commitment tracking",
+      "executive_sync": "concise and direct — executives scan, not read",
+      "all_hands": "informative and inclusive — link to recording"
+    }
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "formality_scale": {
+    "very_formal": {
+      "level": 1,
+      "examples": ["Dear [Name],", "I am writing to..."],
+      "use_when": "Speaking to C-suite, legal matters, first contact with authority figure",
+      "greetings": ["Dear [Name]", "Good morning [Name]"],
+      "closings": ["Sincerely", "Respectfully", "Best regards"],
+      "contractions": false,
+      "exclamation_points": 0,
+      "emojis": false,
+      "sentence_structure": "Complex, formal"
+    },
+    "professional": {
+      "level": 2,
+      "examples": ["Hi [Name],", "I wanted to share..."],
+      "use_when": "Most business communication, upward to manager, first-time contacts",
+      "greetings": ["Hi [Name]", "Hello [Name]"],
+      "closings": ["Best", "Best regards", "Warm regards"],
+      "contractions": true,
+      "exclamation_points": 1,
+      "emojis": false,
+      "sentence_structure": "Mixed - some complex, some simple"
+    },
+    "warm_professional": {
+      "level": 3,
+      "examples": ["Hi [Name]!", "Hope you're doing well..."],
+      "use_when": "Colleagues you know well, established relationships, networking",
+      "greetings": ["Hi [Name]!", "Hey [Name]"],
+      "closings": ["Cheers", "Thanks", "Looking forward"],
+      "contractions": true,
+      "exclamation_points": "1-2",
+      "emojis": "Rare (maybe 1)",
+      "sentence_structure": "Conversational but clear"
+    },
+    "casual": {
+      "level": 4,
+      "examples": ["Hey [Name]", "Wanted to pick your brain..."],
+      "use_when": "Close peers, friends in professional setting, internal team",
+      "greetings": ["Hey", "Hi there"],
+      "closings": ["Talk soon", "Chat later", "Catch you"],
+      "contractions": true,
+      "exclamation_points": "2-3",
+      "emojis": "1-2",
+      "sentence_structure": "Conversational, less formal"
+    },
+    "very_casual": {
+      "level": 5,
+      "examples": ["Yo", "What's up..."],
+      "use_when": "Very close collaborators, friend-like relationships, internal culture allows it",
+      "greetings": ["Yo", "What's up"],
+      "closings": ["Later", "Catch you soon"],
+      "contractions": true,
+      "exclamation_points": "3+",
+      "emojis": "2-3",
+      "sentence_structure": "Very conversational"
+    }
+  },
+  "emotional_tones": {
+    "urgent": {
+      "use_when": "Time-sensitive matter, deadline approaching, immediate action needed",
+      "markers": ["ASAP", "by [date]", "urgent", "quickly", "need your help"],
+      "avoid": ["lengthy explanations", "casual tone", "multiple asks"],
+      "opening": "Lead with deadline/urgency upfront"
+    },
+    "grateful": {
+      "use_when": "Thank yous, recognitions, appreciating someone's help",
+      "markers": ["grateful", "appreciate", "thanks", "because of you"],
+      "avoid": ["being generic", "not specific enough"],
+      "opening": "Name the specific thing you're thankful for"
+    },
+    "earnest": {
+      "use_when": "Genuine conversations, sincere requests, real interest",
+      "markers": ["genuinely", "really", "honestly", "I believe"],
+      "avoid": ["sales language", "jargon", "dishonesty"],
+      "opening": "Be direct about why you're reaching out"
+    },
+    "enthusiastic": {
+      "use_when": "Announcements, exciting news, course launches, celebrations",
+      "markers": ["excited", "thrilled", "can't wait", "amazing"],
+      "avoid": ["overdoing it", "all caps", "too many exclamation marks"],
+      "opening": "Lead with the benefit or exciting news"
+    },
+    "neutral": {
+      "use_when": "Informational emails, status updates, routine communication",
+      "markers": ["informing", "sharing", "updating"],
+      "avoid": ["emotional language", "opinion"],
+      "opening": "State the purpose clearly"
+    },
+    "empathetic": {
+      "use_when": "Support emails, apologies, difficult situations, customer issues",
+      "markers": ["understand", "frustrating", "I get it", "I hear you"],
+      "avoid": ["dismissing feelings", "being too cheerful", "rushing to fix"],
+      "opening": "Acknowledge their situation first"
+    },
+    "firm": {
+      "use_when": "Setting boundaries, saying no, redirecting, enforcing policy",
+      "markers": ["clearly", "need to", "cannot", "must"],
+      "avoid": ["being harsh", "no empathy", "unclear reasoning"],
+      "opening": "Be direct but kind"
+    },
+    "collaborative": {
+      "use_when": "Team communication, partnership proposals, collaborative asks",
+      "markers": ["together", "let's", "collaboration", "partnership"],
+      "avoid": ["demanding tone", "blame", "one-sidedness"],
+      "opening": "Frame as mutual benefit"
+    }
+  },
+  "recipient_types": {
+    "executive_busy": {
+      "what_they_care_about": [
+        "Results",
+        "metrics",
+        "timeline",
+        "risk mitigation"
+      ],
+      "how_they_consume": "Bullet points, headlines first",
+      "length_preference": "Brief (3-5 sentences optimal)",
+      "structure": [
+        "Headline",
+        "Status",
+        "Key metrics",
+        "Next steps",
+        "What I need from you"
+      ],
+      "tone": "Professional, concise",
+      "mistakes_to_avoid": [
+        "Long narrative",
+        "too much context",
+        "unclear ask",
+        "No CTA"
+      ]
+    },
+    "peer_equal": {
+      "what_they_care_about": ["Collaboration", "mutual benefit", "respect"],
+      "how_they_consume": "Conversational, mixed format",
+      "length_preference": "Medium (2-3 paragraphs)",
+      "structure": [
+        "Friendly opening",
+        "Purpose",
+        "Benefit to them",
+        "Clear ask"
+      ],
+      "tone": "Warm professional or casual",
+      "mistakes_to_avoid": [
+        "Being too formal",
+        "unclear benefit to them",
+        "demanding tone"
+      ]
+    },
+    "new_contact": {
+      "what_they_care_about": [
+        "Relevance",
+        "credibility",
+        "respect of their time"
+      ],
+      "how_they_consume": "Specific, benefit-focused",
+      "length_preference": "Brief to medium (2 paragraphs)",
+      "structure": [
+        "Personalized opener",
+        "Why you're reaching out",
+        "What you want",
+        "Easy yes"
+      ],
+      "tone": "Warm, genuine, professional",
+      "mistakes_to_avoid": [
+        "Generic opening",
+        "long-winded",
+        "unclear value proposition"
+      ]
+    },
+    "direct_report": {
+      "what_they_care_about": ["Clear expectations", "feedback", "support"],
+      "how_they_consume": "Direct with context",
+      "length_preference": "Medium (paragraph+ any detail they need)",
+      "structure": [
+        "Clear expectation",
+        "Reasoning",
+        "Support offered",
+        "Timeline"
+      ],
+      "tone": "Professional but approachable",
+      "mistakes_to_avoid": [
+        "Vague feedback",
+        "no support offered",
+        "unclear expectations"
+      ]
+    },
+    "customer_client": {
+      "what_they_care_about": ["Solution", "timeline", "their success"],
+      "how_they_consume": "Clear, action-oriented",
+      "length_preference": "Medium (2-3 paragraphs)",
+      "structure": [
+        "Acknowledgment",
+        "Solution",
+        "Timeline",
+        "How you'll help",
+        "Next step"
+      ],
+      "tone": "Empathetic, solution-focused",
+      "mistakes_to_avoid": [
+        "Making excuses",
+        "being defensive",
+        "unclear next step"
+      ]
+    },
+    "old_friend": {
+      "what_they_care_about": [
+        "Genuine connection",
+        "mutual benefit",
+        "shared history"
+      ],
+      "how_they_consume": "Conversational, personal",
+      "length_preference": "Medium to long",
+      "structure": [
+        "Personal opener",
+        "What you've been up to",
+        "Why you're reaching out",
+        "Specific ask"
+      ],
+      "tone": "Casual, warm, genuine",
+      "mistakes_to_avoid": [
+        "Too formal",
+        "purely transactional",
+        "not acknowledging history"
+      ]
+    }
+  },
+  "common_mistakes": {
+    "unclear_cta": {
+      "mistake": "Reader doesn't know what you want them to do",
+      "example": "Would love to catch up sometime!",
+      "fix": "Would you have 30 minutes for coffee next week? I'm free Tuesday-Thursday afternoons."
+    },
+    "generic_opening": {
+      "mistake": "Opening could apply to anyone",
+      "example": "I really admire your work",
+      "fix": "Your talk on AI agents in customer service changed how I'm thinking about this problem"
+    },
+    "burying_the_lede": {
+      "mistake": "Important info is in paragraph 3",
+      "example": "[Long story], oh and by the way, we need approval by Friday",
+      "fix": "We need board approval by Friday. Here's the situation..."
+    },
+    "too_many_asks": {
+      "mistake": "Multiple asks in one email = lower response rate",
+      "example": "Can you also send me that report? And introduce me to [Person]? And review this draft?",
+      "fix": "One email per ask. Prioritize what's most important."
+    },
+    "unclear_deadline": {
+      "mistake": "Reader doesn't know when you need a response",
+      "example": "Let me know what you think",
+      "fix": "Can you get back to me by EOD Thursday?"
+    },
+    "defensive_tone_in_apology": {
+      "mistake": "Over-explaining or excusing behavior",
+      "example": "I apologize but I was really busy that day",
+      "fix": "I apologize for missing that deadline. I should have communicated sooner."
+    },
+    "vague_in_proposal": {
+      "mistake": "Reader doesn't understand what you're proposing",
+      "example": "Would love to explore a partnership",
+      "fix": "I think we could create value by [specific idea]. Specifically, we'd [concrete outcome]."
+    },
+    "wrong_formality_level": {
+      "mistake": "Too formal with close colleague or too casual with executive",
+      "example": "Submitting formal memo to close teammate",
+      "fix": "Match tone to relationship"
+    },
+    "no_acknowledgment_of_recipient": {
+      "mistake": "Email is all about you, nothing about them",
+      "example": "Here's what I want to talk about...",
+      "fix": "I know you're working on X. I think we could solve Y together."
+    },
+    "wall_of_text": {
+      "mistake": "No structure, hard to scan",
+      "example": "Long paragraph covering 3 topics",
+      "fix": "Use bullets, headers, short paragraphs"
+    }
+  }
+}

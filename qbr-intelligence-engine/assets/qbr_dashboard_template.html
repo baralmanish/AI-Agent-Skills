@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBR Intelligence Dashboard - Template</title>
+    <link rel="stylesheet" href="dashboard_theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-header">
+        <h1>Quarterly Business Review (QBR) - [COMPANY NAME]</h1>
+        <p>[QUARTER/YEAR] | Strategic Performance & Forward Outlook</p>
+    </div>
+
+    <div class="container">
+        <!-- KEY METRICS SECTION -->
+        <section class="kpi-grid">
+            <div class="kpi-card status-positive">
+                <div class="kpi-label">Total Revenue (ARR)</div>
+                <div class="kpi-value">$[VALUE]</div>
+                <div class="kpi-change positive">↑ [X]% QoQ</div>
+            </div>
+
+            <div class="kpi-card status-positive">
+                <div class="kpi-label">Total Customers</div>
+                <div class="kpi-value">[NUMBER]</div>
+                <div class="kpi-change positive">↑ [X]% QoQ</div>
+            </div>
+
+            <div class="kpi-card status-positive">
+                <div class="kpi-label">Net Revenue Retention</div>
+                <div class="kpi-value">[VALUE]%</div>
+                <div class="kpi-change positive">↑ [X]% pts</div>
+            </div>
+
+            <div class="kpi-card status-warning">
+                <div class="kpi-label">Monthly Burn Rate</div>
+                <div class="kpi-value">$[VALUE]</div>
+                <div class="kpi-change negative">↑ [X]% from last Q</div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-label">Runway Remaining</div>
+                <div class="kpi-value">[X] months</div>
+                <div class="kpi-change">Next funding round planned in [X] months</div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="kpi-label">Gross Margin</div>
+                <div class="kpi-value">[VALUE]%</div>
+                <div class="kpi-change positive">↑ [X]% vs target</div>
+            </div>
+        </section>
+
+        <!-- FINANCIAL PERFORMANCE CHARTS -->
+        <section class="chart-container">
+            <h2 class="chart-title">Revenue Trend & Forecast</h2>
+            <div class="chart-placeholder">
+                [REVENUE TREND CHART - Line chart showing historical revenue by quarter + 2-quarter forecast with upside/base/downside scenarios]
+            </div>
+        </section>
+
+        <section class="chart-container">
+            <h2 class="chart-title">Unit Economics</h2>
+            <div class="chart-placeholder">
+                [UNIT ECONOMICS CHART - CAC, LTV, payback period, LTV:CAC ratio visualization]
+            </div>
+        </section>
+
+        <!-- CUSTOMER METRICS -->
+        <section class="chart-container">
+            <h2 class="chart-title">Customer Health Dashboard</h2>
+            <div class="chart-placeholder">
+                [CUSTOMER METRICS - NRR by cohort, churn rate trend, customer acquisition by source]
+            </div>
+        </section>
+
+        <!-- RISK ASSESSMENT -->
+        <section class="risk-matrix">
+            <h2 class="chart-title">Risk Assessment & Mitigation</h2>
+            
+            <div class="risk-grid">
+                <div class="risk-card critical">
+                    <div class="risk-title">[RISK 1 NAME]</div>
+                    <div class="risk-description">[Brief description of risk]</div>
+                    <div class="risk-score">Score: [X]/10</div>
+                    <p style="margin-top: 10px; font-size: 0.85em;">
+                        <strong>Mitigation:</strong> [Brief action steps]
+                    </p>
+                </div>
+
+                <div class="risk-card high">
+                    <div class="risk-title">[RISK 2 NAME]</div>
+                    <div class="risk-description">[Brief description of risk]</div>
+                    <div class="risk-score">Score: [X]/10</div>
+                    <p style="margin-top: 10px; font-size: 0.85em;">
+                        <strong>Mitigation:</strong> [Brief action steps]
+                    </p>
+                </div>
+
+                <div class="risk-card medium">
+                    <div class="risk-title">[RISK 3 NAME]</div>
+                    <div class="risk-description">[Brief description of risk]</div>
+                    <div class="risk-score">Score: [X]/10</div>
+                    <p style="margin-top: 10px; font-size: 0.85em;">
+                        <strong>Mitigation:</strong> [Brief action steps]
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STRATEGIC RECOMMENDATIONS -->
+        <section class="recommendations">
+            <h2>Strategic Recommendations for Q[X] 2026</h2>
+
+            <div class="recommendation-item">
+                <span class="recommendation-priority p1">P1</span>
+                <div class="recommendation-title">[RECOMMENDATION 1 - High Priority]</div>
+                <div class="recommendation-description">[Description of what to do and why]</div>
+                <div class="recommendation-metrics">
+                    <span><strong>Impact:</strong> [X]%</span>
+                    <span><strong>Effort:</strong> [Team size]</span>
+                    <span><strong>Timeline:</strong> [Weeks]</span>
+                </div>
+            </div>
+
+            <div class="recommendation-item">
+                <span class="recommendation-priority p1">P1</span>
+                <div class="recommendation-title">[RECOMMENDATION 2 - High Priority]</div>
+                <div class="recommendation-description">[Description of what to do and why]</div>
+                <div class="recommendation-metrics">
+                    <span><strong>Impact:</strong> [X]%</span>
+                    <span><strong>Effort:</strong> [Team size]</span>
+                    <span><strong>Timeline:</strong> [Weeks]</span>
+                </div>
+            </div>
+
+            <div class="recommendation-item">
+                <span class="recommendation-priority p2">P2</span>
+                <div class="recommendation-title">[RECOMMENDATION 3 - Medium Priority]</div>
+                <div class="recommendation-description">[Description of what to do and why]</div>
+                <div class="recommendation-metrics">
+                    <span><strong>Impact:</strong> [X]%</span>
+                    <span><strong>Effort:</strong> [Team size]</span>
+                    <span><strong>Timeline:</strong> [Weeks]</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORECAST TABLE -->
+        <section class="chart-container">
+            <h2 class="chart-title">12-Month Financial Forecast</h2>
+            <table class="forecast-table">
+                <thead>
+                    <tr>
+                        <th>Period</th>
+                        <th>Revenue (Downside)</th>
+                        <th>Revenue (Base)</th>
+                        <th>Revenue (Upside)</th>
+                        <th>Margin %</th>
+                        <th>Runway (months)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="metric">Q3 2026E</td>
+                        <td>$[X]</td>
+                        <td>$[X]</td>
+                        <td>$[X]</td>
+                        <td>[X]%</td>
+                        <td>[X] months</td>
+                    </tr>
+                    <tr>
+                        <td class="metric">Q4 2026E</td>
+                        <td>$[X]</td>
+                        <td>$[X]</td>
+                        <td>$[X]</td>
+                        <td>[X]%</td>
+                        <td>[X] months</td>
+                    </tr>
+                    <tr>
+                        <td class="metric">Q1 2027E</td>
+                        <td>$[X]</td>
+                        <td>$[X]</td>
+                        <td>$[X]</td>
+                        <td>[X]%</td>
+                        <td>[X] months</td>
+                    </tr>
+                    <tr>
+                        <td class="metric">Q2 2027E</td>
+                        <td>$[X]</td>
+                        <td>$[X]</td>
+                        <td>$[X]</td>
+                        <td>[X]%</td>
+                        <td>[X] months</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- EXECUTIVE SUMMARY -->
+        <section class="chart-container">
+            <h2 class="chart-title">Key Takeaways</h2>
+            <div style="padding: 20px; background: #f0f8ff; border-radius: 4px;">
+                <p style="margin-bottom: 15px; line-height: 1.8;">
+                    <strong>Quarter Headline:</strong> [One sentence capturing quarter performance and outlook]
+                </p>
+                <p style="margin-bottom: 15px; line-height: 1.8;">
+                    <strong>Key Wins:</strong> [1-3 bullets of major accomplishments]
+                </p>
+                <p style="margin-bottom: 15px; line-height: 1.8;">
+                    <strong>Challenges:</strong> [1-3 bullets of major issues/headwinds]
+                </p>
+                <p style="line-height: 1.8;">
+                    <strong>Board Focus Areas:</strong> [2-3 critical decisions or topics requiring board attention]
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="dashboard-footer">
+        <p>QBR Dashboard Generated: [DATE] | Confidential - Board Only</p>
+    </div>
+
+    <script>
+        // Example: You can add interactivity here
+        // Charts can be rendered using Chart.js or similar
+        console.log('QBR Dashboard Template Loaded');
+    </script>
+</body>
+</html>

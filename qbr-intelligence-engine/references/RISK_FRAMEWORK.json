@@ -1,0 +1,241 @@
+{
+  "risk_scoring_framework": {
+    "scale": "1-10 (1=minimal risk, 10=critical)",
+    "severity_levels": {
+      "critical": {
+        "range": "8-10",
+        "action": "Requires immediate board attention and contingency planning"
+      },
+      "high": {
+        "range": "6-7",
+        "action": "Significant impact if realized; needs active mitigation"
+      },
+      "medium": {
+        "range": "4-5",
+        "action": "Should be monitored; mitigation plan recommended"
+      },
+      "low": {
+        "range": "1-3",
+        "action": "Monitor but not urgent"
+      }
+    }
+  },
+  "risk_categories": {
+    "customer_concentration": {
+      "description": "Revenue dependency on too few customers",
+      "scoring_factors": {
+        "top_1_customer_percent": {
+          "rule": "if > 40%, score = 9; if > 25%, score = 7; if > 15%, score = 5"
+        },
+        "top_5_customers_percent": {
+          "rule": "if > 70%, score += 1; if > 80%, score += 2"
+        },
+        "herfindahl_index": {
+          "rule": "if > 0.3, score = 9; if > 0.15, score = 6"
+        }
+      },
+      "red_flags": [
+        "Top customer > 30% of revenue",
+        "Top 5 customers > 70% of revenue",
+        "Customer concentration increasing QoQ"
+      ],
+      "mitigation_timeline": "8-12 weeks",
+      "leading_indicators": [
+        "new_customer_bookings",
+        "revenue_diversification_trend",
+        "customer_concentration_herfindahl"
+      ]
+    },
+    "retention_and_churn": {
+      "description": "Risk of customer loss or declining retention",
+      "scoring_factors": {
+        "monthly_churn_rate": {
+          "rule": "if > 5%, score = 9; if > 3%, score = 7; if > 1.5%, score = 5"
+        },
+        "nrr_trend": {
+          "rule": "if declining, score += 3; if stagnant, score += 1"
+        },
+        "customer_satisfaction": {
+          "rule": "if NPS < 30, score += 2; if CSAT < 70%, score += 2"
+        }
+      },
+      "red_flags": [
+        "Monthly churn > 3%",
+        "NRR declining for 2+ quarters",
+        "NPS < 40",
+        "Customer support tickets increasing"
+      ],
+      "mitigation_timeline": "4-8 weeks",
+      "leading_indicators": [
+        "monthly_churn_rate",
+        "nrr",
+        "customer_nps",
+        "feature_adoption",
+        "support_ticket_volume"
+      ]
+    },
+    "financing_and_runway": {
+      "description": "Insufficient capital to reach next milestone",
+      "scoring_factors": {
+        "runway_months": {
+          "rule": "if < 6, score = 10; if < 12, score = 8; if < 18, score = 6"
+        },
+        "burn_rate_trend": {
+          "rule": "if accelerating, score += 2; if stable, score += 1"
+        },
+        "profitability_trajectory": {
+          "rule": "if path to profitability unclear, score += 2"
+        }
+      },
+      "red_flags": [
+        "Runway < 12 months",
+        "Monthly burn increasing",
+        "No clear path to profitability",
+        "Cannot raise capital at current valuation"
+      ],
+      "mitigation_timeline": "4-16 weeks (depending on urgency)",
+      "leading_indicators": [
+        "cash_position",
+        "monthly_burn_rate",
+        "burn_rate_trend",
+        "path_to_profitability"
+      ]
+    },
+    "execution_and_performance": {
+      "description": "Inability to execute on strategic plans",
+      "scoring_factors": {
+        "okr_completion": {
+          "rule": "if < 50% complete by mid-quarter, score = 9; if < 70%, score = 6"
+        },
+        "headcount_plan_actual": {
+          "rule": "if 50%+ behind hiring plan, score = 7"
+        },
+        "product_velocity": {
+          "rule": "if declining, score += 2"
+        }
+      },
+      "red_flags": [
+        "OKRs < 50% complete by end of quarter",
+        "Product releases delayed",
+        "Engineering team turnover"
+      ],
+      "mitigation_timeline": "2-4 weeks",
+      "leading_indicators": [
+        "okr_completion_percent",
+        "sprint_velocity",
+        "headcount_hiring_plan_vs_actual",
+        "engineering_turnover"
+      ]
+    },
+    "market_and_competition": {
+      "description": "Market shifts or increased competition",
+      "scoring_factors": {
+        "competitive_pressure": {
+          "rule": "if new major competitor entering, score = 7; if existing competitor gaining share, score = 5"
+        },
+        "win_rate_trend": {
+          "rule": "if declining, score += 2"
+        },
+        "addressable_market": {
+          "rule": "if shrinking, score += 3"
+        }
+      },
+      "red_flags": [
+        "Win rate declining 10%+ QoQ",
+        "Major new competitor with better features/pricing",
+        "Market adoption slower than expected"
+      ],
+      "mitigation_timeline": "8-12 weeks",
+      "leading_indicators": [
+        "win_rate",
+        "pricing_changes_by_competitors",
+        "market_adoption_rate",
+        "customer_win_loss_analysis"
+      ]
+    },
+    "talent_and_organization": {
+      "description": "Key talent loss or inability to attract/retain",
+      "scoring_factors": {
+        "turnover_rate": {
+          "rule": "if > 5% quarterly, score = 8; if > 2%, score = 5"
+        },
+        "open_headcount": {
+          "rule": "if > 15% of plan, score = 6"
+        },
+        "key_person_dependency": {
+          "rule": "if any function has > 50% key person dependency, score = 7"
+        }
+      },
+      "red_flags": [
+        "Loss of key executive or engineer",
+        "Turnover > 5% in one quarter",
+        "Open positions unfilled for > 12 weeks"
+      ],
+      "mitigation_timeline": "4-8 weeks",
+      "leading_indicators": [
+        "turnover_rate",
+        "open_headcount_percent",
+        "time_to_hire",
+        "key_person_dependencies"
+      ]
+    },
+    "product_market_fit": {
+      "description": "Declining adoption, engagement, or product-market fit signals",
+      "scoring_factors": {
+        "dau_trend": {
+          "rule": "if declining, score = 8"
+        },
+        "feature_adoption": {
+          "rule": "if <30% adoption of core features, score += 2"
+        },
+        "nps_score": {
+          "rule": "if < 30, score = 7; if < 50, score = 5"
+        }
+      },
+      "red_flags": [
+        "DAU/MAU declining",
+        "Feature adoption < 30%",
+        "Net Promoter Score < 40"
+      ],
+      "mitigation_timeline": "8-12 weeks",
+      "leading_indicators": [
+        "daily_active_users",
+        "feature_adoption_percent",
+        "nps_score",
+        "session_duration"
+      ]
+    }
+  },
+  "risk_matrix": {
+    "description": "Probability × Impact Matrix",
+    "probability_scale": {
+      "high": "Likely to occur (> 50% chance)",
+      "medium": "Possible (25-50% chance)",
+      "low": "Unlikely (< 25% chance)"
+    },
+    "impact_scale": {
+      "critical": "Would materially impact business viability",
+      "significant": "Would impact quarterly results significantly",
+      "moderate": "Would require response but manageable",
+      "minimal": "Limited impact on business"
+    }
+  },
+  "escalation_criteria": {
+    "immediate_board_escalation": [
+      "Any risk scored 9-10 (critical)",
+      "Multiple risks scored 7-8 (high)",
+      "Runway dropping below 9 months",
+      "Key executive departure",
+      "Material customer churn event"
+    ],
+    "weekly_exec_review": [
+      "Any risk scored 6-8 (high)",
+      "Leading indicators showing deterioration",
+      "Contingency plan activation"
+    ],
+    "monitor_trend": [
+      "Risks scored 4-5 (medium)",
+      "Watch for inflection points"
+    ]
+  }
+}

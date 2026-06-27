@@ -1,0 +1,235 @@
+{
+  "purpose": "Language-specific dangerous code patterns for the code-reviewer skill. Each entry maps to a severity level and a safe alternative.",
+  "languages": {
+    "python": {
+      "critical": [
+        {
+          "pattern": "eval(",
+          "description": "Executes arbitrary Python code from a string. If user input reaches this, it's Remote Code Execution.",
+          "safe_alternative": "Use ast.literal_eval() for parsing literals, or redesign to avoid dynamic execution."
+        },
+        {
+          "pattern": "exec(",
+          "description": "Same risk as eval() — arbitrary code execution.",
+          "safe_alternative": "Restructure code to avoid dynamic execution. Consider a whitelist-based dispatch pattern."
+        },
+        {
+          "pattern": "pickle.loads(",
+          "description": "Deserializes arbitrary Python objects. Malicious pickle data executes code on load.",
+          "safe_alternative": "Use json.loads() for data exchange. If pickle is required internally, never deserialize data from untrusted sources."
+        },
+        {
+          "pattern": "marshal.loads(",
+          "description": "Same risk as pickle — arbitrary code execution on load.",
+          "safe_alternative": "Use JSON or MessagePack for serialization."
+        },
+        {
+          "pattern": "subprocess.run(shell=True",
+          "description": "Passes the command to the shell interpreter. User input in the command → shell injection.",
+          "safe_alternative": "Pass command as a list: subprocess.run(['ls', '-la', path]) — never with shell=True when any part comes from user input."
+        },
+        {
+          "pattern": "os.system(",
+          "description": "Runs a shell command. Any user-controlled input → shell injection.",
+          "safe_alternative": "Use subprocess.run() with a list argument and shell=False."
+        },
+        {
+          "pattern": "yaml.load(",
+          "description": "Default YAML loader can instantiate arbitrary Python objects via !!python/object tags.",
+          "safe_alternative": "Always use yaml.safe_load() for untrusted input."
+        }
+      ],
+      "high": [
+        {
+          "pattern": "__import__(",
+          "description": "Dynamic imports can be abused to load arbitrary modules if user controls the argument.",
+          "safe_alternative": "Use explicit static imports. If dynamic loading is needed, use importlib with a strict module allowlist."
+        },
+        {
+          "pattern": "open(request",
+          "description": "User-supplied path passed to open() — path traversal risk.",
+          "safe_alternative": "Resolve path with os.path.realpath() and verify it starts with an expected base directory."
+        },
+        {
+          "pattern": "requests.get(url, verify=False",
+          "description": "Disables SSL certificate verification — enables man-in-the-middle attacks.",
+          "safe_alternative": "Remove verify=False. If using a self-signed cert, pass verify='/path/to/cert.pem'."
+        },
+        {
+          "pattern": "random.random()",
+          "description": "Python's random module is not cryptographically secure. Do not use for tokens, nonces, or secrets.",
+          "safe_alternative": "Use secrets.token_urlsafe() or secrets.token_hex() for security-sensitive randomness."
+        },
+        {
+          "pattern": "hashlib.md5(",
+          "description": "MD5 is cryptographically broken — do not use for passwords or integrity verification.",
+          "safe_alternative": "Use hashlib.sha256() or hashlib.sha3_256() for integrity. Use bcrypt/argon2 for passwords."
+        },
+        {
+          "pattern": "hashlib.sha1(",
+          "description": "SHA-1 is collision-vulnerable and deprecated for security use.",
+          "safe_alternative": "Use SHA-256 or SHA-3 for hashing. Use bcrypt/argon2/scrypt for passwords."
+        }
+      ],
+      "medium": [
+        {
+          "pattern": "except Exception: pass",
+          "description": "Silently swallows all exceptions — hides bugs and prevents proper error handling.",
+          "safe_alternative": "Catch specific exceptions. Log unexpected errors. Never use bare pass in security-sensitive paths."
+        },
+        {
+          "pattern": "assert ",
+          "description": "assert statements are removed when Python runs with -O flag. Never use for security checks.",
+          "safe_alternative": "Use explicit if/raise for security-relevant validation."
+        },
+        {
+          "pattern": "print(password",
+          "description": "Logging passwords or tokens to stdout leaks sensitive data.",
+          "safe_alternative": "Redact sensitive fields before logging. Use structured logging with explicit field exclusions."
+        }
+      ]
+    },
+    "javascript_typescript": {
+      "critical": [
+        {
+          "pattern": "eval(",
+          "description": "Executes arbitrary JavaScript from a string. If user input reaches this, it's XSS or RCE.",
+          "safe_alternative": "Remove eval(). Use JSON.parse() for data, explicit function dispatch for logic."
+        },
+        {
+          "pattern": "new Function(",
+          "description": "Equivalent to eval() — executes arbitrary code from a string.",
+          "safe_alternative": "Eliminate dynamic code construction. Use static functions or a dispatch table."
+        },
+        {
+          "pattern": "innerHTML",
+          "description": "Setting innerHTML with user-controlled data enables DOM-based XSS.",
+          "safe_alternative": "Use textContent for plain text. Use DOMPurify.sanitize() if HTML is required."
+        },
+        {
+          "pattern": "dangerouslySetInnerHTML",
+          "description": "React's escape hatch for raw HTML — dangerous if content is user-supplied.",
+          "safe_alternative": "Use a sanitization library like DOMPurify before passing to dangerouslySetInnerHTML."
+        },
+        {
+          "pattern": "child_process.exec(",
+          "description": "Executes shell commands. User input in the command → shell injection.",
+          "safe_alternative": "Use child_process.execFile() or spawn() with argument arrays, never shell string construction."
+        }
+      ],
+      "high": [
+        {
+          "pattern": "document.write(",
+          "description": "Can inject arbitrary HTML/script content — XSS risk.",
+          "safe_alternative": "Use DOM manipulation methods (createElement, appendChild) instead."
+        },
+        {
+          "pattern": "location.href = req",
+          "description": "Open redirect — user-controlled URL in redirect enables phishing.",
+          "safe_alternative": "Validate redirect targets against an allowlist of permitted domains."
+        },
+        {
+          "pattern": "Math.random()",
+          "description": "Not cryptographically secure. Do not use for tokens, session IDs, or nonces.",
+          "safe_alternative": "Use crypto.getRandomValues() (browser) or crypto.randomBytes() (Node.js)."
+        },
+        {
+          "pattern": "prototype pollution",
+          "description": "Merging user objects without hasOwnProperty check can pollute Object.prototype.",
+          "safe_alternative": "Use Object.assign with null prototype objects. Validate keys before merge. Use lodash's _.merge() carefully."
+        }
+      ],
+      "medium": [
+        {
+          "pattern": "catch(e) {}",
+          "description": "Silently swallows errors — hides bugs.",
+          "safe_alternative": "Log errors with context. Re-throw or handle appropriately."
+        },
+        {
+          "pattern": "console.log(req.body",
+          "description": "May log passwords, tokens, or PII from request bodies.",
+          "safe_alternative": "Redact sensitive fields before logging. Use a structured logger with field-level sanitization."
+        }
+      ]
+    },
+    "sql": {
+      "critical": [
+        {
+          "pattern": "string concatenation in SQL",
+          "description": "Building SQL queries with + or string formatting from user input enables SQL injection.",
+          "examples": [
+            "\"SELECT * FROM users WHERE id = \" + user_id",
+            "f\"SELECT * FROM users WHERE email = '{email}'\"",
+            "`SELECT * FROM users WHERE id = ${userId}`"
+          ],
+          "safe_alternative": "Use parameterized queries / prepared statements: cursor.execute('SELECT * FROM users WHERE id = %s', (user_id,))"
+        },
+        {
+          "pattern": "dynamic ORDER BY from user input",
+          "description": "Column name used in ORDER BY cannot be parameterized — requires explicit allowlist.",
+          "safe_alternative": "Map user input to a hardcoded column name allowlist: allowed = {'name': 'name', 'date': 'created_at'}; col = allowed.get(user_input, 'name')"
+        }
+      ]
+    },
+    "go": {
+      "high": [
+        {
+          "pattern": "unsafe.Pointer",
+          "description": "Bypasses Go's type safety. Memory corruption risk if misused.",
+          "safe_alternative": "Avoid unsafe package unless performance-critical and extensively tested. Document every use."
+        },
+        {
+          "pattern": "exec.Command with user input",
+          "description": "User input in shell command → command injection.",
+          "safe_alternative": "Pass arguments as separate strings to exec.Command, never concatenate into a shell string."
+        }
+      ]
+    },
+    "java": {
+      "critical": [
+        {
+          "pattern": "ObjectInputStream.readObject()",
+          "description": "Java deserialization of untrusted data can execute arbitrary code (gadget chains).",
+          "safe_alternative": "Use JSON/XML serialization. If Java serialization is required, implement a deserialization filter (ObjectInputFilter)."
+        },
+        {
+          "pattern": "Runtime.getRuntime().exec(",
+          "description": "OS command execution — user input → command injection.",
+          "safe_alternative": "Use ProcessBuilder with a list of arguments. Never construct command strings from user input."
+        }
+      ],
+      "high": [
+        {
+          "pattern": "MessageDigest.getInstance(\"MD5\")",
+          "description": "MD5 is cryptographically broken.",
+          "safe_alternative": "Use SHA-256 or SHA-3. Use BCrypt for passwords."
+        },
+        {
+          "pattern": "Statement.executeQuery(",
+          "description": "Using Statement instead of PreparedStatement with user input → SQL injection.",
+          "safe_alternative": "Use PreparedStatement with parameterized queries."
+        }
+      ]
+    }
+  },
+  "general_patterns": {
+    "hardcoded_secrets": {
+      "severity": "Critical",
+      "patterns": [
+        "password = \"",
+        "secret = \"",
+        "api_key = \"",
+        "API_KEY = \"",
+        "token = \"",
+        "private_key = \""
+      ],
+      "description": "Hardcoded credentials in source code are exposed in version control and binaries.",
+      "safe_alternative": "Load secrets from environment variables or a secrets manager (AWS Secrets Manager, HashiCorp Vault, Azure Key Vault)."
+    },
+    "missing_input_validation": {
+      "severity": "High",
+      "description": "User input used directly in operations without length, type, or format validation.",
+      "safe_alternative": "Validate all inputs at system boundaries: check type, length, format, and range before use."
+    }
+  }
+}
