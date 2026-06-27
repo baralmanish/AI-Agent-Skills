@@ -11,8 +11,10 @@ A collection of reusable, production-ready AI agent skills that can be dropped i
 | [Dashboard-It](#dashboard-it)                               | `dashboard-it/`                   | Converts any conversation or data into a bold, interactive HTML dashboard                           |
 | [Email Writing](#email-writing)                             | `email-writing/`                  | Writes perfectly-tailored emails across 10+ contexts with multiple draft options                    |
 | [Expense Analyzer](#expense-analyzer)                       | `expense-analyzer/`               | Analyzes spending data and generates interactive budgeting dashboards                               |
+| [Frontend Design](#frontend-design)                         | `frontend-design/`                | Creates distinctive, production-grade frontend interfaces and components with exceptional design    |
 | [Humanizer](#humanizer)                                     | `humanizer/`                      | Strips AI tells from text and rewrites it as natural human prose                                    |
 | [Meeting Notes](#meeting-notes)                             | `meeting-notes/`                  | Turns raw meeting notes or transcripts into structured summaries with action items                  |
+| [MCP Builder](#mcp-builder)                                 | `mcp-builder/`                    | Generates and deploys production-ready Model Context Protocol servers with custom tools            |
 | [Code Reviewer](#code-reviewer)                             | `code-reviewer/`                  | Reviews code for security (OWASP Top 10), bugs, performance, and style with severity-rated findings |
 | [Organize Files](#organize-files)                           | `organize-files/`                 | Renames and restructures files into a logical, downloadable zip archive                             |
 | [Personal Coach](#personal-coach)                           | `personal-coach/`                 | Surfaces hidden strengths from your work patterns and proposes one weekly experiment                |
@@ -69,6 +71,22 @@ Accepts transaction data, CSVs, or pasted statements. Categorizes spending, find
 - Spending category breakdown and trend charts
 - Savings projection over 6 months, 1 year, 5 years
 - Subscription and recurring-charge audit
+
+---
+
+### Frontend Design
+
+**Folder:** `frontend-design/`  
+**Trigger:** "Build a landing page" / "Design a component" / "Redesign this UI to be..."
+
+Creates distinctive, production-grade web interfaces that avoid generic "AI aesthetics." Combines design thinking with implementation guidance across multiple frameworks (HTML, React, Vue). Every design choice is intentional and visually striking.
+
+**Key outputs:**
+
+- Production-grade HTML/React/Vue components
+- Complete design system (typography, colors, motion, spacing)
+- Responsive, accessible, high-performance code
+- 10+ aesthetic directions to choose from (minimal, maximalist, luxury, brutalist, retro, etc.)
 
 ---
 
@@ -199,6 +217,23 @@ Transforms raw, messy meeting notes or transcripts (Zoom, Teams, handwritten) in
 - Discussion summary by topic
 - Open questions and blockers
 - Follow-up email draft (when 3+ action items or explicitly requested)
+
+---
+
+### MCP Builder
+
+**Folder:** `mcp-builder/`  
+**Trigger:** "Build an MCP server" / "Create a tool for..." / "Deploy an MCP server"
+
+Generates production-ready Model Context Protocol servers with custom tools and resources. Supports Python (FastMCP) and Node.js/TypeScript with comprehensive implementation patterns, async operations, error handling, testing, and deployment guidance.
+
+**Key outputs:**
+
+- Fully functional MCP server with custom tools
+- Support for databases, APIs, file operations, workflows
+- Docker deployment ready
+- Comprehensive reference guides for Python and Node.js SDKs
+- 6 common tool design patterns with production code examples
 
 ---
 
