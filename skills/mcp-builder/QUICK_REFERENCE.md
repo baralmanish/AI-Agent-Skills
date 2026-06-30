@@ -1,6 +1,7 @@
 # MCP Builder — Quick Reference
 
 ## Triggers
+
 - "Build an MCP server with [purpose]"
 - "Create tools for [domain]"
 - "Add these tools to an MCP: [list]"
@@ -9,11 +10,11 @@
 
 ## Language Quick Pick
 
-| Language | Best For | Time to Deploy | Example |
-|---|---|---|---|
-| **Python + FastMCP** | Data, AI, simple logic | ~5 mins | `pip install mcp` |
-| **Node.js + SDK** | APIs, web integrations | ~10 mins | `npm install @modelcontextprotocol/sdk` |
-| **TypeScript + SDK** | Large, type-safe servers | ~15 mins | Full type coverage |
+| Language             | Best For                 | Time to Deploy | Example                                 |
+| -------------------- | ------------------------ | -------------- | --------------------------------------- |
+| **Python + FastMCP** | Data, AI, simple logic   | ~5 mins        | `pip install mcp`                       |
+| **Node.js + SDK**    | APIs, web integrations   | ~10 mins       | `npm install @modelcontextprotocol/sdk` |
+| **TypeScript + SDK** | Large, type-safe servers | ~15 mins       | Full type coverage                      |
 
 ## Tool Design Template
 
@@ -28,13 +29,13 @@ Example: [Usage example]
 
 ## Common Tool Patterns
 
-| Pattern | Complexity | Example |
-|---|---|---|
-| Calculation | 🟢 Low | Math, string transform, format conversion |
-| Data Query | 🟡 Medium | Database query, API call, list filtering |
-| File I/O | 🟡 Medium | Read/write file, process document |
-| External API | 🟡 Medium | REST client, SDK wrapper |
-| Workflow | 🔴 High | Multi-step process, state management |
+| Pattern      | Complexity | Example                                   |
+| ------------ | ---------- | ----------------------------------------- |
+| Calculation  | 🟢 Low     | Math, string transform, format conversion |
+| Data Query   | 🟡 Medium  | Database query, API call, list filtering  |
+| File I/O     | 🟡 Medium  | Read/write file, process document         |
+| External API | 🟡 Medium  | REST client, SDK wrapper                  |
+| Workflow     | 🔴 High    | Multi-step process, state management      |
 
 ## Python MCP Quickstart
 
@@ -100,7 +101,10 @@ try {
 } catch (error) {
   return {
     content: [
-      { type: "text", text: `Error: ${error instanceof Error ? error.message : "Unknown"}` }
+      {
+        type: "text",
+        text: `Error: ${error instanceof Error ? error.message : "Unknown"}`,
+      },
     ],
     isError: true,
   };
@@ -113,7 +117,7 @@ try {
 ✅ **Range Check**: `1 <= limit <= 100`  
 ✅ **Format Check**: URL, email, regex patterns  
 ✅ **Length Check**: `len(query) > 0 and len(query) < 1000`  
-✅ **Enum Check**: `status in ["active", "inactive", "pending"]`  
+✅ **Enum Check**: `status in ["active", "inactive", "pending"]`
 
 ## Deployment Checklist
 
@@ -130,14 +134,14 @@ try {
 
 ## Deployment Targets
 
-| Target | Command | Notes |
-|---|---|---|
-| Local | `python server.py` or `npm start` | Development |
-| Docker | `docker build && docker run` | Consistency |
-| AWS Lambda | Use `aws lambda create-function` | Serverless |
-| Google Cloud Run | `gcloud run deploy` | Serverless |
-| Render/Railway | Git push to deploy | Simple PaaS |
-| Anthropic Claude | Register at Anthropic | For use in Claude |
+| Target           | Command                           | Notes             |
+| ---------------- | --------------------------------- | ----------------- |
+| Local            | `python server.py` or `npm start` | Development       |
+| Docker           | `docker build && docker run`      | Consistency       |
+| AWS Lambda       | Use `aws lambda create-function`  | Serverless        |
+| Google Cloud Run | `gcloud run deploy`               | Serverless        |
+| Render/Railway   | Git push to deploy                | Simple PaaS       |
+| Anthropic Claude | Register at Anthropic             | For use in Claude |
 
 ## Testing Quick Pattern
 
@@ -161,13 +165,13 @@ describe("My Tool", () => {
 
 ## Common Issues & Fixes
 
-| Issue | Cause | Fix |
-|---|---|---|
-| Tool not in list | Not registered | Add to `@server.tool()` decorator |
-| Timeout errors | Blocking I/O | Use async/await, add timeouts |
-| Auth failures | Missing credentials | Set environment variables |
-| Memory issues | Large datasets | Implement pagination |
-| Slow performance | No caching | Add `@lru_cache` (Python) or cache object |
+| Issue            | Cause               | Fix                                       |
+| ---------------- | ------------------- | ----------------------------------------- |
+| Tool not in list | Not registered      | Add to `@server.tool()` decorator         |
+| Timeout errors   | Blocking I/O        | Use async/await, add timeouts             |
+| Auth failures    | Missing credentials | Set environment variables                 |
+| Memory issues    | Large datasets      | Implement pagination                      |
+| Slow performance | No caching          | Add `@lru_cache` (Python) or cache object |
 
 ## Performance Tips
 
@@ -176,7 +180,7 @@ describe("My Tool", () => {
 📦 **Batch Operations**: Process multiple items together  
 🔍 **Validate Input Early**: Fail fast on bad input  
 📊 **Monitor Latency**: Log execution time  
-🎯 **Limit Results**: Cap returned data (e.g., max 100 rows)  
+🎯 **Limit Results**: Cap returned data (e.g., max 100 rows)
 
 ## File Structure
 
@@ -192,10 +196,9 @@ my-mcp-server/
 
 ## Resource vs Tool
 
-| Aspect | Tool | Resource |
-|---|---|---|
-| **Purpose** | Action/computation | Data access |
-| **Input** | Parameters | URI |
-| **Use Case** | "Calculate this" | "Read this file" |
-| **Example** | calculate_tax(income) | read_config("app:///settings") |
-
+| Aspect       | Tool                  | Resource                       |
+| ------------ | --------------------- | ------------------------------ |
+| **Purpose**  | Action/computation    | Data access                    |
+| **Input**    | Parameters            | URI                            |
+| **Use Case** | "Calculate this"      | "Read this file"               |
+| **Example**  | calculate_tax(income) | read_config("app:///settings") |

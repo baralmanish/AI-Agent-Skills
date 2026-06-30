@@ -9,19 +9,21 @@ This guide shows common patterns for implementing tools in MCP servers, with pro
 ## 1. Simple Calculation Tool
 
 ### Use Case
+
 Math operations, unit conversions, format transformations
 
 ### Pattern: Python
+
 ```python
 @server.tool()
 def calculate_discount(price: float, discount_percent: float) -> str:
     """
     Calculate discounted price.
-    
+
     Args:
         price: Original price
         discount_percent: Discount percentage (0-100)
-    
+
     Returns:
         Formatted result with original and discounted prices
     """
@@ -29,14 +31,15 @@ def calculate_discount(price: float, discount_percent: float) -> str:
         return "Error: Price cannot be negative"
     if not 0 <= discount_percent <= 100:
         return "Error: Discount must be between 0-100"
-    
+
     discount_amount = price * (discount_percent / 100)
     final_price = price - discount_amount
-    
+
     return f"Original: ${price:.2f} | Discount: {discount_percent}% | Final: ${final_price:.2f}"
 ```
 
 ### Pattern: Node.js
+
 ```typescript
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   if (request.params.name === "calculate_discount") {
@@ -78,9 +81,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ## 2. Data Query Tool
 
 ### Use Case
+
 Database queries, API calls, data filtering and retrieval
 
 ### Pattern: Python
+
 ```python
 import sqlite3
 import json
@@ -89,31 +94,31 @@ import json
 def query_customers(status: str = "active", limit: int = 10) -> str:
     """
     Query customers by status.
-    
+
     Args:
         status: Customer status (active, inactive, pending)
         limit: Maximum results (1-100)
-    
+
     Returns:
         JSON array of matching customers
     """
     valid_statuses = ["active", "inactive", "pending"]
     if status not in valid_statuses:
         return f"Error: Status must be one of {valid_statuses}"
-    
+
     if not 1 <= limit <= 100:
         return "Error: Limit must be between 1-100"
-    
+
     try:
         conn = sqlite3.connect(":memory:")  # Use actual DB in production
         cursor = conn.cursor()
-        
+
         query = "SELECT id, name, email, status FROM customers WHERE status = ? LIMIT ?"
         cursor.execute(query, (status, limit))
-        
+
         columns = [desc[0] for desc in cursor.description]
         results = [dict(zip(columns, row)) for row in cursor.fetchall()]
-        
+
         conn.close()
         return json.dumps({"count": len(results), "data": results})
     except Exception as e:
@@ -121,6 +126,7 @@ def query_customers(status: str = "active", limit: int = 10) -> str:
 ```
 
 ### Pattern: Node.js
+
 ```typescript
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   if (request.params.name === "query_customers") {
@@ -144,9 +150,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
     if (limit < 1 || limit > 100) {
       return {
-        content: [
-          { type: "text", text: "Error: Limit must be between 1-100" },
-        ],
+        content: [{ type: "text", text: "Error: Limit must be between 1-100" }],
         isError: true,
       };
     }
@@ -155,7 +159,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       // Replace with actual DB call
       const customers = await db.query(
         "SELECT id, name, email, status FROM customers WHERE status = ? LIMIT ?",
-        [status, limit]
+        [status, limit],
       );
 
       return {
@@ -171,7 +175,9 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         content: [
           {
             type: "text",
-            text: JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error" }),
+            text: JSON.stringify({
+              error: error instanceof Error ? error.message : "Unknown error",
+            }),
           },
         ],
         isError: true,
@@ -186,9 +192,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ## 3. File Operation Tool
 
 ### Use Case
+
 Read/write files, process documents, transform file formats
 
 ### Pattern: Python
+
 ```python
 import os
 from pathlib import Path
@@ -197,36 +205,36 @@ from pathlib import Path
 def read_file_safe(filename: str) -> str:
     """
     Read file contents safely.
-    
+
     Args:
         filename: File name (relative to safe directory)
-    
+
     Returns:
         File contents or error message
     """
     safe_dir = Path("/app/data")
     requested_file = safe_dir / filename
-    
+
     # Security: ensure file is within safe directory
     try:
         requested_file.resolve().relative_to(safe_dir.resolve())
     except ValueError:
         return "Error: Access denied - file outside safe directory"
-    
+
     if not requested_file.exists():
         return f"Error: File not found: {filename}"
-    
+
     if not requested_file.is_file():
         return "Error: Path is not a file"
-    
+
     try:
         with open(requested_file, "r", encoding="utf-8") as f:
             contents = f.read()
-        
+
         size_kb = len(contents) / 1024
         if size_kb > 10000:
             return f"Error: File too large ({size_kb:.1f} KB, max 10MB)"
-        
+
         return contents
     except UnicodeDecodeError:
         return "Error: File is not UTF-8 text"
@@ -235,6 +243,7 @@ def read_file_safe(filename: str) -> str:
 ```
 
 ### Pattern: Node.js
+
 ```typescript
 import fs from "fs/promises";
 import path from "path";
@@ -303,9 +312,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ## 4. API Integration Tool
 
 ### Use Case
+
 Call external APIs, fetch web data, integrate with third-party services
 
 ### Pattern: Python
+
 ```python
 import aiohttp
 import asyncio
@@ -320,25 +331,25 @@ async def fetch_api_data(
 ) -> str:
     """
     Fetch data from an external API.
-    
+
     Args:
         url: API endpoint URL
         method: HTTP method (GET, POST)
         timeout: Request timeout in seconds
         headers: Optional custom headers
-    
+
     Returns:
         JSON response or error
     """
     if not url.startswith(("http://", "https://")):
         return "Error: URL must start with http:// or https://"
-    
+
     if method not in ["GET", "POST"]:
         return "Error: Method must be GET or POST"
-    
+
     if timeout < 1 or timeout > 60:
         return "Error: Timeout must be between 1-60 seconds"
-    
+
     try:
         async with aiohttp.ClientSession() as session:
             async with session.request(
@@ -349,7 +360,7 @@ async def fetch_api_data(
             ) as response:
                 if response.status >= 400:
                     return f"Error: HTTP {response.status}"
-                
+
                 data = await response.json()
                 return json.dumps(data)
     except asyncio.TimeoutError:
@@ -359,6 +370,7 @@ async def fetch_api_data(
 ```
 
 ### Pattern: Node.js
+
 ```typescript
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   if (request.params.name === "fetch_api_data") {
@@ -445,9 +457,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ## 5. Multi-Step Workflow Tool
 
 ### Use Case
+
 Complex processes, data transformation pipelines, multi-step operations
 
 ### Pattern: Python
+
 ```python
 from enum import Enum
 
@@ -463,20 +477,20 @@ async def process_document(
 ) -> str:
     """
     Process document through workflow.
-    
+
     Args:
         document_id: ID of document to process
         action: "full" for all steps, or specific step
-    
+
     Returns:
         Workflow result with status
     """
     valid_actions = ["validate", "process", "store", "full"]
     if action not in valid_actions:
         return f"Error: Action must be one of {valid_actions}"
-    
+
     result = {"document_id": document_id, "steps": []}
-    
+
     try:
         # Step 1: Validate
         if action in ["validate", "full"]:
@@ -488,7 +502,7 @@ async def process_document(
             })
             if not validation and action == "full":
                 return json.dumps(result)
-        
+
         # Step 2: Process
         if action in ["process", "full"]:
             processed = await process_content(document_id)
@@ -497,7 +511,7 @@ async def process_document(
                 "status": "success",
                 "record_count": len(processed)
             })
-        
+
         # Step 3: Store
         if action in ["store", "full"]:
             stored = await store_result(document_id)
@@ -506,7 +520,7 @@ async def process_document(
                 "status": "success",
                 "timestamp": stored
             })
-        
+
         result["status"] = "completed"
         return json.dumps(result)
     except Exception as e:
@@ -520,9 +534,11 @@ async def process_document(
 ## 6. Caching and Performance Pattern
 
 ### Use Case
+
 Expensive operations that repeat, data that doesn't change often
 
 ### Pattern: Python
+
 ```python
 from functools import lru_cache
 import time
@@ -538,7 +554,7 @@ def get_cached_lookup(query: str) -> str:
     """Get lookup result (cached if available)."""
     cache_info = expensive_lookup.cache_info()
     result = expensive_lookup(query)
-    
+
     return json.dumps({
         "result": result,
         "cache_hits": cache_info.hits,
@@ -547,9 +563,13 @@ def get_cached_lookup(query: str) -> str:
 ```
 
 ### Pattern: Node.js
+
 ```typescript
 class CacheStore<T> {
-  private store = new Map<string, { value: T; timestamp: number; ttl: number }>();
+  private store = new Map<
+    string,
+    { value: T; timestamp: number; ttl: number }
+  >();
 
   set(key: string, value: T, ttlMs: number = 5 * 60 * 1000) {
     this.store.set(key, {
@@ -578,4 +598,3 @@ class CacheStore<T> {
 
 const cache = new CacheStore<string>();
 ```
-

@@ -3,19 +3,21 @@
 ## Quick Start
 
 ### Installation
+
 ```bash
 npm install @modelcontextprotocol/sdk
 npm install -D typescript ts-node @types/node
 ```
 
 ### Minimal Example
+
 ```typescript
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { 
-  ListToolsRequestSchema, 
+import {
+  ListToolsRequestSchema,
   CallToolRequestSchema,
-  TextContent 
+  TextContent,
 } from "@modelcontextprotocol/sdk/types.js";
 
 const server = new Server({
@@ -61,6 +63,7 @@ main().catch(console.error);
 ## Server Setup
 
 ### Initialize Server
+
 ```typescript
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 
@@ -75,6 +78,7 @@ const server = new Server({
 ```
 
 ### Register Transport
+
 ```typescript
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 
@@ -87,6 +91,7 @@ async function main() {
 ## Tool Implementation
 
 ### Basic Tool
+
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
@@ -123,6 +128,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ```
 
 ### Tool with Complex Input
+
 ```typescript
 interface ProcessDataParams {
   data: string;
@@ -132,8 +138,9 @@ interface ProcessDataParams {
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   if (request.params.name === "process_data") {
-    const { data, format, limit } = request.params.arguments as ProcessDataParams;
-    
+    const { data, format, limit } = request.params
+      .arguments as ProcessDataParams;
+
     if (!["json", "csv", "xml"].includes(format)) {
       return {
         content: [
@@ -145,7 +152,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         isError: true,
       };
     }
-    
+
     try {
       const result = processData(data, format, limit);
       return {
@@ -170,6 +177,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ## Resource Implementation
 
 ### Simple Resource
+
 ```typescript
 import {
   ListResourcesRequestSchema,
@@ -221,6 +229,7 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 ## Error Handling
 
 ### Structured Error Response
+
 ```typescript
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   try {
@@ -231,9 +240,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       };
     }
   } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error";
     console.error(`Tool error: ${errorMessage}`);
-    
+
     return {
       content: [
         {
@@ -251,6 +261,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ## Input Validation
 
 ### Validate Tool Arguments
+
 ```typescript
 interface FetchParams {
   url: string;
@@ -260,19 +271,25 @@ interface FetchParams {
 
 function validateFetchParams(params: unknown): params is FetchParams {
   const p = params as Record<string, unknown>;
-  
+
   if (typeof p.url !== "string" || !p.url.startsWith("http")) {
     throw new Error("Invalid URL");
   }
-  
-  if (p.timeout !== undefined && (typeof p.timeout !== "number" || p.timeout < 1)) {
+
+  if (
+    p.timeout !== undefined &&
+    (typeof p.timeout !== "number" || p.timeout < 1)
+  ) {
     throw new Error("Timeout must be a positive number");
   }
-  
-  if (p.retries !== undefined && (typeof p.retries !== "number" || p.retries < 0)) {
+
+  if (
+    p.retries !== undefined &&
+    (typeof p.retries !== "number" || p.retries < 0)
+  ) {
     throw new Error("Retries must be non-negative");
   }
-  
+
   return true;
 }
 
@@ -280,8 +297,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   if (request.params.name === "fetch_data") {
     try {
       validateFetchParams(request.params.arguments);
-      const { url, timeout = 10, retries = 3 } = request.params.arguments as FetchParams;
-      
+      const {
+        url,
+        timeout = 10,
+        retries = 3,
+      } = request.params.arguments as FetchParams;
+
       const result = await fetchWithRetry(url, timeout, retries);
       return {
         content: [{ type: "text" as const, text: result }],
@@ -305,8 +326,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ## Async Operations
 
 ### Fetch from External API
+
 ```typescript
-async function fetchFromAPI(url: string, timeout: number = 10000): Promise<string> {
+async function fetchFromAPI(
+  url: string,
+  timeout: number = 10000,
+): Promise<string> {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
 
@@ -333,7 +358,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     try {
       const { url } = request.params.arguments as { url: string };
       const data = await fetchFromAPI(url);
-      
+
       return {
         content: [{ type: "text" as const, text: data }],
       };
@@ -356,6 +381,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ## Logging and Debugging
 
 ### Configure Logging
+
 ```typescript
 interface LogEntry {
   timestamp: Date;
@@ -369,7 +395,7 @@ const logs: LogEntry[] = [];
 function log(
   level: "debug" | "info" | "warn" | "error",
   message: string,
-  data?: unknown
+  data?: unknown,
 ) {
   const entry: LogEntry = { timestamp: new Date(), level, message, data };
   logs.push(entry);
@@ -379,14 +405,14 @@ function log(
 // Use in tools:
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   log("info", `Tool called: ${request.params.name}`);
-  
+
   if (request.params.name === "debug_tool") {
     log("debug", "Debug tool executed", request.params.arguments);
     return {
       content: [{ type: "text" as const, text: "OK" }],
     };
   }
-  
+
   throw new Error("Unknown tool");
 });
 ```
@@ -394,6 +420,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ## Performance Optimization
 
 ### Caching Results
+
 ```typescript
 interface CacheEntry<T> {
   value: T;
@@ -430,7 +457,7 @@ const cache = new Cache<string>();
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   if (request.params.name === "get_cached_data") {
     const { key } = request.params.arguments as { key: string };
-    
+
     // Check cache first
     const cached = cache.get(key);
     if (cached) {
@@ -454,6 +481,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 ## Testing Tools Locally
 
 ### Unit Test Example (using Jest)
+
 ```typescript
 describe("MCP Tools", () => {
   it("should greet with correct name", async () => {
@@ -461,7 +489,7 @@ describe("MCP Tools", () => {
     const result = {
       content: [{ type: "text" as const, text: "Hello, Alice!" }],
     };
-    
+
     expect(result.content[0].text).toBe("Hello, Alice!");
   });
 
@@ -475,7 +503,7 @@ describe("MCP Tools", () => {
       ],
       isError: true,
     };
-    
+
     expect(result.isError).toBe(true);
   });
 });
@@ -484,6 +512,7 @@ describe("MCP Tools", () => {
 ## Deployment
 
 ### Package.json
+
 ```json
 {
   "name": "my-mcp-server",
@@ -507,6 +536,7 @@ describe("MCP Tools", () => {
 ```
 
 ### Docker Deployment
+
 ```dockerfile
 FROM node:20-slim
 
@@ -524,4 +554,3 @@ EXPOSE 3000
 
 CMD ["npm", "start"]
 ```
-

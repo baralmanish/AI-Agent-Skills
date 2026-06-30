@@ -3,6 +3,7 @@
 ## Quick Start
 
 ### Installation
+
 ```bash
 pip install mcp
 # or for faster development:
@@ -10,6 +11,7 @@ pip install "mcp[fastmcp]"
 ```
 
 ### Minimal Example with FastMCP
+
 ```python
 from mcp.server.fastmcp import FastMCP
 
@@ -27,6 +29,7 @@ if __name__ == "__main__":
 ## Standard SDK Pattern
 
 ### Create Server
+
 ```python
 import asyncio
 from mcp.server import Server
@@ -61,6 +64,7 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
 ```
 
 ### Run with Stdio Transport
+
 ```python
 from mcp.server.stdio import stdio_server
 
@@ -75,15 +79,16 @@ if __name__ == "__main__":
 ## Tool Implementation Patterns
 
 ### Simple Calculation Tool
+
 ```python
 @server.tool()
 def calculate(expression: str) -> str:
     """
     Evaluate a mathematical expression.
-    
+
     Args:
         expression: Mathematical expression (e.g., "2 + 2")
-    
+
     Returns:
         The result of the calculation
     """
@@ -95,16 +100,17 @@ def calculate(expression: str) -> str:
 ```
 
 ### Data Retrieval Tool
+
 ```python
 @server.tool()
 def fetch_data(query: str, limit: int = 10) -> str:
     """
     Fetch data from a data source.
-    
+
     Args:
         query: Search query
         limit: Maximum number of results
-    
+
     Returns:
         JSON formatted data
     """
@@ -116,25 +122,26 @@ def fetch_data(query: str, limit: int = 10) -> str:
 ```
 
 ### Tool with File Operations
+
 ```python
 @server.tool()
 def read_file(path: str) -> str:
     """
     Read and return file contents.
-    
+
     Args:
         path: File path (relative to safe directory)
-    
+
     Returns:
         File contents
     """
     safe_dir = "/data"
     full_path = os.path.abspath(os.path.join(safe_dir, path))
-    
+
     # Security check: ensure path is within safe directory
     if not full_path.startswith(safe_dir):
         return "Error: Access denied"
-    
+
     try:
         with open(full_path, 'r') as f:
             return f.read()
@@ -145,12 +152,13 @@ def read_file(path: str) -> str:
 ## Resource Implementation
 
 ### Simple Resource
+
 ```python
 @server.resource()
 def config_resource(uri: str) -> str:
     """
     Serve configuration files.
-    
+
     Supported URIs:
         config:///database
         config:///api
@@ -166,13 +174,14 @@ def config_resource(uri: str) -> str:
 ## Error Handling
 
 ### Structured Error Responses
+
 ```python
 @server.tool()
 def safe_operation(value: str) -> str:
     """Perform operation with error handling."""
     if not value:
         return '{"error": "Value cannot be empty"}'
-    
+
     try:
         result = process(value)
         return json.dumps({"success": True, "result": result})
@@ -187,6 +196,7 @@ def safe_operation(value: str) -> str:
 ## Async Operations
 
 ### Async Tool
+
 ```python
 import asyncio
 
@@ -206,6 +216,7 @@ async def fetch_from_api(url: str) -> str:
 ## Input Validation
 
 ### Schema-Based Validation
+
 ```python
 from typing import Optional
 
@@ -217,21 +228,21 @@ def process_data(
 ) -> str:
     """
     Process input data.
-    
+
     Args:
         data: Input data to process
         format: Data format (json, csv, xml)
         limit: Optional maximum items to process
-    
+
     Returns:
         Processed data
     """
     if format not in ["json", "csv", "xml"]:
         return f"Error: Unsupported format '{format}'"
-    
+
     if limit is not None and limit < 1:
         return "Error: Limit must be >= 1"
-    
+
     try:
         return process(data, format=format, limit=limit)
     except Exception as e:
@@ -241,6 +252,7 @@ def process_data(
 ## Logging and Debugging
 
 ### Configure Logging
+
 ```python
 import logging
 
@@ -266,6 +278,7 @@ def example_tool(param: str) -> str:
 ## Testing Tools Locally
 
 ### Manual Testing
+
 ```bash
 # Run the server in one terminal
 python server.py
@@ -277,6 +290,7 @@ curl -X POST http://localhost:8000/tools/greet \
 ```
 
 ### Unit Tests
+
 ```python
 import pytest
 
@@ -294,6 +308,7 @@ async def test_greet_empty_name():
 ## Performance Optimization
 
 ### Caching Results
+
 ```python
 from functools import lru_cache
 
@@ -309,26 +324,28 @@ def get_cached_result(key: str) -> str:
 ```
 
 ### Batch Operations
+
 ```python
 @server.tool()
 def batch_process(items: list[str]) -> str:
     """Process multiple items efficiently."""
     if len(items) > 100:
         return "Error: Maximum 100 items per request"
-    
+
     results = []
     for item in items:
         try:
             results.append(process_item(item))
         except Exception as e:
             results.append(f"Error processing {item}: {e}")
-    
+
     return json.dumps(results)
 ```
 
 ## Deployment
 
 ### Environment Variables
+
 ```python
 import os
 from dotenv import load_dotenv
@@ -344,6 +361,7 @@ if not API_KEY:
 ```
 
 ### Docker Deployment
+
 ```dockerfile
 FROM python:3.11-slim
 
@@ -358,4 +376,3 @@ ENV PYTHONUNBUFFERED=1
 
 CMD ["python", "server.py"]
 ```
-

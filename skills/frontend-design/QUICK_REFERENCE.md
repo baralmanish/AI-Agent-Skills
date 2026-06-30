@@ -1,6 +1,7 @@
 # Frontend Design — Quick Reference
 
 ## Triggers
+
 - "Build a landing page with [aesthetic]"
 - "Design a component that looks like [description]"
 - "Redesign this UI to be more [adjective]"
@@ -9,14 +10,14 @@
 
 ## Aesthetic Directions (Pick One)
 
-| Direction | Use When | Key Elements |
-|---|---|---|
-| **Minimal** | Less is more, clean slate | Whitespace, single color, typography |
-| **Maximalist** | Complex, layered, bold | Patterns, 3+ colors, texture, complexity |
-| **Luxury** | Elegant, refined, premium | Generous spacing, gold/black, subtle details |
-| **Playful** | Fun, approachable, youthful | Bright colors, unusual shapes, personality |
-| **Brutalist** | Raw, honest, no polish | Minimal styling, true colors, functional |
-| **Retro** | Nostalgic with modern twist | Gradients, glitch effects, bold geometry |
+| Direction      | Use When                    | Key Elements                                 |
+| -------------- | --------------------------- | -------------------------------------------- |
+| **Minimal**    | Less is more, clean slate   | Whitespace, single color, typography         |
+| **Maximalist** | Complex, layered, bold      | Patterns, 3+ colors, texture, complexity     |
+| **Luxury**     | Elegant, refined, premium   | Generous spacing, gold/black, subtle details |
+| **Playful**    | Fun, approachable, youthful | Bright colors, unusual shapes, personality   |
+| **Brutalist**  | Raw, honest, no polish      | Minimal styling, true colors, functional     |
+| **Retro**      | Nostalgic with modern twist | Gradients, glitch effects, bold geometry     |
 
 ## Design Checklist
 
@@ -42,27 +43,27 @@ Motion: [Entrance, exit, interaction]
 
 ## Typography Pairing Quick Reference
 
-| Display Font | Body Font | Feel |
-|---|---|---|
-| Playfair Display | Inter | Editorial/Elegant |
-| Montserrat | Open Sans | Modern/Corporate |
-| Bebas Neue | Roboto | Bold/Structured |
-| Cormorant | Lato | Luxury/Refined |
-| Space Mono | Nunito | Tech/Friendly |
-| Bodoni Moda | Work Sans | Timeless/Bold |
+| Display Font     | Body Font | Feel              |
+| ---------------- | --------- | ----------------- |
+| Playfair Display | Inter     | Editorial/Elegant |
+| Montserrat       | Open Sans | Modern/Corporate  |
+| Bebas Neue       | Roboto    | Bold/Structured   |
+| Cormorant        | Lato      | Luxury/Refined    |
+| Space Mono       | Nunito    | Tech/Friendly     |
+| Bodoni Moda      | Work Sans | Timeless/Bold     |
 
 ## Color Psychology Quick Reference
 
-| Color | Emotion | Use For |
-|---|---|---|
-| Blue | Trust, calm | Finance, tech, corporate |
-| Green | Growth, health | Wellness, environment, money |
-| Red | Urgency, passion | CTAs, alerts, sales |
-| Purple | Creativity, luxury | Design, premium, magic |
-| Orange | Energy, playful | Food, startup, fun |
-| Pink | Soft, playful | Fashion, lifestyle, modern |
-| Black | Authority, elegance | Luxury, tech, contrast |
-| White/Cream | Clean, premium | Minimalist, editorial |
+| Color       | Emotion             | Use For                      |
+| ----------- | ------------------- | ---------------------------- |
+| Blue        | Trust, calm         | Finance, tech, corporate     |
+| Green       | Growth, health      | Wellness, environment, money |
+| Red         | Urgency, passion    | CTAs, alerts, sales          |
+| Purple      | Creativity, luxury  | Design, premium, magic       |
+| Orange      | Energy, playful     | Food, startup, fun           |
+| Pink        | Soft, playful       | Fashion, lifestyle, modern   |
+| Black       | Authority, elegance | Luxury, tech, contrast       |
+| White/Cream | Clean, premium      | Minimalist, editorial        |
 
 ## Responsive Breakpoints (Common)
 
@@ -77,7 +78,7 @@ Desktop:  1024px+
 ✨ **High-Impact**: Page loads, hero section, scroll reveals  
 ⚡ **Subtle**: Hover states, micro-interactions, transitions  
 🔄 **Loops**: Only if meaningful (loading spinners, etc.)  
-⏱️ **Timing**: 200-500ms for snappy, 800-1200ms for dramatic  
+⏱️ **Timing**: 200-500ms for snappy, 800-1200ms for dramatic
 
 ## Accessibility Checklist
 
@@ -97,7 +98,7 @@ Desktop:  1024px+
 ❌ Animations that don't add value  
 ❌ Ignoring mobile (design mobile-first)  
 ❌ Inaccessible color contrast  
-❌ Unclear visual hierarchy  
+❌ Unclear visual hierarchy
 
 ## File Structure for Deliverables
 
@@ -117,5 +118,4 @@ assets/               - Images, icons
 ✅ Proper spacing utilities  
 ✅ Accessible form inputs  
 ✅ Responsive images  
-✅ Clean, readable code  
-
+✅ Clean, readable code

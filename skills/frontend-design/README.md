@@ -7,6 +7,7 @@ Create distinctive, production-grade frontend interfaces with exceptional design
 This skill guides the creation of visually striking, well-crafted frontend interfaces that avoid generic "AI slop" aesthetics. It combines design thinking with production-quality code implementation.
 
 Use this skill when building:
+
 - Web components and layouts
 - Landing pages and marketing sites
 - Dashboards and data visualizations
@@ -17,6 +18,7 @@ Use this skill when building:
 ## Sample Prompts
 
 ### Creative Direction
+
 ```text
 Build a landing page for an AI startup.
 Make it bold and futuristic with 3D elements and smooth animations.
@@ -25,6 +27,7 @@ Include hero section, features grid, testimonials, and CTA.
 ```
 
 ### Component Design
+
 ```text
 Create a beautiful input field with autocomplete suggestions.
 Use a minimalist design with elegant typography.
@@ -33,6 +36,7 @@ Include error states and loading states.
 ```
 
 ### Dashboard Build
+
 ```text
 Build a personal finance dashboard showing spending by category.
 Use a warm color palette (oranges, golds).
@@ -41,6 +45,7 @@ Make it feel inviting and easy to understand.
 ```
 
 ### Redesign Existing UI
+
 ```text
 This form is too boring. Redesign it with:
 - Unique typography choices (not system fonts)
@@ -51,6 +56,7 @@ This form is too boring. Redesign it with:
 ```
 
 ### Portfolio Showcase
+
 ```text
 Build a portfolio website for a photographer.
 Use a grid-based layout with large, striking images.
@@ -77,8 +83,8 @@ Include contact and social links.
 
 ## Files
 
-| File | Purpose |
-|---|---|
+| File       | Purpose                                           |
+| ---------- | ------------------------------------------------- |
 | `SKILL.md` | Core skill instructions and aesthetics guidelines |
 
 ## Key Guidelines
@@ -91,16 +97,15 @@ Include contact and social links.
 
 ## Common Starting Directions
 
-| Aesthetic | Characteristics |
-|---|---|
-| Brutally Minimal | Maximum whitespace, single color, typography-focused |
-| Maximalist | Pattern-heavy, bold colors, layered textures, complex layouts |
-| Retro-Futuristic | Nostalgic with modern polish, glitch effects, bold geometry |
-| Luxury/Refined | Elegant typography, generous spacing, muted palette, subtle details |
-| Playful | Bright colors, unusual shapes, hand-drawn elements, personality |
-| Editorial/Magazine | Strong hierarchy, grid-based, rich imagery, narrative focus |
-| Brutalist/Raw | Minimal styling, true colors, unpolished aesthetic, raw data display |
-| Art Deco | Geometric patterns, gold/black palette, symmetric layouts, glamorous |
-| Organic/Natural | Curved shapes, earth tones, botanical elements, soft aesthetic |
-| Industrial | Raw materials, grid systems, functional design, no-frills approach |
-
+| Aesthetic          | Characteristics                                                      |
+| ------------------ | -------------------------------------------------------------------- |
+| Brutally Minimal   | Maximum whitespace, single color, typography-focused                 |
+| Maximalist         | Pattern-heavy, bold colors, layered textures, complex layouts        |
+| Retro-Futuristic   | Nostalgic with modern polish, glitch effects, bold geometry          |
+| Luxury/Refined     | Elegant typography, generous spacing, muted palette, subtle details  |
+| Playful            | Bright colors, unusual shapes, hand-drawn elements, personality      |
+| Editorial/Magazine | Strong hierarchy, grid-based, rich imagery, narrative focus          |
+| Brutalist/Raw      | Minimal styling, true colors, unpolished aesthetic, raw data display |
+| Art Deco           | Geometric patterns, gold/black palette, symmetric layouts, glamorous |
+| Organic/Natural    | Curved shapes, earth tones, botanical elements, soft aesthetic       |
+| Industrial         | Raw materials, grid systems, functional design, no-frills approach   |

@@ -20,7 +20,7 @@ Before coding, understand the context and commit to a **BOLD aesthetic direction
   - Editorial/magazine, brutalist/raw
   - Art deco/geometric, soft/pastel
   - Industrial/utilitarian
-  
+
   There are so many flavors to choose from. Use these for inspiration but design one that is true to the aesthetic direction.
 
 - **Constraints**: Technical requirements (framework, performance, accessibility)
@@ -49,12 +49,14 @@ Remember: Claude is capable of extraordinary creative work. Don't hold back — 
 ## Implementation
 
 Then implement working code (HTML/CSS/JS, React, Vue, etc.) that is:
+
 - Production-grade and functional
 - Visually striking and memorable
 - Cohesive with a clear aesthetic point-of-view
 - Meticulously refined in every detail
 
 For React/Vue projects, ensure:
+
 - Proper state management
 - Component reusability
 - Performance optimization
@@ -64,6 +66,7 @@ For React/Vue projects, ensure:
 ## Output Formats
 
 Deliver as:
+
 1. **Single HTML file** (for simple projects) — inline CSS and JS, self-contained
 2. **React/Vue component** (for complex projects) — well-structured, with Tailwind CSS or styled-components
 3. **Live artifact** in Claude interface — fully interactive and testable

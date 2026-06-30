@@ -20,12 +20,14 @@ Build production-ready Model Context Protocol (MCP) servers with comprehensive p
 ### Phase 1: Deep Research and Planning
 
 #### 1.1 Clarify Requirements
+
 - What tools/resources should the server expose?
 - What is the primary use case?
 - Are there authentication or permission requirements?
 - What are the scale/performance expectations?
 
 #### 1.2 Choose SDK and Framework
+
 - **Python**: Use the official Python SDK for MCP
   - Reference: [Python SDK README](https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md)
   - Best for: Data processing, AI integrations, scientific computing
@@ -38,11 +40,13 @@ Build production-ready Model Context Protocol (MCP) servers with comprehensive p
 - **Other languages**: Check [MCP Implementations](https://github.com/modelcontextprotocol#implementations) for community SDKs
 
 #### 1.3 Study Framework Documentation
+
 - **Python SDK**: Understand `Server` class, `@tool` decorator, `@resource` decorator, error handling patterns
 - **Node.js SDK**: Understand server initialization, `Tool` and `Resource` classes, request/response handling
 - Review reference implementation guides: See `reference/python_mcp_server.md` or `reference/nodejs_mcp_server.md`
 
 #### 1.4 Plan Server Structure
+
 ```
 my-mcp-server/
 ├── server.py (or server.ts for Node.js)      # Main server entry point
@@ -64,9 +68,11 @@ my-mcp-server/
 ### Phase 2: Implementation
 
 #### 2.1 Create Server Instance
+
 Initialize the MCP server with proper configuration.
 
 **Python (FastMCP - Recommended):**
+
 ```python
 from mcp.server.fastmcp import FastMCP
 
@@ -74,6 +80,7 @@ server = FastMCP("server-name", instructions="Brief description of what this ser
 ```
 
 **Python (Standard SDK):**
+
 ```python
 from mcp.server import Server
 from mcp.types import Tool, Resource
@@ -82,6 +89,7 @@ server = Server("server-name")
 ```
 
 **Node.js:**
+
 ```typescript
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -95,6 +103,7 @@ const server = new Server({
 #### 2.2 Implement Tools
 
 A tool is a callable function that Claude can invoke. Always include:
+
 - Clear, descriptive name
 - Detailed description of what it does
 - Input schema with types and documentation
@@ -102,16 +111,17 @@ A tool is a callable function that Claude can invoke. Always include:
 - Return value documentation
 
 **Python:**
+
 ```python
 @server.tool()
 def tool_name(arg1: str, arg2: int) -> str:
     """
     Brief description of what this tool does.
-    
+
     Args:
         arg1: Description of arg1
         arg2: Description of arg2
-    
+
     Returns:
         Description of return value
     """
@@ -124,6 +134,7 @@ def tool_name(arg1: str, arg2: int) -> str:
 ```
 
 **Node.js:**
+
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
@@ -148,7 +159,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const result = performOperation(request.params.arguments.arg1);
       return { content: [{ type: "text", text: result }] };
     } catch (error) {
-      return { isError: true, content: [{ type: "text", text: `Error: ${error}` }] };
+      return {
+        isError: true,
+        content: [{ type: "text", text: `Error: ${error}` }],
+      };
     }
   }
   throw new Error("Unknown tool");
@@ -158,18 +172,20 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 #### 2.3 Implement Resources (Optional)
 
 Resources are read-only data sources that Claude can access. Include:
+
 - URI schema
 - Description
 - Content type
 - Data payload
 
 **Python:**
+
 ```python
 @server.resource()
 def resource_name(uri: str) -> str:
     """
     Description of the resource and what URIs are supported.
-    
+
     Example URIs:
         resource:///item/123
         resource:///config/settings
@@ -188,16 +204,19 @@ def resource_name(uri: str) -> str:
 ### Phase 3: Validation
 
 #### 3.1 Local Testing
+
 - Test each tool individually with various inputs
 - Test error cases and edge cases
 - Verify output format and content
 
 #### 3.2 Integration Testing
+
 - Test tool chaining (one tool output → another tool input)
 - Test with Claude to ensure outputs are useful
 - Verify performance for large datasets
 
 #### 3.3 Security Review
+
 - Check for injection vulnerabilities
 - Verify authentication/authorization if applicable
 - Ensure sensitive data is not exposed in logs
@@ -205,7 +224,9 @@ def resource_name(uri: str) -> str:
 ### Phase 4: Deployment
 
 #### 4.1 Environment Setup
+
 Create `.env` file with required variables:
+
 ```bash
 MCP_SERVER_NAME=my-server
 LOG_LEVEL=info
@@ -213,6 +234,7 @@ API_KEY=your-api-key-here
 ```
 
 #### 4.2 Containerization (Optional)
+
 ```dockerfile
 FROM python:3.11-slim
 WORKDIR /app
@@ -223,6 +245,7 @@ CMD ["python", "server.py"]
 ```
 
 #### 4.3 Deployment Options
+
 - **Local**: Run directly with `python server.py`
 - **Docker**: `docker build -t my-mcp-server . && docker run my-mcp-server`
 - **Cloud**: Deploy to AWS Lambda, Google Cloud Run, or similar
@@ -231,24 +254,28 @@ CMD ["python", "server.py"]
 ## Best Practices
 
 ### Code Quality
+
 - Use type hints (Python: type annotations; TypeScript: proper types)
 - Write clear docstrings/JSDoc comments
 - Keep functions focused and single-purpose
 - Use consistent naming conventions
 
 ### Performance
+
 - Implement caching for frequently accessed data
 - Batch operations when possible
 - Use async/await for I/O operations
 - Monitor tool execution time
 
 ### Reliability
+
 - Implement proper error handling and recovery
 - Add retry logic for transient failures
 - Log detailed information for debugging
 - Test with real-world data volumes
 
 ### Security
+
 - Validate all input parameters
 - Use environment variables for secrets
 - Implement rate limiting if needed
@@ -263,10 +290,9 @@ CMD ["python", "server.py"]
 
 ## Common Issues and Solutions
 
-| Issue | Solution |
-|---|---|
-| Tool not appearing in Claude | Check that tool is properly registered with server |
-| Timeouts | Check tool implementation for blocking I/O; use async operations |
-| Authentication failures | Verify API keys and credentials in environment variables |
-| Large dataset errors | Implement pagination or streaming for large responses |
-
+| Issue                        | Solution                                                         |
+| ---------------------------- | ---------------------------------------------------------------- |
+| Tool not appearing in Claude | Check that tool is properly registered with server               |
+| Timeouts                     | Check tool implementation for blocking I/O; use async operations |
+| Authentication failures      | Verify API keys and credentials in environment variables         |
+| Large dataset errors         | Implement pagination or streaming for large responses            |
